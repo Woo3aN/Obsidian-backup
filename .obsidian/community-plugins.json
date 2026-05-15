@@ -1,5 +1,7 @@
 [
   "editing-toolbar",
   "nutstore-sync",
-  "better-export-pdf"
+  "better-export-pdf",
+  "obsidian-weread-plugin",
+  "obsidian-git"
 ]

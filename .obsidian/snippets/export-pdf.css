@@ -1,5 +1,9 @@
 @media print {
-  h3 {
-    break-before: page;
+  h1 {
+    page-break-before: always;
+  }
+  .inline-title + * h1:first-of-type,
+  .inline-title ~ h1:first-of-type {
+    page-break-before: avoid;
   }
 }

@@ -20,8 +20,33 @@
               "icon": "lucide-file",
               "title": "面向对象程序设计"
             }
+          },
+          {
+            "id": "53ad2dc8ad2048a1",
+            "type": "leaf",
+            "state": {
+              "type": "weread-bookshelf-view",
+              "state": {},
+              "icon": "library",
+              "title": "微信读书书架"
+            }
+          },
+          {
+            "id": "f7653c9a859531cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "面向对象程序设计.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "面向对象程序设计"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -174,6 +199,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-weread-plugin:打开微信读书书架": false,
       "nutstore-sync:Start sync": false,
       "nutstore-sync:Stop sync": false,
       "nutstore-sync:Open chatbox": false,
@@ -186,17 +212,28 @@
       "bases:新建数据库": false
     }
   },
-  "active": "ec13c9c89e4e1e12",
+  "active": "038c0296299b0cb0",
   "lastOpenFiles": [
-    "面向对象程序设计.pdf",
-    "面向对象程序设计.md",
-    "Pasted image 20260514234502.png",
     "未命名.base",
-    "2026-05-14.md",
+    "面向对象程序设计.md",
+    "面向对象程序设计.pdf",
     "创建链接.md",
     "欢迎.md",
-    "未命名 2.base",
+    "C++ Primer Plus（第6版）中文版.md",
+    "战争与和平（托尔斯泰众生三部曲）.md",
+    "西线无战事（同名电影原著）（果麦经典）.md",
+    "西方哲学史：从古希腊到当下.md",
+    "东方快车谋杀案.md",
+    "鲁迅全集（全十八卷）.md",
+    "三体前传：球状闪电.md",
+    "逆袭的夏亚一贝托蒂嘉的子嗣.md",
+    "索拉里斯星（译林幻系列）.md",
+    "战争与和平.md",
+    "三体全集（全三册）.md",
     "未命名 1.base",
+    "Pasted image 20260514234502.png",
+    "2026-05-14.md",
+    "未命名 2.base",
     "未命名.canvas",
     "未命名.md"
   ]

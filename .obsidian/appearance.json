@@ -1,3 +1,6 @@
 {
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [
+    "export-pdf"
+  ],
+  "theme": "obsidian"
 }
