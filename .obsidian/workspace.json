@@ -199,6 +199,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "obsidian-weread-plugin:打开微信读书书架": false,
       "nutstore-sync:Start sync": false,
       "nutstore-sync:Stop sync": false,
