@@ -164,9 +164,19 @@
               "icon": "lucide-list",
               "title": "面向对象程序设计 的大纲"
             }
+          },
+          {
+            "id": "47a43935dd6ffe8e",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
