@@ -13,7 +13,7 @@
       "name": "Same folder as current note"
     }
   ],
-  "selectedFolderPreset": "Default (Obsidian setting)",
+  "selectedFolderPreset": "Same folder as current note",
   "filenamePresets": [
     {
       "name": "Keep original name",
