@@ -11,9 +11,13 @@
     {
       "type": "CURRENT",
       "name": "Same folder as current note"
+    },
+    {
+      "name": "存到imgs文件夹",
+      "type": "SUBFOLDER"
     }
   ],
-  "selectedFolderPreset": "Same folder as current note",
+  "selectedFolderPreset": "存到imgs文件夹",
   "filenamePresets": [
     {
       "name": "Keep original name",
@@ -46,7 +50,7 @@
     "folder": false,
     "filename": false
   },
-  "subfolderTemplate": "",
+  "subfolderTemplate": "imgs",
   "conversionPresets": [
     {
       "name": "None",
