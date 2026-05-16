@@ -3,5 +3,6 @@
   "nutstore-sync",
   "better-export-pdf",
   "obsidian-git",
-  "pixel-perfect-image"
+  "pixel-perfect-image",
+  "obsidian-linter"
 ]
