@@ -157,7 +157,7 @@
               "type": "outline",
               "state": {
                 "file": "面向对象程序设计.md",
-                "followCursor": false,
+                "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
@@ -209,7 +209,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f7653c9a859531cf",
+  "active": "5d95e84e2df77862",
   "lastOpenFiles": [
     "imgs/Pasted image 20260517002356.png",
     "面向对象程序设计.pdf",
