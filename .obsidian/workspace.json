@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大数定律及中心极限定理.md",
+                "file": "概率统计/大数定律及中心极限定理.md",
                 "mode": "source",
                 "source": false
               },
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "大数定律及中心极限定理.md",
+                "file": "概率统计/大数定律及中心极限定理.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "大数定律及中心极限定理.md",
+                "file": "概率统计/大数定律及中心极限定理.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
@@ -209,10 +209,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5d95e84e2df77862",
+  "active": "038c0296299b0cb0",
   "lastOpenFiles": [
+    "概率统计",
     "C++相关代码.md",
-    "大数定律及中心极限定理.md",
+    "概率统计/大数定律及中心极限定理.md",
     "面向对象程序设计.md",
     "易经.md",
     "易经 1.md",
@@ -250,7 +251,6 @@
     "战争与和平.md",
     "三体全集（全三册）.md",
     "未命名 1.base",
-    "2026-05-14.md",
     "未命名 2.base",
     "未命名.canvas"
   ]
