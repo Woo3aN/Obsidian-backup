@@ -284,7 +284,22 @@
   "linterLocale": "system-default",
   "logLevel": "ERROR",
   "lintCommands": [],
-  "customRegexes": [],
+  "customRegexes": [
+    {
+      "label": "修复左大括号 for GitHub",
+      "find": "\\\\left\\{",
+      "replace": "\\\\lbrace",
+      "flags": "g",
+      "enabled": true
+    },
+    {
+      "label": "修复右大括号 for GitHub",
+      "find": "\\\\right\\}",
+      "replace": "\\\\rbrace",
+      "flags": "g",
+      "enabled": true
+    }
+  ],
   "commonStyles": {
     "aliasArrayStyle": "single-line",
     "tagArrayStyle": "single-line",
