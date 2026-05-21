@@ -1,32 +1,23 @@
 {
   "choices": [
     {
-      "id": "0e58b723-a4b7-41e8-b4e3-6fa67f77015d",
+      "id": "0e2b091d-fc4d-41e2-af52-5351bd6be467",
       "name": "GitHub Math Fix",
-      "type": "Template",
-      "command": false,
-      "templatePath": "",
-      "fileNameFormat": {
-        "enabled": false,
-        "format": ""
-      },
-      "folder": {
-        "enabled": false,
-        "folders": [],
-        "chooseWhenCreatingNote": false,
-        "createInSameFolderAsActiveFile": false,
-        "chooseFromSubfolders": false
-      },
-      "appendLink": false,
-      "openFile": false,
-      "fileOpening": {
-        "location": "tab",
-        "direction": "vertical",
-        "mode": "default",
-        "focus": true
-      },
-      "fileExistsBehavior": {
-        "kind": "prompt"
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "name": "GitHub Math Fix",
+        "id": "43930164-9c1b-40f0-902f-51a18c78a19d",
+        "commands": [
+          {
+            "name": "github-math-fix",
+            "type": "UserScript",
+            "id": "cff62dee-ca06-4ea4-83d5-7751887fe5ef",
+            "path": "scripts/github-math-fix.js",
+            "settings": {}
+          }
+        ]
       }
     }
   ],
