@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "概率统计/大数定律及中心极限定理.md",
+                "file": "大学物理/相对论.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "大数定律及中心极限定理"
+              "title": "相对论"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "概率统计/大数定律及中心极限定理.md",
+                "file": "大学物理/相对论.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大数定律及中心极限定理 的大纲"
+              "title": "相对论 的大纲"
             }
           },
           {
@@ -212,8 +212,8 @@
   },
   "active": "f7653c9a859531cf",
   "lastOpenFiles": [
-    "大学物理/相对论.md",
     "概率统计/大数定律及中心极限定理.md",
+    "大学物理/相对论.md",
     "面向对象程序设计.md",
     "C++相关代码.md",
     "面向对象程序设计.pdf",
