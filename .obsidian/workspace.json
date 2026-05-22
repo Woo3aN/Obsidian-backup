@@ -198,7 +198,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -220,7 +220,7 @@
       "fix-math:Current file": false
     }
   },
-  "active": "2e6ddcffa34324f3",
+  "active": "5d95e84e2df77862",
   "lastOpenFiles": [
     "概率统计/大数定律及中心极限定理.md",
     "scripts/github-math-fix.js",
