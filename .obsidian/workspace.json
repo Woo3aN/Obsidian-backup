@@ -186,13 +186,23 @@
               "icon": "lucide-info",
               "title": "面向对象程序设计的笔记属性"
             }
+          },
+          {
+            "id": "2e6ddcffa34324f3",
+            "type": "leaf",
+            "state": {
+              "type": "nutstore-sync-chatbox",
+              "state": {},
+              "icon": "bot",
+              "title": "Chatbox"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 371.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,7 +220,7 @@
       "fix-math:Current file": false
     }
   },
-  "active": "0a9abe219c042b67",
+  "active": "2e6ddcffa34324f3",
   "lastOpenFiles": [
     "概率统计/大数定律及中心极限定理.md",
     "scripts/github-math-fix.js",
