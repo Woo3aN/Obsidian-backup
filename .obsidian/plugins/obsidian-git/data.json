@@ -6,7 +6,7 @@
   "autoSaveInterval": 5,
   "autoPushInterval": 0,
   "autoPullInterval": 10,
-  "autoPullOnBoot": true,
+  "autoPullOnBoot": false,
   "autoCommitOnlyStaged": false,
   "disablePush": false,
   "pullBeforePush": true,
