@@ -11,15 +11,14 @@
             "id": "0a9abe219c042b67",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "概率统计/大数定律及中心极限定理.md",
-                "bFile": "概率统计/大数定律及中心极限定理.md",
-                "aRef": "c7e5642535ca825ef73cece25ace4bde7aaa1439^",
-                "bRef": "c7e5642535ca825ef73cece25ace4bde7aaa1439"
+                "file": "概率统计/大数定律及中心极限定理.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: 大数定律及中心极限定理 (c7e5642)"
+              "icon": "lucide-file",
+              "title": "大数定律及中心极限定理"
             }
           }
         ]
@@ -157,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "概率统计/大数定律及中心极限定理.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "大数定律及中心极限定理 的大纲"
             }
           },
           {
