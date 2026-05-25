@@ -171,8 +171,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           },
           {
@@ -208,7 +208,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -233,6 +233,7 @@
   "active": "0a9abe219c042b67",
   "lastOpenFiles": [
     "概率统计/大数定律及中心极限定理.md",
+    "imgs/Pasted image 20260516161909.png",
     "大学物理/相对论.md",
     "面向对象程序设计.md",
     "面向对象程序设计.pdf",
@@ -248,7 +249,6 @@
     "欢迎.md",
     "imgs/Pasted image 20260517002356.png",
     "imgs/Pasted image 20260516193447.png",
-    "imgs/Pasted image 20260516161909.png",
     "Pasted.md",
     "imgs/Pasted.md",
     "imgs/Pasted image 20260516161820.png",
