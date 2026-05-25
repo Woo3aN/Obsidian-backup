@@ -196,9 +196,19 @@
               "icon": "bot",
               "title": "Chatbox"
             }
+          },
+          {
+            "id": "1a67b4e744cfa9dc",
+            "type": "leaf",
+            "state": {
+              "type": "git-history-view",
+              "state": {},
+              "icon": "history",
+              "title": "History"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -222,8 +232,8 @@
   },
   "active": "0a9abe219c042b67",
   "lastOpenFiles": [
-    "大学物理/相对论.md",
     "概率统计/大数定律及中心极限定理.md",
+    "大学物理/相对论.md",
     "面向对象程序设计.md",
     "面向对象程序设计.pdf",
     "scripts/github-math-fix.js",
