@@ -212,7 +212,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 371.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -230,7 +230,7 @@
       "fix-math:Current file": false
     }
   },
-  "active": "5d95e84e2df77862",
+  "active": "0a9abe219c042b67",
   "lastOpenFiles": [
     "概率统计/大数定律及中心极限定理.md",
     "imgs/Pasted image 20260516161909.png",
