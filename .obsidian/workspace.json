@@ -74,7 +74,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -220,8 +221,9 @@
       "fix-math:Current file": false
     }
   },
-  "active": "0a9abe219c042b67",
+  "active": "68ce36f0cfa2fa88",
   "lastOpenFiles": [
+    "面向对象程序设计/imgs/Pasted image 20260616221137.png",
     "面向对象程序设计/imgs/Pasted image 20260616215529.png",
     "面向对象程序设计/imgs/Pasted image 20260616215525.png",
     "面向对象程序设计/imgs/Pasted image 20260616214752.png",
