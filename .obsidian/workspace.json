@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "面向对象程序设计/面向对象 易错点.md",
+                "file": "面向对象程序设计/面向对象程序设计.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "面向对象 易错点"
+              "title": "面向对象程序设计"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "面向对象程序设计/面向对象 易错点.md",
+                "file": "面向对象程序设计/面向对象程序设计.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "面向对象 易错点 的大纲"
+              "title": "面向对象程序设计 的大纲"
             }
           },
           {
@@ -222,6 +222,7 @@
   },
   "active": "0a9abe219c042b67",
   "lastOpenFiles": [
+    "面向对象程序设计/面向对象 易错点.md",
     "面向对象程序设计/imgs/Pasted image 20260616230959.png",
     "面向对象程序设计/imgs/Pasted image 20260616230311.png",
     "面向对象程序设计/imgs/Pasted image 20260616225850.png",
@@ -231,10 +232,8 @@
     "面向对象程序设计/imgs/Pasted image 20260616224747.png",
     "面向对象程序设计/imgs/Pasted image 20260616224350.png",
     "面向对象程序设计/面向对象程序设计.md",
-    "面向对象程序设计/面向对象 易错点.md",
     "面向对象程序设计/imgs/Pasted image 20260616223131.png",
     "面向对象程序设计/imgs/Pasted image 20260616223119.png",
-    "面向对象程序设计/imgs/Pasted image 20260616221554.png",
     "欢迎.md",
     "面向对象程序设计.pdf",
     "面向对象程序设计/C++相关代码.md",
