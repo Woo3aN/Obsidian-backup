@@ -171,8 +171,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           },
           {
@@ -188,23 +188,13 @@
             }
           },
           {
-            "id": "2e6ddcffa34324f3",
-            "type": "leaf",
-            "state": {
-              "type": "nutstore-sync-chatbox",
-              "state": {},
-              "icon": "bot",
-              "title": "Chatbox"
-            }
-          },
-          {
             "id": "1a67b4e744cfa9dc",
             "type": "leaf",
             "state": {
               "type": "git-history-view",
               "state": {},
-              "icon": "history",
-              "title": "History"
+              "icon": "lucide-ghost",
+              "title": "git-history-view"
             }
           }
         ],
@@ -232,20 +222,19 @@
   },
   "active": "0a9abe219c042b67",
   "lastOpenFiles": [
+    "面向对象程序设计/C++相关代码.md",
+    "面向对象程序设计/面向对象程序设计.md",
+    "面向对象程序设计/imgs/Pasted image 20260616214752.png",
+    "面向对象程序设计/imgs/Pasted image 20260616215113.png",
+    "面向对象程序设计/imgs/Pasted image 20260616215128.png",
+    "面向对象程序设计/imgs/Pasted image 20260616215014.png",
+    "面向对象程序设计/imgs/Pasted image 20260616214230.png",
+    "面向对象程序设计/imgs/Pasted image 20260616214003.png",
     "面向对象程序设计/imgs/Pasted image 20260616214639.png",
     "面向对象程序设计/imgs/Pasted image 20260616212731.png",
     "面向对象程序设计/imgs/Pasted image 20260616211802.png",
-    "面向对象程序设计/imgs/Pasted image 20260616214003.png",
-    "面向对象程序设计/imgs/Pasted image 20260616214230.png",
     "面向对象程序设计/imgs/Pasted image 20260616210607.png",
-    "面向对象程序设计/imgs/Pasted image 20260616211648.png",
-    "面向对象程序设计/imgs/Pasted image 20260616214434.png",
-    "面向对象程序设计/面向对象程序设计.md",
-    "面向对象程序设计/imgs/Pasted image 20260616214124.png",
-    "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计/面向对象 易错点.md",
-    "面向对象程序设计/imgs/Pasted image 20260616214007.png",
-    "面向对象程序设计/imgs/Pasted image 20260616213953.png",
     "面向对象程序设计.pdf",
     "大学物理/相对论.md",
     "面向对象程序设计/未命名",
