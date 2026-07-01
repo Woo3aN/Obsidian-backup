@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "面向对象程序设计/面向对象程序设计.md",
+                "file": "c++小学期/contest-362-程序设计实践例题.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "面向对象程序设计"
+              "title": "contest-362-程序设计实践例题"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "面向对象程序设计/面向对象程序设计.md",
+                "file": "c++小学期/contest-362-程序设计实践例题.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "面向对象程序设计 的大纲"
+              "title": "contest-362-程序设计实践例题 的大纲"
             }
           },
           {
@@ -220,13 +220,14 @@
       "fix-math:Current file": false
     }
   },
-  "active": "038c0296299b0cb0",
+  "active": "0a9abe219c042b67",
   "lastOpenFiles": [
+    "面向对象程序设计/面向对象程序设计.md",
+    "c++小学期/contest-362-程序设计实践例题.md",
     "c++小学期",
     "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计.pdf",
     "概率统计/大数定律及中心极限定理.md",
-    "面向对象程序设计/面向对象程序设计.md",
     "面向对象程序设计/面向对象 易错点.md",
     "面向对象程序设计/imgs/Pasted image 20260616230959.png",
     "面向对象程序设计/imgs/Pasted image 20260616230311.png",
@@ -257,7 +258,6 @@
     "多态性.md",
     "绑定.md",
     "对象.md",
-    "未命名.base",
     "C++ Primer Plus（第6版）中文版.md",
     "战争与和平（托尔斯泰众生三部曲）.md",
     "西线无战事（同名电影原著）（果麦经典）.md",
