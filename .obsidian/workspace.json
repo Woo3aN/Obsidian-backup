@@ -196,13 +196,23 @@
               "icon": "lucide-ghost",
               "title": "git-history-view"
             }
+          },
+          {
+            "id": "5f56ba62a2d2fa40",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
-    "width": 208.5
+    "width": 494.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -217,7 +227,8 @@
       "nutstore-sync:Stop sync": false,
       "nutstore-sync:Open chatbox": false,
       "obsidian-git:Open Git source control": false,
-      "fix-math:Current file": false
+      "fix-math:Current file": false,
+      "realclaudian:Open Claudian": false
     }
   },
   "active": "0a9abe219c042b67",

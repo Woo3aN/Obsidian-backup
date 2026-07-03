@@ -1,0 +1,24 @@
+{
+  "id": "conv-1783092472596-18gi2em95",
+  "providerId": "claude",
+  "title": "Greet in Chinese",
+  "titleGenerationStatus": "success",
+  "createdAt": 1783092472597,
+  "updatedAt": 1783092517592,
+  "lastResponseAt": 1783092517592,
+  "sessionId": "dd953095-63d9-46ff-837e-e8aa888f19ad",
+  "providerState": {
+    "providerSessionId": "dd953095-63d9-46ff-837e-e8aa888f19ad"
+  },
+  "currentNote": "c++小学期/contest-362-程序设计实践例题.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 47,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 31488,
+    "contextWindow": 200000,
+    "contextTokens": 31535,
+    "percentage": 16,
+    "contextWindowIsAuthoritative": true
+  }
+}
