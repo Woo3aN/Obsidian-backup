@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "c++小学期/contest-362-程序设计实践例题.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题.md",
                 "mode": "source",
                 "source": false
               },
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "c++小学期/contest-362-程序设计实践例题.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -233,13 +233,14 @@
   },
   "active": "038c0296299b0cb0",
   "lastOpenFiles": [
+    "数字图像处理",
     "c++小学期/contest-362-程序设计实践例题.md.tmp.23676.16c59145e4ba",
     "欢迎.md",
-    "c++小学期/contest-362-程序设计实践例题.md",
+    "程序设计实践/contest-362-程序设计实践例题.md",
     "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计/面向对象程序设计.md",
     "概率统计/大数定律及中心极限定理.md",
-    "c++小学期",
+    "程序设计实践",
     "面向对象程序设计.pdf",
     "面向对象程序设计/面向对象 易错点.md",
     "面向对象程序设计/imgs/Pasted image 20260616230959.png",
@@ -266,7 +267,6 @@
     "创建链接.md",
     "Pasted.md",
     "imgs/Pasted.md",
-    "面向对象程序设计/imgs",
     "多态性.md",
     "绑定.md",
     "对象.md",
