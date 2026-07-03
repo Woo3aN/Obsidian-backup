@@ -7,5 +7,6 @@
   "obsidian-linter",
   "fix-math",
   "quickadd",
-  "realclaudian"
+  "realclaudian",
+  "obsidian-local-rest-api"
 ]
