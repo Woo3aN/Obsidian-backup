@@ -1579,3 +1579,483 @@ int main()
 ### 思路要点
 
 - **数独验证四步**：检查输入格式、每行、每列、每个 3×3 九宫格内数字 1~9 是否恰好各出现一次。用 `st[]` 布尔数组判重。
+
+---
+
+## LinK46 寻找林克的回忆(1)
+
+### 题目描述
+
+解 9×9 标准数独（数独试炼 I）。输入 9 行字符串，0 表示空位。输出任意一组解。
+
+### 样例
+
+输入 `103000509...` → 输出完整的 9×9 数独解。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+const int N = 9;
+int g[N][N];
+bool st_row[N][N + 1], st_col[N][N + 1], st_block[3][3][N + 1];
+
+bool dfs(int x, int y)
+{
+    if (y == 9) x++, y = 0;
+    if (x == 9) { /* 输出解 */ return true; }
+    if (g[x][y] != 0) return dfs(x, y + 1);
+    for (int t = 1; t <= 9; t++)
+        if (!st_row[x][t] && !st_col[y][t] && !st_block[x / 3][y / 3][t])
+        {
+            st_row[x][t] = st_col[y][t] = st_block[x / 3][y / 3][t] = true;
+            g[x][y] = t;
+            if (dfs(x, y + 1)) return true;
+            g[x][y] = 0;
+            st_row[x][t] = st_col[y][t] = st_block[x / 3][y / 3][t] = false;
+        }
+    return false;
+}
+
+int main()
+{
+    memset(st_row, 0, sizeof(st_row));
+    memset(st_col, 0, sizeof(st_col));
+    memset(st_block, 0, sizeof(st_block));
+    for (int i = 0; i < 9; i++)
+        for (int j = 0; j < 9; j++)
+        {
+            char ch; cin >> ch;
+            int t = ch - '0';
+            g[i][j] = t;
+            if (t != 0)
+                st_row[i][t] = st_col[j][t] = st_block[i / 3][j / 3][t] = true;
+        }
+    dfs(0, 0);
+    return 0;
+}
+```
+
+### 思路要点
+
+- **DFS 回溯 + 约束传播**：用三个二维/三维布尔数组分别记录每行、每列、每个 3×3 块中各数字是否已使用，O(1) 判断合法性。
+- 坐标递进：先列+1，列满后行+1。行=9 时找到解。
+
+---
+
+## LinK47 寻找林克的回忆(2)
+
+### 题目描述
+
+数独试炼 II：多组输入，每组一行 81 个字符（`.` 代表空），含多组数据直到 "end"。用**位运算 + 优先填最少候选格**优化。
+
+### 样例
+
+输入含 `.` 的一行 81 字符，输出完整数独串。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+const int N = 9;
+int ones[1 << N], log[1 << N];
+int row[N], col[N], block[3][3];
+string str;
+
+inline int lowbit(int x) { return x & -x; }
+
+void init()
+{
+    for (int i = 0; i < N; i++) row[i] = col[i] = (1 << N) - 1;
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++) block[i][j] = (1 << N) - 1;
+}
+
+inline int get(int x, int y) { return row[x] & col[y] & block[x / 3][y / 3]; }
+
+bool dfs(int cnt)
+{
+    if (!cnt) return true;
+    int minv = 10, x, y;
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            if (str[i * 9 + j] == '.')
+            {
+                int t = ones[get(i, j)];
+                if (t < minv) { minv = t; x = i; y = j; }
+            }
+    for (int i = get(x, y); i; i -= lowbit(i))
+    {
+        int t = log[lowbit(i)];
+        row[x] -= 1 << t; col[y] -= 1 << t; block[x / 3][y / 3] -= 1 << t;
+        str[x * 9 + y] = '1' + t;
+        if (dfs(cnt - 1)) return true;
+        row[x] += 1 << t; col[y] += 1 << t; block[x / 3][y / 3] += 1 << t;
+        str[x * 9 + y] = '.';
+    }
+    return false;
+}
+
+int main()
+{
+    for (int i = 0; i < N; i++) log[1 << i] = i;
+    for (int i = 0; i < 1 << N; i++)
+    { int s = 0; for (int j = i; j; j -= lowbit(j)) s++; ones[i] = s; }
+    while (cin >> str, str[0] != 'e')
+    {
+        init();
+        int cnt = 0;
+        for (int i = 0, k = 0; i < N; i++)
+            for (int j = 0; j < N; j++, k++)
+                if (str[k] != '.')
+                { int t = str[k] - '1'; row[i] -= 1 << t; col[j] -= 1 << t; block[i / 3][j / 3] -= 1 << t; }
+                else cnt++;
+        dfs(cnt); cout << str << endl;
+    }
+    return 0;
+}
+```
+
+### 思路要点
+
+- **位运算状态压缩**：`row[i]`、`col[j]`、`block[][ ]` 各用一个 9 位 bitmask 表示可选的数字集合。`get(x,y)` 返回三者交集。
+- **最小候选数优先（MRV 启发式）**：每次选候选数字最少的空格优先填充，极大减少搜索分支。
+- `ones[]` 预计算每个 mask 的 1 的个数，`log[]` 用打表法 O(1) 获取最低位 1 的索引。
+
+---
+
+## LinK48 寻找林克的回忆(3)
+
+### 题目描述
+
+**靶形数独**（数独试炼 III）：每个格子有靶形分值（中心 10 分，向外递减至 6 分）。在解数独的同时求**最高总分**（填入数字 × 格分之和）。无解输出 -1。
+
+### 样例
+
+输入 9×9 空格分隔的数字 → 输出最高分 2829。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+const int N = 9, M = 1 << N;
+int ones[M], log[M];
+int row[N], col[N], block[3][3], g[N][N];
+int ans = -1;
+
+inline int lowbit(int x) { return x & -x; }
+inline int get(int x, int y) { return row[x] & col[y] & block[x / 3][y / 3]; }
+inline int get_score(int x, int y, int t)
+{ return (min(min(x, 8 - x), min(y, 8 - y)) + 6) * t; }
+
+void init()
+{
+    for (int i = 0; i < N; i++) log[1 << i] = i;
+    for (int i = 0; i < M; i++)
+        for (int j = i; j; j -= lowbit(j)) ones[i]++;
+    for (int i = 0; i < N; i++) row[i] = col[i] = block[i / 3][i % 3] = M - 1;
+}
+
+void draw(int x, int y, int t)
+{
+    int s = 1;
+    if (t > 0) g[x][y] = t;
+    else { s = -1; t = -t; g[x][y] = 0; }
+    t--;
+    row[x] -= (1 << t) * s; col[y] -= (1 << t) * s;
+    block[x / 3][y / 3] -= (1 << t) * s;
+}
+
+void dfs(int cnt, int score)
+{
+    if (!cnt) { ans = max(ans, score); return; }
+    int minv = 10, x, y;
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            if (!g[i][j])
+            {
+                int t = ones[get(i, j)];
+                if (t < minv) { minv = t; x = i; y = j; }
+            }
+    for (int i = get(x, y); i; i -= lowbit(i))
+    {
+        int t = log[lowbit(i)] + 1;
+        draw(x, y, t);
+        dfs(cnt - 1, score + get_score(x, y, t));
+        draw(x, y, -t);
+    }
+}
+
+int main()
+{
+    init();
+    int cnt = 0, score = 0;
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+        {
+            int t; cin >> t;
+            if (t) { draw(i, j, t); score += get_score(i, j, t); }
+            else cnt++;
+        }
+    dfs(cnt, score);
+    cout << ans << endl;
+    return 0;
+}
+```
+
+### 思路要点
+
+- **搜索所有解求最优**：与 LinK47 不同（找到任意解即返回），此题必须遍历所有可行解才能取得最高分。`ans = max(ans, score)`。
+- **靶形分值公式**：`(min(min(i, 8-i), min(j, 8-j)) + 6) * t`，外围格分值=6，向内每圈+1，中心=10。
+- `draw(x, y, t)` 统一处理放置/撤销（t 为正放置，t 为负撤销）。
+
+---
+
+## LinK51 净化迷雾森林(广搜)
+
+### 题目描述
+
+与 LinK39 相同，但用 **BFS 替代 DFS**。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <queue>
+using namespace std;
+
+typedef pair<int, int> PII;
+const int N = 25;
+int n, m;
+char g[N][N];
+
+int bfs(int sx, int sy)
+{
+    queue<PII> q;
+    q.push({sx, sy}); g[sx][sy] = '#';
+    int res = 0;
+    int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
+    while (q.size())
+    {
+        auto t = q.front(); q.pop(); res++;
+        for (int i = 0; i < 4; i++)
+        {
+            int x = t.first + dx[i], y = t.second + dy[i];
+            if (x < 0 || x >= n || y < 0 || y >= m || g[x][y] != '.') continue;
+            g[x][y] = '#'; q.push({x, y});
+        }
+    }
+    return res;
+}
+
+int main()
+{
+    while (cin >> m >> n, n || m)
+    {
+        for (int i = 0; i < n; i++) cin >> g[i];
+        int x, y;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                if (g[i][j] == '@') { x = i; y = j; }
+        cout << bfs(x, y) << endl;
+    }
+}
+```
+
+### 思路要点
+
+- **BFS Flood Fill**：队列逐层扩展，访问过的格标记为 `#`。与 DFS 版本功能相同但使用广搜。
+
+---
+
+## LinK52 波克布林的巡逻范围
+
+### 题目描述
+
+m×n 网格，从 (0,0) 出发走四方向，不能进入行坐标+列坐标数位之和 > k 的格子。求可达格子数。
+
+### 样例
+
+k=18, m=40, n=40 → 1484。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
+
+int get_int_sum(int x) { int s = 0; while (x) s += x % 10, x /= 10; return s; }
+int get_pair_sum(pair<int, int> p) { return get_int_sum(p.first) + get_int_sum(p.second); }
+
+int bfs(int threshold, int rows, int cols)
+{
+    if (!rows || !cols) return 0;
+    vector<vector<bool>> st(rows, vector<bool>(cols, false));
+    queue<pair<int, int>> q;
+    int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
+    int res = 0; q.push({0, 0});
+    while (q.size())
+    {
+        auto t = q.front(); q.pop();
+        if (st[t.first][t.second] || get_pair_sum(t) > threshold) continue;
+        res++; st[t.first][t.second] = true;
+        for (int i = 0; i < 4; i++)
+        {
+            int x = t.first + dx[i], y = t.second + dy[i];
+            if (x >= 0 && x < rows && y >= 0 && y < cols) q.push({x, y});
+        }
+    }
+    return res;
+}
+
+int main()
+{
+    int k, m, n; cin >> k >> m >> n;
+    cout << bfs(k, m, n);
+}
+```
+
+### 思路要点
+
+- **BFS + 数位和约束**：`get_int_sum(x)` 计算十进制的数位和。访问前检查 `get_pair_sum({i,j}) <= k`。
+- 用 `vector<vector<bool>>` 标记已访问，避免重复计数。
+
+---
+
+## LinK53 加农的入侵
+
+### 题目描述
+
+在 X×Y 网格上，加农从 (Mx, My) 开始向 **8 个方向**（含对角线）扩散污染。`.` 可污染，`*` 是障碍。求污染整个区域所需天数（BFS 最远距离）。
+
+### 样例
+
+4×3 地图 → 4 天；10×10 地图 → 6 天。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <cstring>
+using namespace std;
+
+typedef pair<int, int> PII;
+const int N = 110;
+int n, m;
+PII start;
+char g[N][N];
+int dist[N][N];
+const int dx[8] = {1, -1, 0, 0, 1, -1, 1, -1};
+const int dy[8] = {0, 0, 1, -1, 1, -1, -1, 1};
+
+int bfs()
+{
+    memset(dist, -1, sizeof(dist));
+    queue<PII> q; q.push(start);
+    dist[start.first][start.second] = 0;
+    int res = 0;
+    while (q.size())
+    {
+        auto t = q.front(); q.pop();
+        for (int i = 0; i < 8; i++)
+        {
+            int x = t.first + dx[i], y = t.second + dy[i];
+            if (x < 1 || x > n || y < 1 || y > m) continue;
+            if (g[x][y] == '*' || dist[x][y] != -1) continue;
+            dist[x][y] = dist[t.first][t.second] + 1;
+            res = max(res, dist[x][y]);
+            q.push(make_pair(x, y));
+        }
+    }
+    return res;
+}
+
+int main()
+{
+    cin >> m >> n >> start.second >> start.first;
+    start.first = n + 1 - start.first; // 坐标系转换：左下角(1,1) → 数组下标
+    for (int i = 1; i <= n; i++) cin >> g[i] + 1;
+    cout << bfs() << endl;
+    return 0;
+}
+```
+
+### 思路要点
+
+- **BFS 求最远距离**：8 方向扩散，`dist[][]` 记录每个格被污染的时间。返回 `max(dist)` 即总天数。
+- 坐标系转换：题目用左下角原点，而数组是左上角原点，需 `start.first = n + 1 - start.first`。
+
+---
+
+## LinK57 Dijkstra求最短路(1)
+
+### 题目描述
+
+给定 n 点 m 边的**有向图**，边权为正。求 1 号点到 n 号点的最短距离。不可达输出 -1。
+
+### 样例
+
+3 个点 3 条边：1→2(2), 2→3(1), 1→3(4) → 最短距离 3。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+const int N = 510;
+int n, m;
+int g[N][N], dist[N];
+bool st[N];
+
+int dijkstra()
+{
+    memset(dist, 0x3f, sizeof(dist));
+    dist[1] = 0;
+    for (int i = 0; i < n - 1; i++)
+    {
+        int t = -1;
+        for (int j = 1; j <= n; j++)
+            if (!st[j] && (t == -1 || dist[t] > dist[j])) t = j;
+        for (int j = 1; j <= n; j++)
+            dist[j] = min(dist[j], dist[t] + g[t][j]);
+        st[t] = true;
+    }
+    if (dist[n] == 0x3f3f3f3f) return -1;
+    return dist[n];
+}
+
+int main()
+{
+    scanf("%d%d", &n, &m);
+    memset(g, 0x3f, sizeof(g));
+    while (m--)
+    {
+        int a, b, c; scanf("%d%d%d", &a, &b, &c);
+        g[a][b] = min(g[a][b], c); // 处理重边
+    }
+    printf("%d\n", dijkstra());
+    return 0;
+}
+```
+
+### 思路要点
+
+- **朴素 Dijkstra（邻接矩阵）**：适用于稠密图（N ≤ 500），O(N²)。每次从未确定点中选距离最小的加入已确定集合，然后松弛其所有出边。
+- 处理重边：`g[a][b] = min(g[a][b], c)` 选最短的。
+- `memset(g, 0x3f, ...)` 将数组初始化为大值（约 0x3f3f3f3f = 1e9），表示不可达。
