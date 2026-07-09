@@ -17,6 +17,27 @@
 7. [LinK14.5 DFS试炼之n皇后问题](#link145-dfs试炼之n皇后问题)
 8. [LinK16 放苹果](#link16-放苹果)
 9. [LinK19 递归实现指数型枚举](#link19-递归实现指数型枚举)
+10. [LinK05 假币问题](#link05-假币问题)
+11. [LinK09 汉诺塔I](#link09-汉诺塔i)
+12. [LinK10 汉诺塔II](#link10-汉诺塔ii)
+13. [LinK15 爬天梯](#link15-爬天梯)
+14. [LinK20 递归实现组合型枚举](#link20-递归实现组合型枚举)
+15. [LinK21 递归实现排列型枚举](#link21-递归实现排列型枚举)
+16. [LinK27 大数排序](#link27-大数排序)
+17. [LinK30 归并排序](#link30-归并排序)
+18. [LinK31 求排列的逆序数](#link31-求排列的逆序数)
+19. [LinK38 林克的命运之阵](#link38-林克的命运之阵)
+20. [LinK39 净化迷雾森林](#link39-净化迷雾森林)
+21. [LinK43 求二进制中1的个数](#link43-求二进制中1的个数)
+22. [LinK44 二进制中1的最低位位置](#link44-二进制中1的最低位位置)
+23. [LinK45 真假记忆碎片](#link45-真假记忆碎片)
+24. [LinK46 寻找林克的回忆(1)](#link46-寻找林克的回忆1)
+25. [LinK47 寻找林克的回忆(2)](#link47-寻找林克的回忆2)
+26. [LinK48 寻找林克的回忆(3)](#link48-寻找林克的回忆3)
+27. [LinK51 净化迷雾森林(广搜)](#link51-净化迷雾森林广搜)
+28. [LinK52 波克布林的巡逻范围](#link52-波克布林的巡逻范围)
+29. [LinK53 加农的入侵](#link53-加农的入侵)
+30. [LinK57 Dijkstra求最短路(1)](#link57-dijkstra求最短路1)
 
 ---
 
@@ -893,3 +914,668 @@ int main()
   - 数组索引：`st[u]` 中 u 的范围是 1~n，所以数组大小需要 ≥ n+1（代码中 N=29 是够的）。不要从 0 开始。
   - 输出时每个数字后有一个空格，包括最后一个数字后也有（代码写的是 `cout << i << " "`）。虽然 OJ 使用了 SPJ（Special Judge），行末有多余空格通常也能通过，但在非 SPJ 的题目中这可能被判错。
   - 这题有 SPJ（Special Judge），意味着方案的排列顺序任意，不用担心 DFS 顺序是否"正确"——只要所有方案都输出且每种恰好一次即可。
+
+---
+
+## LinK05 假币问题
+
+### 题目描述
+
+林克有 12 枚银币（A-L），其中 11 枚真币和 1 枚假币。假币重量不同但不知道是轻还是重。天平称了三次，给定三次称量结果，找出假币并判断轻重。
+
+### 输入
+
+第一行 n 表示测试组数。每组三行，每行格式：`左边硬币 右边硬币 结果`（结果：`even`/`up`/`down`）。
+
+### 样例
+
+**输入：**
+```
+1
+ABCD EFGH even
+ABCI EFJK up
+ABIJ EFGH even
+```
+
+**输出：**
+```
+K is the counterfeit coin and it is light.
+```
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+string Left[3], Right[3], result[3];
+
+bool isfeitcoin(char icoin, bool islight)
+{
+    string c;
+    c.push_back(icoin);
+    for (int i = 0; i < 3; i++)
+    {
+        string l = Left[i], r = Right[i];
+        if (!islight) swap(l, r);
+        switch (result[i][0])
+        {
+            case 'e':
+                if (l.find(c) != string::npos || r.find(c) != string::npos)
+                    return false;
+                break;
+            case 'u':
+                if (r.find(c) == string::npos) return false;
+                break;
+            case 'd':
+                if (l.find(c) == string::npos) return false;
+                break;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    int t; cin >> t;
+    while (t--)
+    {
+        for (int i = 0; i < 3; ++i)
+            cin >> Left[i] >> Right[i] >> result[i];
+        for (char icoin = 'A'; icoin <= 'L'; icoin++)
+        {
+            if (isfeitcoin(icoin, true))
+            { cout << icoin << " is the counterfeit coin and it is light." << endl; break; }
+            else if (isfeitcoin(icoin, false))
+            { cout << icoin << " is the counterfeit coin and it is heavy." << endl; break; }
+        }
+    }
+    return 0;
+}
+```
+
+### 思路要点
+
+- **枚举报枚 + 假设检验**：对 A-L 共 12 枚币逐一假设为假币，再分别假设轻或重，代入三次称量结果验证是否一致。
+- 如果假设假币轻(`islight=true`)：天平右边高(`up`)时假币应出现在右边，右边低(`down`)时假币应在左边。
+- 反之假币重时左右交换。用 swap(l, r) 统一处理两种假设。
+- O(12×2×3) 常数时间。
+
+---
+
+## LinK09 汉诺塔I
+
+### 题目描述
+
+三根杆 A、B、C，A 有 N 个穿孔圆盘（由下到上变小）。移到 C 杆，每次只能移一个，大盘不能叠小盘。输出移动步骤。
+
+### 样例
+
+**输入：** `3`
+**输出：** `A->C / A->B / C->B / A->C / B->A / B->C / A->C`
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void move(char start, char target) { cout << start << "->" << target << endl; }
+
+void hanoi(int n, char start, char other, char target)
+{
+    if (n == 1) { move(start, target); return; }
+    hanoi(n - 1, start, target, other);
+    move(start, target);
+    hanoi(n - 1, other, start, target);
+}
+
+int main() { int n; cin >> n; hanoi(n, 'A', 'B', 'C'); return 0; }
+```
+
+### 思路要点
+
+- **经典递归**：将 N-1 个盘借助 target 移到 other → 最大盘从 start 移到 target → N-1 个盘从 other 借助 start 移到 target。
+- 递推关系：移动次数 T(n) = 2T(n-1) + 1 = 2ⁿ - 1。
+- 递归终止：n==1 时直接移动。
+
+---
+
+## LinK10 汉诺塔II
+
+### 题目描述
+
+与 I 相同，但输入包含杆子编号（如 `3 a b c`），输出格式为 `盘号:起始->目标`（如 `1:a->c`）。
+
+### 样例
+
+**输入：** `3 a b c`
+
+**输出：**
+```
+1:a->c
+2:a->b
+1:c->b
+3:a->c
+1:b->a
+2:b->c
+1:a->c
+```
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void move(int id, char start, char target) { cout << id << ":" << start << "->" << target << endl; }
+
+void hanoi(int n, int id, char start, char other, char target)
+{
+    if (n == 1) { move(id, start, target); return; }
+    hanoi(n - 1, id, start, target, other);
+    int newid = id + n - 1;
+    move(newid, start, target);
+    hanoi(n - 1, id, other, start, target);
+}
+
+int main()
+{
+    char a, b, c; int n;
+    cin >> n >> a >> b >> c;
+    hanoi(n, 1, a, b, c);
+}
+```
+
+### 思路要点
+
+- 在汉诺塔 I 的基础上增加**盘号追踪**。底部 N 个盘中，最顶的盘从 id 开始。递归时最大盘的编号 = id+n-1（因为上面有 n-1 个更小的盘）。
+
+---
+
+## LinK15 爬天梯
+
+### 题目描述
+
+天梯 N 阶，每次可以走 1 阶或 2 阶，求总共有多少种不同走法。
+
+### 样例
+
+**输入：** `3` → **输出：** `3`
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+const int mod = 1000000007;
+
+int stairs(int n)
+{
+    if (n <= 1) return 1;
+    return (stairs(n - 1) + stairs(n - 2)) % mod;
+}
+
+int main() { int N; cin >> N; cout << stairs(N) << endl; return 0; }
+```
+
+### 思路要点
+
+- **斐波那契数列**：f(n) = f(n-1) + f(n-2)，f(0)=f(1)=1。
+- 注意答案取模 1000000007。N ≤ 46，递归+备忘或直接递归都可以（代码中的纯递归会重复计算，但 N 小可接受）。
+
+---
+
+## LinK20 递归实现组合型枚举
+
+### 题目描述
+
+从 1∼n 中随机选出 m 个，输出所有可能的组合方案。行内升序，行间字典序。
+
+### 样例
+
+**输入：** `5 3` → 输出 C(5,3) = 10 种组合。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 30;
+int n, m, path[N];
+
+void dfs(int u, int start)
+{
+    if (u > m)
+    {
+        for (int i = 1; i <= m; i++) cout << path[i] << " ";
+        cout << endl;
+    }
+    else
+    {
+        for (int i = start; i <= n; i++)
+        { path[u] = i; dfs(u + 1, i + 1); }
+    }
+}
+
+int main() { cin >> n >> m; dfs(1, 1); return 0; }
+```
+
+### 思路要点
+
+- **组合枚举 DFS**：每次从 start 到 n 选一个数，下一个递归从 i+1 开始（保证升序不重复）。
+- 与子集枚举不同：这里是选固定 m 个，递归深度固定 m 层，叶子数 C(n,m)。
+
+---
+
+## LinK21 递归实现排列型枚举
+
+### 题目描述
+
+输出 1∼n 的所有排列，按字典序从小到大。
+
+### 样例
+
+**输入：** `3` → 输出 123、132、213、231、312、321。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 15;
+int n, path[N];
+bool st[N];
+
+void dfs(int u)
+{
+    if (u > n)
+    {
+        for (int i = 1; i <= n; i++) cout << path[i] << " ";
+        cout << endl;
+    }
+    else
+    {
+        for (int i = 1; i <= n; i++)
+            if (!st[i])
+            { path[u] = i; st[i] = true; dfs(u + 1); st[i] = false; }
+    }
+}
+
+int main() { cin >> n; dfs(1); return 0; }
+```
+
+### 思路要点
+
+- **排列枚举 DFS**：每位从 1 到 n 选未被标记的数，使用 `st[]` 标记使用状态，回溯时恢复。
+- 与组合的区别：排列中每个位置都可以选任何未被使用的数，顺序敏感。
+
+---
+
+## LinK27 大数排序
+
+### 题目描述
+
+给定长度为 n（≤ 100000）的数列，用快速排序按升序输出。
+
+### 样例
+
+**输入：** `12` + 12个大整数 → 输出排序后序列。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 1000010;
+int q[N];
+
+void quick_sort(int q[], int l, int r)
+{
+    if (l >= r) return;
+    int i = l - 1, j = r + 1, x = q[l + r >> 1];
+    while (i < j)
+    {
+        do i++; while (q[i] < x);
+        do j--; while (q[j] > x);
+        if (i < j) swap(q[i], q[j]);
+    }
+    quick_sort(q, l, j);
+    quick_sort(q, j + 1, r);
+}
+
+int main()
+{
+    int n; scanf("%d", &n);
+    for (int i = 0; i < n; i++) scanf("%d", &q[i]);
+    quick_sort(q, 0, n - 1);
+    for (int i = 0; i < n; i++) printf("%d ", q[i]);
+    return 0;
+}
+```
+
+### 思路要点
+
+- **快速排序模板**：双指针 partition，选取中间值为 pivot。`i = l-1, j = r+1` 保证首轮 do-while 正确。递归处理左右区间。
+
+---
+
+## LinK30 归并排序
+
+### 题目描述
+
+使用归并排序对数组排序，N ≤ 100000。
+
+### 样例
+
+输入 `3 1 2 4 5`，输出 `1 2 3 4 5`。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 100007;
+int numbers[N], tmp[N];
+
+void mergesort(int nums[], int left, int right)
+{
+    if (left >= right) return;
+    int mid = left + right >> 1;
+    mergesort(nums, left, mid), mergesort(nums, mid + 1, right);
+    int k = 0, p = left, q = mid + 1;
+    while (p <= mid && q <= right)
+        tmp[k++] = nums[p] <= nums[q] ? nums[p++] : nums[q++];
+    while (p <= mid) tmp[k++] = nums[p++];
+    while (q <= right) tmp[k++] = nums[q++];
+    for (int i = left, k = 0; i <= right; i++, k++) nums[i] = tmp[k];
+}
+
+int main()
+{
+    int n; scanf("%d", &n);
+    for (int i = 0; i < n; i++) scanf("%d", &numbers[i]);
+    mergesort(numbers, 0, n - 1);
+    for (int i = 0; i < n; i++) printf("%d ", numbers[i]);
+    return 0;
+}
+```
+
+### 思路要点
+
+- **归并排序模板**：分治递归 → 两路归并 → 复制回原数组。O(N log N)，稳定排序。
+
+---
+
+## LinK31 求排列的逆序数
+
+### 题目描述
+
+给定 n 个数的排列，求其逆序对数量（i < j 且 a_i > a_j）。n ≤ 100000。
+
+### 样例
+
+输入 `2 6 3 4 5 1`，输出 `8`。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 100007;
+int numbers[N], tmp[N];
+
+long long mergesort(int nums[], int left, int right)
+{
+    if (left >= right) return 0;
+    int mid = left + right >> 1;
+    long long result = mergesort(nums, left, mid) + mergesort(nums, mid + 1, right);
+    int k = 0, p = left, q = mid + 1;
+    while (p <= mid && q <= right)
+    {
+        if (nums[p] <= nums[q]) tmp[k++] = nums[p++];
+        else { result += mid - p + 1; tmp[k++] = nums[q++]; }
+    }
+    while (p <= mid) tmp[k++] = nums[p++];
+    while (q <= right) tmp[k++] = nums[q++];
+    for (int i = left, k = 0; i <= right; i++, k++) nums[i] = tmp[k];
+    return result;
+}
+
+int main()
+{
+    int n; scanf("%d", &n);
+    for (int i = 0; i < n; i++) scanf("%d", &numbers[i]);
+    cout << mergesort(numbers, 0, n - 1);
+    return 0;
+}
+```
+
+### 思路要点
+
+- **归并排序求逆序对**：归并过程中，当右半元素 `nums[q]` 小于左半元素 `nums[p]` 时，左半从 p 到 mid 的所有元素都大于 `nums[q]`，贡献 mid-p+1 个逆序对。
+- 答案可能超过 int 范围（n=100000 时最坏约 5×10⁹），使用 `long long`。
+
+---
+
+## LinK38 林克的命运之阵
+
+### 题目描述
+
+在方格矩阵中从任意位置出发，只能向下/左/右走，不能重复访问。求走 n 步的不同路径数。n ≤ 20。
+
+### 样例
+
+n=2 → 7 种；n=20 → 54608393。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int N = 70;
+int fates[N][N];
+int dx[3] = {0, 0, 1}, dy[3] = {-1, 1, 0};
+
+long long dfs(int i, int j, int n)
+{
+    if (n == 0) return 1;
+    long long res = 0;
+    fates[i][j] = 1;
+    for (int k = 0; k < 3; k++)
+    {
+        int x = i + dx[k], y = j + dy[k];
+        if (fates[x][y] == 0) res += dfs(x, y, n - 1);
+    }
+    fates[i][j] = 0;
+    return res;
+}
+
+int main()
+{
+    int n; cin >> n;
+    cout << dfs(0, N / 2, n) << endl;
+    return 0;
+}
+```
+
+### 思路要点
+
+- **DFS 回溯 + 网格标记**：从中心位置出发，向三个方向（下、左、右）递归探索，不走回头路。`fates[][]` 标记已访问位置，回溯恢复。时间复杂度 O(3ⁿ)，n≤20 可接受。
+
+---
+
+## LinK39 净化迷雾森林
+
+### 题目描述
+
+W×H 网格，`.`表示可走，`#`表示墙，`@`表示起点。从起点走四方向可达的 `.` 区域数量（Flood Fill）。
+
+### 样例
+
+6×9 地图，输出 45。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int w, h;
+char fogforest[27][27];
+
+int dfs(int i, int j)
+{
+    int res = 1;
+    fogforest[i][j] = '#';
+    int dx[4] = {0, -1, 0, 1}, dy[4] = {1, 0, -1, 0};
+    for (int k = 0; k < 4; k++)
+    {
+        int x = i + dx[k], y = j + dy[k];
+        if (x >= 0 && y >= 0 && x < h && y < w && fogforest[x][y] == '.')
+            res += dfs(x, y);
+    }
+    return res;
+}
+
+int main()
+{
+    while (cin >> w >> h, w || h)
+    {
+        int startx, starty;
+        for (int i = 0; i < h; i++)
+            for (int j = 0; j < w; j++)
+            {
+                cin >> fogforest[i][j];
+                if (fogforest[i][j] == '@') { startx = i; starty = j; }
+            }
+        cout << dfs(startx, starty) << endl;
+    }
+}
+```
+
+### 思路要点
+
+- **DFS Flood Fill（种子填充）**：从起点递归访问所有可达的 `.` 格，访问后改为 `#` 避免重复。
+
+---
+
+## LinK43 求二进制中1的个数
+
+### 题目描述
+
+输入 32 位整数（可为负，采用补码表示），用 lowbit 求其二进制中 1 的个数。
+
+### 样例
+
+输入 `9` → `2`；输入 `-2` → `31`。
+
+### 我的代码
+
+```cpp
+int lowbit(int n) { return n & -n; }
+
+int NumberOf1(int n)
+{
+    int res = 0;
+    while (n) { n -= lowbit(n); res++; }
+    return res;
+}
+```
+
+### 思路要点
+
+- **lowbit 技巧**：`n & -n` 能取出 n 二进制表示中最低位的 1。每次减去 lowbit 消除一个 1，同时计数器 +1，直到 n=0。
+
+---
+
+## LinK44 二进制中1的最低位位置
+
+### 题目描述
+
+给定 16 位数，求其二进制最低位 1 的位置。用打表法 + lowbit。
+
+### 样例
+
+`9` → `0`（二进制 1001，最低位 1 在第 0 位）；`8` → `3`。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define N 17
+int log[1 << N];
+
+void BuildLogTable(int n) { for (int i = 0; i < n; i++) log[1 << i] = i; }
+
+inline int lowbit(int n) { return n & -n; }
+
+int main()
+{
+    BuildLogTable(N);
+    int n; cin >> n;
+    cout << log[lowbit(n)];
+    return 0;
+}
+```
+
+### 思路要点
+
+- **打表法**：预处理 `log[1<<i] = i`，即 2ⁱ → i 的映射。`lowbit(n)` 取出最低位 1 的值（必然是 2 的幂），查表 O(1) 得到位置。
+
+---
+
+## LinK45 真假记忆碎片
+
+### 题目描述
+
+给定初始 9×9 数独矩阵（含 0 表示空位）和一份声称是解的 9×9 矩阵，判断该解是否合法（与初始矩阵的非零格一致，且满足数独规则）。
+
+### 样例
+
+合法解 → `Yes`；不合法 → `No`。
+
+### 我的代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int N = 9, M = 3;
+string memory[N] = {{"530070000"}, {"600195000"}, {"098000060"},
+                    {"800060003"}, {"400803001"}, {"700020006"},
+                    {"060000280"}, {"000419005"}, {"000080079"}};
+int a[N][N], b[N][N];
+bool st[N + 1];
+
+bool check_input() { /* 检查每行长度=9且数字与初始矩阵一致 */ }
+bool check_row()   { /* 每行1-9不重复 */ }
+bool check_col()   { /* 每列1-9不重复 */ }
+bool check_block() { /* 每个3x3块1-9不重复 */ }
+
+int main()
+{
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            a[i][j] = memory[i][j] - '0';
+    if (check_input() && check_row() && check_col() && check_block())
+        cout << "Yes" << endl;
+    else cout << "No" << endl;
+    return 0;
+}
+```
+
+### 思路要点
+
+- **数独验证四步**：检查输入格式、每行、每列、每个 3×3 九宫格内数字 1~9 是否恰好各出现一次。用 `st[]` 布尔数组判重。
