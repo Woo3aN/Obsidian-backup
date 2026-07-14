@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数字图像处理"
+              "title": "contest-362-程序设计实践例题"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "数字图像处理 的大纲"
+              "title": "contest-362-程序设计实践例题 的大纲"
             }
           },
           {
@@ -231,14 +231,17 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "0a9abe219c042b67",
+  "active": "5d95e84e2df77862",
   "lastOpenFiles": [
-    "面向对象程序设计/面向对象程序设计.md",
+    "大学物理/相对论.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
+    "程序设计实践/sedgcjASL",
+    "程序设计实践/contest-362-程序设计实践例题.md.bak2",
+    "数字图像处理/数字图像处理.md",
+    "面向对象程序设计/面向对象程序设计.md",
     "面向对象程序设计/面向对象 易错点.md",
     "程序设计实践/sedHE9Wyr",
     "程序设计实践/contest-362-程序设计实践例题.md.bak",
-    "数字图像处理/数字图像处理.md",
     "面向对象程序设计/C++相关代码.md",
     "程序设计实践/contest-362-程序设计实践例题.md.tmp.15828.9bb7b3f114b5",
     "程序设计实践/contest-362-程序设计实践例题.md.tmp.15828.145493d34a23",
@@ -247,16 +250,13 @@
     "程序设计实践/contest-362-程序设计实践例题.md.tmp.15828.c6aa61f289e7",
     "程序设计实践/contest-362-程序设计实践例题.md.tmp.15828.3f0c7ba0f577",
     "概率统计/大数定律及中心极限定理.md",
-    "面向对象程序设计.pdf",
     "欢迎.md",
-    "大学物理/相对论.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P2-1 - What is image and video processi.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P6-4 - Human visual system.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P5-3 - Images are everywhere.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P3-1 - What is image and video processi.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P7-5 - Image formation - Sampling & Qua.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P4-2 - Course logistics.md",
-    "Clippings/Bilibili",
     "面向对象程序设计/imgs/Pasted image 20260616230959.png",
     "面向对象程序设计/imgs/Pasted image 20260616230311.png",
     "面向对象程序设计/imgs/Pasted image 20260616225850.png",
