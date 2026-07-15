@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数字图像处理"
+              "title": "contest-362-程序设计实践例题"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "数字图像处理 的大纲"
+              "title": "contest-362-程序设计实践例题 的大纲"
             }
           },
           {
@@ -233,6 +233,8 @@
   },
   "active": "0a9abe219c042b67",
   "lastOpenFiles": [
+    "数字图像处理/数字图像处理.md",
+    "程序设计实践/contest-362-程序设计实践例题.md.tmp.392.4daeeabd0855",
     "概率统计/大数定律及中心极限定理.md",
     "大学物理/相对论.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
@@ -247,11 +249,9 @@
     "程序设计实践/sedEoTs4Y",
     "程序设计实践/sedgcjASL",
     "程序设计实践/contest-362-程序设计实践例题.md.bak2",
-    "数字图像处理/数字图像处理.md",
     "面向对象程序设计/面向对象程序设计.md",
     "面向对象程序设计/面向对象 易错点.md",
     "程序设计实践/sedHE9Wyr",
-    "程序设计实践/contest-362-程序设计实践例题.md.bak",
     "面向对象程序设计/C++相关代码.md",
     "欢迎.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P2-1 - What is image and video processi.md",
