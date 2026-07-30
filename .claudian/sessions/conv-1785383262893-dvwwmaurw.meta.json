@@ -4,8 +4,8 @@
   "title": "Review algorithm solutions for beginner clarity",
   "titleGenerationStatus": "success",
   "createdAt": 1785383262893,
-  "updatedAt": 1785383487529,
-  "lastResponseAt": 1785383487529,
+  "updatedAt": 1785384334204,
+  "lastResponseAt": 1785384334204,
   "sessionId": "fc0c7f8a-7795-47f2-8f92-89d0d2f2bbf9",
   "providerState": {
     "providerSessionId": "fc0c7f8a-7795-47f2-8f92-89d0d2f2bbf9"
@@ -13,11 +13,11 @@
   "currentNote": "程序设计实践/contest-362-程序设计实践例题-题解集.md",
   "usage": {
     "model": "opus",
-    "inputTokens": 127,
+    "inputTokens": 6050,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 58368,
+    "cacheReadInputTokens": 89216,
     "contextWindow": 200000,
-    "contextTokens": 58495,
-    "percentage": 29
+    "contextTokens": 95266,
+    "percentage": 48
   }
 }
