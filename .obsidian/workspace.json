@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "程序设计实践/contest-362-程序设计实践例题.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题-题解集.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "contest-362-程序设计实践例题"
+              "title": "contest-362-程序设计实践例题-题解集"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -245,11 +246,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "553ae7b9f9330b6f",
+  "active": "bdbccc496542e694",
   "lastOpenFiles": [
-    "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
-    "程序设计实践/contest-362-程序设计实践例题-题解集.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
+    "程序设计实践/contest-362-程序设计实践例题-题解集.md",
+    "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.e4e89725a4db",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.35ea8bf5ccdd",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.21220.87ec42d6feae",
