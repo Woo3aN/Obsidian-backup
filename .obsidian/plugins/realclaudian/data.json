@@ -9,8 +9,13 @@
         "draftModel": "haiku",
         "tabId": "tab-1783094938563-fwpq6j3",
         "conversationId": null
+      },
+      {
+        "draftModel": "opus",
+        "tabId": "tab-1785383190047-oej9hvt",
+        "conversationId": null
       }
     ],
-    "activeTabId": "tab-1783092449679-u8ymhli"
+    "activeTabId": "tab-1785383190047-oej9hvt"
   }
 }
