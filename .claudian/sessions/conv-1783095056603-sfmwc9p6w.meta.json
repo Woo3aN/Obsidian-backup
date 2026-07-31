@@ -4,21 +4,21 @@
   "title": "Organize digital image processing notes",
   "titleGenerationStatus": "success",
   "createdAt": 1783095056603,
-  "updatedAt": 1783095098190,
-  "lastResponseAt": 1783095098190,
+  "updatedAt": 1785476542102,
+  "lastResponseAt": 1785476542102,
   "sessionId": "445b394f-caa6-4025-ba69-6b44764f35f4",
   "providerState": {
     "providerSessionId": "445b394f-caa6-4025-ba69-6b44764f35f4"
   },
   "currentNote": "数字图像处理/数字图像处理.md",
   "usage": {
-    "model": "haiku",
-    "inputTokens": 128,
+    "model": "opus",
+    "inputTokens": 136,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 49664,
-    "contextWindow": 200000,
-    "contextTokens": 49792,
-    "percentage": 25,
+    "cacheReadInputTokens": 72576,
+    "contextWindow": 1000000,
+    "contextTokens": 72712,
+    "percentage": 7,
     "contextWindowIsAuthoritative": true
   }
 }
