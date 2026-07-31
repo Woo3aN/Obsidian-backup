@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "be14521f24908238",
+        "id": "2d5c50424ba44936",
         "type": "tabs",
         "children": [
           {
-            "id": "d87ff2ef0c12ee28",
+            "id": "e1d1df1a55660aff",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -195,8 +195,8 @@
             "state": {
               "type": "git-history-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-history-view"
+              "icon": "history",
+              "title": "History"
             }
           },
           {
@@ -235,8 +235,10 @@
   },
   "active": "5f56ba62a2d2fa40",
   "lastOpenFiles": [
-    "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P2-1 - What is image and video processi.md",
     "数字图像处理/数字图像处理.md",
+    "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P2-1 - What is image and video processi.md",
+    "概率统计/大数定律及中心极限定理.md",
+    "面向对象程序设计/imgs/Pasted image 20260516161909.png",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P1-1 - The why and how of compression.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P3-1 - What is image and video processi.md",
     "大学物理/相对论.md",
@@ -260,7 +262,6 @@
     "程序设计实践/contest-362-程序设计实践例题.md.bak",
     "程序设计实践/contest-362-程序设计实践例题.md-冲突-WooSaN_Win10.bak",
     "程序设计实践/contest-362-程序设计实践例题.md.bak2",
-    "概率统计/大数定律及中心极限定理.md",
     "欢迎.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P6-4 - Human visual system.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P5-3 - Images are everywhere.md",
@@ -276,7 +277,6 @@
     "面向对象程序设计/imgs/Pasted image 20260616225239.png",
     "面向对象程序设计/imgs/Pasted image 20260616224747.png",
     "面向对象程序设计/imgs/Pasted image 20260616224350.png",
-    "面向对象程序设计/imgs/Pasted image 20260616223131.png",
     "易经.md",
     "易经 1.md",
     "多维随机变量及其分布.md",
