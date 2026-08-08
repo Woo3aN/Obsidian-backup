@@ -1,0 +1,23 @@
+{
+  "id": "conv-1786171605385-c2tre5sdv",
+  "providerId": "claude",
+  "title": "Change GitHub account",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786171605385,
+  "updatedAt": 1786171729149,
+  "lastResponseAt": 1786171729149,
+  "sessionId": "19402a01-acba-4281-9d33-b68987c76868",
+  "providerState": {
+    "providerSessionId": "19402a01-acba-4281-9d33-b68987c76868"
+  },
+  "currentNote": "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 93,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 33152,
+    "contextWindow": 200000,
+    "contextTokens": 33245,
+    "percentage": 17
+  }
+}
