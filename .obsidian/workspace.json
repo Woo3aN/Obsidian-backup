@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
+                "file": "数据结构与算法/数据结构与算法.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "contest-362-程序设计实践例题-题解集-backup"
+              "title": "数据结构与算法"
             }
           }
         ]
@@ -233,10 +233,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "038c0296299b0cb0",
+  "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "数据结构与算法/未命名.md",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
+    "数据结构与算法/数据结构与算法.md",
+    "数据结构与算法/未命名.md",
     "数据结构与算法",
     "程序设计实践/contest-362-程序设计实践例题.md",
     "程序设计实践/程序设计实践例题-题解集.md",
@@ -280,7 +281,6 @@
     "面向对象程序设计/imgs/Pasted image 20260616225239.png",
     "面向对象程序设计/imgs/Pasted image 20260616224747.png",
     "面向对象程序设计/imgs/Pasted image 20260616224350.png",
-    "易经.md",
     "未命名.canvas"
   ]
 }
