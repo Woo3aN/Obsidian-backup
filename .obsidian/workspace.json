@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations"
+              "title": "contest-362-程序设计实践例题-题解集-backup"
             }
           }
         ]
@@ -233,14 +233,18 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e1d1df1a55660aff",
+  "active": "038c0296299b0cb0",
   "lastOpenFiles": [
+    "数据结构与算法",
+    "程序设计实践/contest-362-程序设计实践例题.md",
+    "程序设计实践/程序设计实践例题-题解集.md",
+    "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
+    "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "Clippings/Bilibili/2026-08-08-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P4-4 - The Discrete Cosine Transform (D.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P2-2 - Huffman coding.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P7-5 - Image formation - Sampling & Qua.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P1-1 - The why and how of compression.md",
     "Clippings/Bilibili/2026-08-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P3-3 - JPEG's 8x8 blocks.md",
-    "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P6-4 - Human visual system.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P5-3 - Images are everywhere.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P4-2 - Course logistics.md",
@@ -250,11 +254,8 @@
     "概率统计/大数定律及中心极限定理.md",
     "面向对象程序设计/imgs/Pasted image 20260516161909.png",
     "大学物理/相对论.md",
-    "程序设计实践/程序设计实践例题-题解集.md",
     "数字图像处理/数字图像处理.md.tmp.2040.c0178a389b09",
     "数字图像处理/数字图像处理.md.tmp.2040.b23add61a921",
-    "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
-    "程序设计实践/contest-362-程序设计实践例题.md",
     "程序设计实践/imgs/Pasted image 20260730202956.png",
     "程序设计实践/imgs",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.e4e89725a4db",
@@ -280,7 +281,6 @@
     "面向对象程序设计/imgs/Pasted image 20260616224747.png",
     "面向对象程序设计/imgs/Pasted image 20260616224350.png",
     "易经.md",
-    "易经 1.md",
     "未命名.canvas"
   ]
 }
