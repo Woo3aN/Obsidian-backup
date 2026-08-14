@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "c-c-steady-wave.md",
+                "file": "数据结构与算法/数据结构与算法.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "c-c-steady-wave"
+              "title": "数据结构与算法"
             }
           }
         ],
@@ -250,6 +250,7 @@
   },
   "active": "506d1fff44332a34",
   "lastOpenFiles": [
+    "c-c-steady-wave.md",
     "数据结构与算法/数据结构与算法.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
@@ -278,7 +279,6 @@
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.e4e89725a4db",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.35ea8bf5ccdd",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.21220.87ec42d6feae",
-    "c-c-steady-wave.md",
     "程序设计实践/contest-362-程序设计实践例题-冲突-WooSaN_Win10.md",
     "conflict-files-obsidian-git.md",
     "程序设计实践/contest-362-程序设计实践例题.md-冲突-WooSaN_Win10.bak2",
