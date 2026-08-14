@@ -173,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "数据结构与算法/数据结构与算法.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -225,7 +225,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -248,7 +248,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "506d1fff44332a34",
+  "active": "5d95e84e2df77862",
   "lastOpenFiles": [
     "c-c-steady-wave.md",
     "数据结构与算法/数据结构与算法.md",
