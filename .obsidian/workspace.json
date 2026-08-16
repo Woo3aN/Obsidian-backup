@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "数据结构与算法/数据结构与算法.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数字图像处理"
+              "title": "数据结构与算法"
             }
           }
         ],
@@ -173,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数字图像处理/数字图像处理.md",
+                "file": "数据结构与算法/数据结构与算法.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -250,8 +250,8 @@
   },
   "active": "506d1fff44332a34",
   "lastOpenFiles": [
-    "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "数字图像处理/数字图像处理.md",
+    "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "数据结构与算法/数据结构与算法.md",
     "c-c-steady-wave.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
