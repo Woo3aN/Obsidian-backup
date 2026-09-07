@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数据结构与算法/数据结构与算法.md",
+                "file": "数据结构/数据结构.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据结构与算法"
+              "title": "数据结构"
             }
           }
         ],
@@ -56,9 +56,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false,
-                "showSearch": false,
-                "searchQuery": ""
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -173,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数据结构与算法/数据结构与算法.md",
+                "file": "数据结构/数据结构.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "数据结构 的大纲"
             }
           },
           {
@@ -250,8 +248,10 @@
   },
   "active": "506d1fff44332a34",
   "lastOpenFiles": [
-    "数字图像处理/数字图像处理.md",
     "数据结构与算法/数据结构与算法.md",
+    "数据结构/数据结构.md",
+    "数据结构",
+    "数字图像处理/数字图像处理.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "c-c-steady-wave.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
@@ -283,11 +283,9 @@
     "conflict-files-obsidian-git.md",
     "程序设计实践/contest-362-程序设计实践例题.md-冲突-WooSaN_Win10.bak2",
     "程序设计实践/contest-362-程序设计实践例题.md.bak",
-    "程序设计实践/contest-362-程序设计实践例题.md-冲突-WooSaN_Win10.bak",
     "欢迎.md",
     "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计/面向对象程序设计.md",
-    "面向对象程序设计/面向对象 易错点.md",
     "面向对象程序设计/imgs/Pasted image 20260616230959.png",
     "面向对象程序设计/imgs/Pasted image 20260616230311.png",
     "面向对象程序设计/imgs/Pasted image 20260616225850.png",
