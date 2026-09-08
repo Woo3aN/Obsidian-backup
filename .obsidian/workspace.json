@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:C++",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -76,7 +76,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -233,15 +234,15 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e1d1df1a55660aff",
+  "active": "68ce36f0cfa2fa88",
   "lastOpenFiles": [
-    "面向对象程序设计.pdf",
+    "离散数学/离散数学.md",
+    "计算机科学与技术导论/计算机科学与技术导论.md",
     "链表相关.md",
+    "面向对象程序设计.pdf",
     "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计/面向对象程序设计.md",
     "面向对象程序设计/面向对象 易错点.md",
-    "计算机科学与技术导论/计算机科学与技术导论.md",
-    "离散数学/离散数学.md",
     "数据结构与算法/数据结构与算法.md",
     "数据结构/数据结构.md",
     "计算机科学与技术导论/未命名",
@@ -272,7 +273,6 @@
     "程序设计实践/imgs/Pasted image 20260730202956.png",
     "程序设计实践/imgs",
     "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.e4e89725a4db",
-    "程序设计实践/contest-362-程序设计实践例题-题解集.md.tmp.19592.35ea8bf5ccdd",
     "面向对象程序设计/imgs/Pasted image 20260616230959.png",
     "面向对象程序设计/imgs/Pasted image 20260616230311.png",
     "面向对象程序设计/imgs/Pasted image 20260616225850.png",
