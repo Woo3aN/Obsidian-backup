@@ -11,12 +11,14 @@
             "id": "e1d1df1a55660aff",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "面向对象程序设计.pdf"
+                "file": "链表相关.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "面向对象程序设计"
+              "icon": "lucide-file",
+              "title": "链表相关"
             }
           }
         ]
@@ -156,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "面向对象程序设计.pdf",
+                "file": "链表相关.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -233,6 +235,8 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "面向对象程序设计.pdf",
+    "链表相关.md",
     "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计/面向对象程序设计.md",
     "面向对象程序设计/面向对象 易错点.md",
@@ -262,9 +266,7 @@
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P5-3 - Images are everywhere.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P2-1 - What is image and video processi.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P3-1 - What is image and video processi.md",
-    "概率统计/大数定律及中心极限定理.md",
     "面向对象程序设计/imgs/Pasted image 20260516161909.png",
-    "大学物理/相对论.md",
     "数字图像处理/数字图像处理.md.tmp.2040.c0178a389b09",
     "数字图像处理/数字图像处理.md.tmp.2040.b23add61a921",
     "程序设计实践/imgs/Pasted image 20260730202956.png",
