@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "离散数学"
+              "title": "contest-362-程序设计实践例题-题解集-backup"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -237,9 +237,9 @@
   "lastOpenFiles": [
     "程序设计实践/contest-362-程序设计实践例题.md",
     "程序设计实践/程序设计实践例题-题解集.md",
+    "离散数学/离散数学.md",
     "数据结构与算法/数据结构与算法.md",
     "链表相关.md",
-    "离散数学/离散数学.md",
     "计算机科学与技术导论/计算机科学与技术导论.md",
     "面向对象程序设计.pdf",
     "面向对象程序设计/C++相关代码.md",
