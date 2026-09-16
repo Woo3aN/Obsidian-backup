@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "人工智能引论/人工智能引论.md",
+                "file": "信号与系统/信号与系统.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "人工智能引论"
+              "title": "信号与系统"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "人工智能引论/人工智能引论.md",
+                "file": "信号与系统/信号与系统.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,8 +235,9 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "数据结构/数据结构.md",
+    "数字图像处理/数字图像处理.md",
     "人工智能引论/人工智能引论.md",
+    "数据结构/数据结构.md",
     "人工智能引论/imgs/ch2-2.5-统计学习与因果推理的区别.png",
     "人工智能引论/imgs/ch2-2.5-因果图H.png",
     "人工智能引论/imgs/ch2-2.5-关联关系的三种来源.png",
@@ -252,7 +253,6 @@
     "人工智能引论",
     "信号与系统",
     "大学物理（下）/大学物理（下）.md",
-    "数字图像处理/数字图像处理.md",
     "大学物理（下）",
     "数据结构/数据结构实验题.md",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
