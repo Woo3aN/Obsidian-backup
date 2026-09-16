@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "信号与系统/信号与系统.md",
+                "file": "离散数学/离散数学.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "信号与系统"
+              "title": "离散数学"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/信号与系统.md",
+                "file": "离散数学/离散数学.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,6 +235,10 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "计算机科学与技术导论/计算机科学与技术导论.md",
+    "大学物理（下）/大学物理（下）.md",
+    "人工智能引论/人工智能引论.md",
+    "信号与系统/信号与系统.md",
     "信号与系统/imgs/make_figs.py",
     "信号与系统/imgs/ch1-1.3-综合变换.png",
     "信号与系统/imgs/ch1-1.5-偶分量与奇分量.png",
@@ -248,13 +252,10 @@
     "信号与系统/imgs/ch1-1.3-综合变换f(-2t+1).png",
     "信号与系统/imgs",
     "数字图像处理/数字图像处理.md",
-    "人工智能引论/人工智能引论.md",
     "数据结构/数据结构.md",
     "人工智能引论/imgs",
-    "信号与系统/信号与系统.md",
     "人工智能引论",
     "信号与系统",
-    "大学物理（下）/大学物理（下）.md",
     "大学物理（下）",
     "数据结构/数据结构实验题.md",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
@@ -263,7 +264,6 @@
     "离散数学/离散数学.md",
     "数据结构与算法/数据结构与算法.md",
     "链表相关.md",
-    "计算机科学与技术导论/计算机科学与技术导论.md",
     "面向对象程序设计.pdf",
     "面向对象程序设计/C++相关代码.md",
     "面向对象程序设计/面向对象程序设计.md",
@@ -274,7 +274,6 @@
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P4-2 - Course logistics.md",
     "离散数学",
-    "数据结构",
     "c-c-steady-wave.md",
     "数据结构与算法/未命名.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P2-2 - Huffman coding.md",
