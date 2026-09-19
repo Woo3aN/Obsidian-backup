@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI编程与智能体开发/AI编程与智能体开发.md",
+                "file": "人工智能引论/人工智能引论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI编程与智能体开发"
+              "title": "人工智能引论"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI编程与智能体开发/AI编程与智能体开发.md",
+                "file": "人工智能引论/人工智能引论.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -233,8 +233,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "038c0296299b0cb0",
+  "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "AI编程与智能体开发/AI编程与智能体开发.md",
     "AI编程与智能体开发/imgs/ch3-3.9.6-Git分支工作流.png",
     "AI编程与智能体开发/imgs/ch3-3.9.5-Git三个工作区域.png",
     "AI编程与智能体开发/imgs/ch2-2.2-AI编程发展三阶段.png",
@@ -244,7 +245,6 @@
     "AI编程与智能体开发/imgs/ch1-1.1.3-大模型发展历程.png",
     "AI编程与智能体开发/imgs",
     "大学物理（下）/大学物理（下）.md",
-    "AI编程与智能体开发/AI编程与智能体开发.md",
     "AI编程与智能体开发",
     "信号与系统/信号与系统.md",
     "大学物理（下）/imgs/ch5-3.4-典型场强分布曲线.png",
@@ -253,7 +253,6 @@
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
     "大学物理（下）/imgs/ch5-3.4-两带异号电荷平面.png",
     "大学物理（下）/imgs/ch5-3.2-均匀电场通过平面的通量.png",
-    "大学物理（下）/imgs/ch5-2.3-电偶极子中垂线的场强.png",
     "离散数学/离散数学.md",
     "大学物理（下）/imgs",
     "人工智能引论/人工智能引论.md",
