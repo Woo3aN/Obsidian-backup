@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
-"""画 §5-3 的典型 E–r 分布曲线。
+"""画静电场这一章的分布曲线。
 
 放到 imgs/ 下直接跑就会原地重新生成（OUT 取脚本所在目录）。
 配色沿用库内约定：主 #1f6fd0 蓝、次 #d62728 红、辅助 #999999 灰、标注 #2e9e5b 绿。
+
+  ch5-3.4-典型场强分布曲线.png    §5-3 四种对称性的 E–r
+  ch5-4.4-球体的电势分布曲线.png  §5-4 球体 / 球面的 V–r
 """
 import os
 
@@ -16,9 +19,10 @@ plt.rcParams["axes.unicode_minus"] = False
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 BLUE, RED, GRAY, GREEN = "#1f6fd0", "#d62728", "#999999", "#2e9e5b"
+XPAD = 3.2          # r/R 画到 3.2
 
-fig, axes = plt.subplots(2, 2, figsize=(9.4, 7.0))
-XPAD = 3.2
+x1 = np.linspace(0, 1, 200)
+x2 = np.linspace(1, XPAD, 400)
 
 
 def axis_arrows(ax, xmax=XPAD, ymax=1.35, xt=r"$r/R$", yt=r"$E/E_R$", xtick="$R$"):
@@ -43,10 +47,11 @@ def axis_arrows(ax, xmax=XPAD, ymax=1.35, xt=r"$r/R$", yt=r"$E/E_R$", xtick="$R$
     ax.text(0.06, ymax - 0.24, yt, color="k", ha="left", va="center")
 
 
+# ==================== 图一：§5-3 典型 E–r 分布 ====================
+fig, axes = plt.subplots(2, 2, figsize=(9.4, 7.0))
+
 # ---------- (a) 均匀带电球面（球壳） ----------
 ax = axes[0, 0]
-x1 = np.linspace(0, 1, 200)
-x2 = np.linspace(1, XPAD, 400)
 ax.plot(x1, np.zeros_like(x1), color=BLUE, lw=2.4)
 ax.plot(x2, 1 / x2 ** 2, color=BLUE, lw=2.4)
 ax.plot([1, 1], [0, 1], color=BLUE, lw=2.4, ls=":")
@@ -102,3 +107,39 @@ fig.tight_layout(h_pad=2.8, w_pad=2.4)
 fp = os.path.join(OUT, "ch5-3.4-典型场强分布曲线.png")
 fig.savefig(fp, dpi=190, bbox_inches="tight", facecolor="white")
 print("saved:", fp, os.path.getsize(fp) // 1024, "KB")
+
+# ==================== 图二：§5-4 球体 / 球面的 V–r 分布 ====================
+fig2, ax2 = plt.subplots(1, 2, figsize=(9.4, 3.9))
+
+# ---------- (a) 均匀带电球体：球内 1.5V_R -> V_R，球外 1/r ----------
+ax = ax2[0]
+ax.plot(x1, (3 - x1 ** 2) / 2, color=RED, lw=2.4)
+ax.plot(x2, 1 / x2, color=RED, lw=2.4)
+ax.plot([1], [1], "o", color=RED, ms=5)
+ax.axvline(1, color=GRAY, ls="--", lw=1.0)
+ax.axhline(1.5, color=GREEN, ls=":", lw=1.2)
+axis_arrows(ax, ymax=2.02, yt=r"$V/V_R$")
+ax.text(0.55, 1.28, r"$V=\dfrac{q(3R^2-r^2)}{8\pi\varepsilon_0R^3}$", color=RED,
+        ha="center", fontsize=9.5)
+ax.text(2.1, 0.60, r"$V=\dfrac{q}{4\pi\varepsilon_0 r}$", color=RED, ha="center", fontsize=9.5)
+ax.annotate("球心处电势最高\n$V_0=1.5\\,V_R$", xy=(0, 1.5), xytext=(0.34, 1.60),
+            color=GREEN, fontsize=9.5, ha="left",
+            arrowprops=dict(arrowstyle="->", color=GREEN, lw=1.1))
+ax.set_title("(a) 均匀带电球体", fontsize=11.5, pad=8)
+
+# ---------- (b) 均匀带电球面：球内为常量 ----------
+ax = ax2[1]
+ax.plot(x1, np.ones_like(x1), color=BLUE, lw=2.4)
+ax.plot(x2, 1 / x2, color=BLUE, lw=2.4)
+ax.plot([1], [1], "o", color=BLUE, ms=5)
+ax.axvline(1, color=GRAY, ls="--", lw=1.0)
+axis_arrows(ax, ymax=2.02, yt=r"$V/V_R$")
+ax.text(0.5, 1.18, "球内 $V$ 为常量\n$V=\\dfrac{q}{4\\pi\\varepsilon_0 R}$", color=BLUE,
+        ha="center", fontsize=9.5)
+ax.text(2.1, 0.60, r"$V=\dfrac{q}{4\pi\varepsilon_0 r}$", color=BLUE, ha="center", fontsize=9.5)
+ax.set_title("(b) 均匀带电球面", fontsize=11.5, pad=8)
+
+fig2.tight_layout(w_pad=2.6)
+fp2 = os.path.join(OUT, "ch5-4.4-球体的电势分布曲线.png")
+fig2.savefig(fp2, dpi=190, bbox_inches="tight", facecolor="white")
+print("saved:", fp2, os.path.getsize(fp2) // 1024, "KB")
