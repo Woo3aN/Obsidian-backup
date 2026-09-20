@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "电力电子技术/电力电子技术.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "电力电子技术"
+              "title": "大学物理（下）"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "电力电子技术/电力电子技术.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,6 +235,7 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "电力电子技术/电力电子技术.md",
     "大学物理（下）/imgs/ch6-1.2-尖端放电.png",
     "大学物理（下）/imgs/ch6-1.3-空腔内有带电体.png",
     "大学物理（下）/imgs/ch6-1.2-尖端放电的电荷分布.png",
@@ -245,10 +246,8 @@
     "大学物理（下）/imgs/ch6-1.2-导体表面场强与电荷密度.png",
     "大学物理（下）/imgs/ch6-1.2-导体内部无净电荷.png",
     "大学物理（下）/imgs/ch6-1.1-静电平衡时导体的电场特性.png",
-    "大学物理（下）/imgs/ch6-1.1-静电感应.png",
     "电力电子技术/imgs",
     "大学物理（下）/大学物理（下）.md",
-    "电力电子技术/电力电子技术.md",
     "离散数学/离散数学.md",
     "电力电子技术",
     "人工智能引论/人工智能引论.md",
