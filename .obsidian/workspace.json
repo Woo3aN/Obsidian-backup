@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
+                "file": "信号与系统/信号与系统.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "计算机科学与技术导论"
+              "title": "信号与系统"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
+                "file": "信号与系统/信号与系统.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,6 +235,7 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "计算机科学与技术导论/计算机科学与技术导论.md",
     "信号与系统/imgs/ch2-2.7-信号分解为冲激之和.png",
     "未命名.base",
     "电力电子技术/电力电子技术.md",
@@ -248,7 +249,6 @@
     "大学物理（下）/imgs/ch6-1.4-静电屏蔽.png",
     "大学物理（下）/imgs/ch6-1.3-空腔导体腔内无带电体.png",
     "大学物理（下）/imgs/ch6-1.2-导体表面场强与电荷密度.png",
-    "大学物理（下）/imgs/ch6-1.2-导体内部无净电荷.png",
     "电力电子技术/imgs",
     "离散数学/离散数学.md",
     "电力电子技术",
@@ -258,7 +258,6 @@
     "AI编程与智能体开发",
     "信号与系统/信号与系统.md",
     "大学物理（下）/imgs/make_figs.py",
-    "计算机科学与技术导论/计算机科学与技术导论.md",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
     "大学物理（下）/imgs",
     "信号与系统/imgs/make_figs.py",
