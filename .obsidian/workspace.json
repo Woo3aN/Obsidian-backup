@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "电力电子技术/电力电子技术.md",
+                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "电力电子技术"
+              "title": "计算机科学与技术导论"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "电力电子技术/电力电子技术.md",
+                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,9 +235,10 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "未命名.base",
+    "电力电子技术/电力电子技术.md",
     "大学物理（下）/大学物理（下）.md",
     "电力电子技术/imgs/ch15-15.2-完整画法与简化画法.png",
-    "电力电子技术/电力电子技术.md",
     "大学物理（下）/imgs/ch6-1.2-尖端放电.png",
     "大学物理（下）/imgs/ch6-1.3-空腔内有带电体.png",
     "大学物理（下）/imgs/ch6-1.2-尖端放电的电荷分布.png",
