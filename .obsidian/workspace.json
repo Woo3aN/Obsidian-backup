@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数据结构/数据结构.md",
+                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据结构"
+              "title": "计算机科学与技术导论"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数据结构/数据结构.md",
+                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,8 +235,8 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "数据结构/数据结构实验题.md",
     "数据结构/数据结构.md",
+    "数据结构/数据结构实验题.md",
     "信号与系统/信号与系统.md",
     "计算机科学与技术导论/计算机科学与技术导论.md",
     "信号与系统/imgs/ch2-2.7-信号分解为冲激之和.png",
