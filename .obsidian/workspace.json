@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "离散数学"
+              "title": "计算机科学与技术导论"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "计算机科学与技术导论/计算机科学与技术导论.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,6 +235,7 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "离散数学/离散数学.md",
     "数据结构/数据结构.md",
     "人工智能引论/人工智能引论.md",
     "计算机科学与技术导论/计算机科学与技术导论.md",
@@ -256,7 +257,6 @@
     "大学物理（下）/imgs/ch6-1.2-尖端放电.png",
     "大学物理（下）/imgs/ch6-1.3-空腔内有带电体.png",
     "电力电子技术/imgs",
-    "离散数学/离散数学.md",
     "电力电子技术",
     "AI编程与智能体开发/AI编程与智能体开发.md",
     "AI编程与智能体开发/imgs",
