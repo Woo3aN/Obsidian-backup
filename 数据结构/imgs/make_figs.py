@@ -398,6 +398,118 @@ def fig_string_storage():
     plt.close(fig)
 
 
+# ------------------------------------------------ 图 7 KMP 失配后的滑动
+def fig_kmp_shift():
+    """S 与 T 在 j=6 失配：i 不动，T 右滑 3 位后前两个字符天然相等。"""
+    fig, ax = plt.subplots(figsize=(7.8, 4.0), dpi=150)
+    ax.set_xlim(0, 8.6)
+    ax.set_ylim(0, 4.0)
+    ax.axis("off")
+
+    S = list("abaababcabc")        # S[1..11]
+    T = list("abaabcac")           # T[1..8]
+    w, h = 0.62, 0.46
+    x0 = 1.15
+
+    def col(i):                    # 第 i 列（1 起点）的左边界
+        return x0 + (i - 1) * w
+
+    y_s, y_t1, y_t2 = 3.15, 2.20, 1.30
+
+    ax.text(x0 - 0.20, y_s + h / 2, "S", ha="right", va="center",
+            fontsize=10.5, color=C_BASE, weight="bold")
+    for i, ch in enumerate(S, start=1):
+        fc = C_FILL if i <= 5 else C_EMP
+        if i == 6:
+            fc = "#f6d5d0"
+        _slot(ax, col(i), y_s, w, h, ch, fc=fc)
+
+    ax.text(x0 - 0.20, y_t1 + h / 2, "T", ha="right", va="center",
+            fontsize=10.5, color=C_TOP, weight="bold")
+    for j, ch in enumerate(T, start=1):
+        fc = C_FILL if j <= 5 else C_EMP
+        if j == 6:
+            fc = "#f6d5d0"
+        _slot(ax, col(j), y_t1, w, h, ch, fc=fc)
+
+    ax.text(x0 - 0.20, y_t2 + h / 2, "T'", ha="right", va="center",
+            fontsize=10.5, color=C_GRN, weight="bold")
+    for j, ch in enumerate(T, start=1):
+        fc = "#d9f0e2" if j <= 2 else C_EMP
+        _slot(ax, col(j + 3), y_t2, w, h, ch, fc=fc)
+
+    xm = col(6) + w / 2
+    ax.plot([xm, xm], [y_t2 - 0.12, y_s + h + 0.16], ls=(0, (4, 3)),
+            color=C_TOP, lw=1.3)
+    ax.text(xm, y_s + h + 0.24, "失配处：i 不动", ha="center", va="bottom",
+            fontsize=9.5, color=C_TOP, weight="bold")
+    ax.text(xm - 0.06, y_t1 + h + 0.06, "j = 6", ha="right", va="bottom",
+            fontsize=9.5, color=C_TOP, weight="bold",
+            bbox=dict(fc="white", ec="none", pad=1.2))
+    ax.text(col(3) + w / 2, y_t2 - 0.10, "j = next[6] = 3", ha="center",
+            va="top", fontsize=9.5, color=C_GRN, weight="bold")
+
+    ax.add_patch(Rectangle((col(4), y_t2 - 0.03), 2 * w,
+                           (y_s + h) - y_t2 + 0.06, fc="none", ec=C_GRN,
+                           lw=1.5, ls="--"))
+    ax.text(col(5) + w / 2, y_t2 - 0.50,
+            "右滑 3 位后，这两个字符必相等（next 已保证）",
+            ha="center", va="top", fontsize=9.5, color=C_GRN)
+
+    ax.text(x0 - 0.20, 0.20,
+            "主串指针 i 不回溯；模式串整体右滑，j 由 6 退到 next[6] = 3",
+            ha="left", va="center", fontsize=9.5, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch4-3-2-KMP失配后的滑动.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+# ------------------------------------------ 图 8 next 的本质：前缀 = 后缀
+def fig_next_meaning():
+    """以 T = "abaabc" 求 next[6] 为例，说明"前缀等于后缀的最长不重叠子串"。"""
+    fig, ax = plt.subplots(figsize=(7.2, 3.0), dpi=150)
+    ax.set_xlim(0, 7.0)
+    ax.set_ylim(0, 2.9)
+    ax.axis("off")
+
+    T = list("abaab")
+    w, h = 0.68, 0.54
+    x0 = 1.30
+    y = 1.62
+
+    for i, ch in enumerate(T, start=1):
+        if i <= 2:
+            fc = C_FILL
+        elif i >= 4:
+            fc = C_FILL2
+        else:
+            fc = C_EMP
+        _slot(ax, x0 + (i - 1) * w, y, w, h, ch, fc=fc)
+
+    ax.annotate("", xy=(x0, y + h + 0.12), xytext=(x0 + 2 * w, y + h + 0.12),
+                arrowprops=dict(arrowstyle="<->", color=C_BASE, lw=1.3))
+    ax.text(x0 + w, y + h + 0.20, '前缀 "ab"', ha="center", va="bottom",
+            fontsize=10, color=C_BASE, weight="bold")
+
+    ax.annotate("", xy=(x0 + 3 * w, y - 0.12), xytext=(x0 + 5 * w, y - 0.12),
+                arrowprops=dict(arrowstyle="<->", color="#b07d2a", lw=1.3))
+    ax.text(x0 + 4 * w, y - 0.20, '后缀 "ab"', ha="center", va="top",
+            fontsize=10, color="#b07d2a", weight="bold")
+
+    ax.text(x0 - 0.24, y + h / 2, "前 j-1 个字符", ha="right", va="center",
+            fontsize=10, color=C_TEXT)
+
+    ax.text(x0 - 0.24, 0.46,
+            'T = "abaabc"，求 next[6]：前 5 个字符里最长的「前缀 = 后缀」是 "ab"\n'
+            "（长 2，前后缀不能完全重叠）→ k = 2（0 起点），课本 1 起点记作 next[6] = 3",
+            ha="left", va="center", fontsize=9.5, color=C_TXT2, linespacing=1.8)
+
+    fig.savefig(os.path.join(OUT, "ch4-3-2-next的本质.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_seq_stack()
     fig_stack_states()
@@ -405,4 +517,6 @@ if __name__ == "__main__":
     fig_circular_queue()
     fig_false_overflow()
     fig_string_storage()
+    fig_kmp_shift()
+    fig_next_meaning()
     print("figures written to", OUT)
