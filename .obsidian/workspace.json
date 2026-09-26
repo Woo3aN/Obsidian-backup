@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大学物理（下）/大学物理（下）.md",
+                "file": "电力电子技术/电力电子技术.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "大学物理（下）"
+              "title": "电力电子技术"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "大学物理（下）/大学物理（下）.md",
+                "file": "电力电子技术/电力电子技术.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,13 +235,17 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "离散数学/离散数学.md",
-    "面向对象程序设计/imgs/Pasted image 20260516161909.png",
     "大学物理（下）/大学物理（下）.md",
+    "概率统计/大数定律及中心极限定理.md",
+    "计算机科学与技术导论/计算机科学与技术导论.md",
+    "离散数学/离散数学.md",
+    "面向对象程序设计/面向对象程序设计.md",
+    "数字图像处理/数字图像处理.md",
+    "AI编程与智能体开发/AI编程与智能体开发.md",
+    "面向对象程序设计/imgs/Pasted image 20260516161909.png",
     "信号与系统/信号与系统.md",
     "数据结构/数据结构实验题.md",
     "数据结构/数据结构.md",
-    "计算机科学与技术导论/计算机科学与技术导论.md",
     "信号与系统/imgs/ch2-2.8-矩形卷积结果.png",
     "信号与系统/imgs/ch2-2.7-卷积图解.png",
     "大学物理（下）/imgs/ch6-3.4-例3场强叠加.png",
@@ -258,20 +262,17 @@
     "电力电子技术/电力电子技术.md",
     "电力电子技术/imgs",
     "电力电子技术",
-    "AI编程与智能体开发/AI编程与智能体开发.md",
     "AI编程与智能体开发/imgs",
     "AI编程与智能体开发",
     "大学物理（下）/imgs/make_figs.py",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
     "大学物理（下）/imgs",
     "信号与系统/imgs/make_figs.py",
-    "数字图像处理/数字图像处理.md",
     "程序设计实践/contest-362-程序设计实践例题.md",
     "程序设计实践/程序设计实践例题-题解集.md",
     "数据结构与算法/数据结构与算法.md",
     "链表相关.md",
     "面向对象程序设计/C++相关代码.md",
-    "面向对象程序设计/面向对象程序设计.md",
     "面向对象程序设计/面向对象 易错点.md",
     "Clippings/Bilibili/2026-08-08-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P4-4 - The Discrete Cosine Transform (D.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
