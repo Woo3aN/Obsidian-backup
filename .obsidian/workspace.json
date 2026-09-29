@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "电力电子技术/电力电子技术.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "电力电子技术"
+              "title": "大学物理（下）"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "电力电子技术/电力电子技术.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,6 +235,8 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "人工智能引论/人工智能引论.md",
+    "电力电子技术/电力电子技术.md",
     "大学物理（下）/大学物理（下）.md",
     "概率统计/大数定律及中心极限定理.md",
     "计算机科学与技术导论/计算机科学与技术导论.md",
@@ -255,11 +257,9 @@
     "大学物理（下）/imgs/ch6-3.2-圆柱形电容器.png",
     "大学物理（下）/imgs/ch6-3.2-球形电容器.png",
     "大学物理（下）/imgs/ch6-3.2-平板电容器.png",
-    "人工智能引论/人工智能引论.md",
     "数据结构/imgs/make_figs.py",
     "数据结构/imgs",
     "未命名.base",
-    "电力电子技术/电力电子技术.md",
     "电力电子技术/imgs",
     "电力电子技术",
     "AI编程与智能体开发/imgs",
