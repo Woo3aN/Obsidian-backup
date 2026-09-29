@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""生成《数据结构》第 3、4 章配图。
+"""生成《数据结构》第 3、4、5 章配图。
 
 命名规则：ch{章}-{节}-{描述}.png，与笔记正文的 ![](imgs/xxx.png) 一一对应。
 本脚本只负责"需要统一风格 / 合成对照图"的那几张；其余一律不画。
@@ -510,6 +510,186 @@ def fig_next_meaning():
     plt.close(fig)
 
 
+# ------------------------------------------------- 图 9 快速转置的 num/cpot
+def fig_fast_transpose():
+    fig, ax = plt.subplots(figsize=(10.0, 5.4), dpi=150)
+    ax.set_xlim(0, 15.0)
+    ax.set_ylim(-1.2, 9.4)
+    ax.axis("off")
+
+    ax.text(0.1, 9.0, "快速转置：先数每列几个元素，再算出每列该填到哪",
+            ha="left", va="center", fontsize=12.5, color=C_TEXT)
+
+    # 左：M 的三元组表（8 行，自顶向下）
+    ax.text(0.35, 8.25, "M.data（行序）", ha="left", va="center",
+            fontsize=10.5, color=C_BASE)
+    rows = [("1", "2", "12"), ("1", "3", "9"), ("3", "1", "-3"),
+            ("3", "6", "14"), ("4", "3", "24"), ("5", "2", "18"),
+            ("6", "1", "15"), ("6", "4", "-7")]
+    x0, w, h = 0.35, 1.0, 0.5
+    top = 7.9
+    for r, (i, j, v) in enumerate(rows):
+        y = top - (r + 1) * h
+        for c, val in enumerate([i, j, v]):
+            fc = C_FILL if c == 1 else C_EMP
+            _slot(ax, x0 + c * w, y, w, h, val, fc=fc, fs=10)
+        if j == "1":
+            ax.add_patch(Rectangle((x0 + w, y), w, h, fc="none",
+                                   ec=C_TOP, lw=1.8))
+    ax.text(x0, top - 8 * h - 0.42,
+            "红框 = M 中所有第 1 列的元组\n（它们转置后就是 T 的第 1 行）",
+            ha="left", va="top", fontsize=9.5, color=C_TXT2, linespacing=1.7)
+
+    # 右：说明
+    xr = 5.3
+    ax.text(xr, 8.25, "① 数 M 的每一列（不是行！）有几个非零元  →  num[col]",
+            ha="left", va="center", fontsize=10.3, color=C_TXT2)
+    ax.text(xr, 7.73, "② 从第 1 列起累加  →  每列的起始位置 cpot[col]",
+            ha="left", va="center", fontsize=10.3, color=C_TXT2)
+    ax.text(xr, 7.21, "③ 依次扫 M.data，用 cpot 落到 T.data 的位置，落一个 +1",
+            ha="left", va="center", fontsize=10.3, color=C_TXT2)
+    ax.text(xr, 6.5, "M 的列  =  T 的行  →  「按列抄 M」就是「按行填 T」",
+            ha="left", va="center", fontsize=11, color=C_BASE)
+
+    # 右下：num / cpot 表
+    cols = ["col", "1", "2", "3", "4", "5", "6", "7"]
+    num = ["num", "2", "2", "2", "1", "0", "1", "0"]
+    cpot = ["cpot", "1", "3", "5", "7", "8", "8", "9"]
+    tx, tw, th = xr, 0.95, 0.5
+    ttop = 5.35
+    ax.text(tx, ttop + 0.32, "num / cpot 对照表", ha="left", va="center",
+            fontsize=10.5, color=C_BASE)
+    for r, data in enumerate([cols, num, cpot]):
+        y = ttop - (r + 1) * th
+        for c, val in enumerate(data):
+            fc = C_FILL2 if (r == 0 or c == 0) else C_EMP
+            _slot(ax, tx + c * tw, y, tw, th, val, fc=fc, fs=10)
+    ybot = ttop - 3 * th
+    ax.text(tx, ybot - 0.42,
+            "cpot[col] = cpot[col-1] + num[col-1]   （cpot[1] = 1）",
+            ha="left", va="top", fontsize=10.3, color=C_TOP)
+    ax.text(tx, ybot - 1.06,
+            "填一个元素就 ++cpot[col]，否则同一列的多个元素会互相覆盖",
+            ha="left", va="top", fontsize=10, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch5-3-2-快速转置的num和cpot.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+# --------------------------------------------- 图 10 广义表两种存储结构对照
+def fig_glist_two_storage():
+    fig, ax = plt.subplots(figsize=(9.6, 5.6), dpi=150)
+    ax.set_xlim(0, 14.4)
+    ax.set_ylim(0, 8.4)
+    ax.axis("off")
+
+    ax.text(0.1, 8.05, 'E = (a, (b, (c, d)), (e))  ——  两种存储结构对照',
+            ha="left", va="center", fontsize=12.5, color=C_TEXT)
+
+    def node(x, y, cells, fc=C_EMP, w=0.78, h=0.52, fs=10):
+        for k, val in enumerate(cells):
+            _slot(ax, x + k * w, y, w, h, val, fc=fc, fs=fs)
+        return x + len(cells) * w
+
+    # ---------- 上：头尾链表 ----------
+    ax.text(0.1, 7.15, "（a）头尾链表：每个原子对应两层结点", ha="left",
+            va="center", fontsize=11, color=C_BASE)
+    # tag / hp / tp 三个格子
+    yA = 6.25
+    ax.text(0.14, yA + 0.26, "E", ha="left", va="center", fontsize=11,
+            color=C_TEXT)
+    # 顶层三个表结点
+    xs = [0.85, 2.75, 4.65]
+    for k, x in enumerate(xs):
+        node(x, yA, ["1", "", ""], fc=C_FILL)
+        if k < 2:
+            _arrow(ax, (x + 3 * 0.78, yA + 0.26), (xs[k + 1], yA + 0.26))
+    ax.text(xs[2] + 3 * 0.78 + 0.08, yA + 0.26, "∧", ha="left",
+            va="center", fontsize=11, color=C_TOP)
+
+    # 第一层的原子 a：hp 下面是一个「表结点 + 原子结点」
+    xa = xs[0] + 0.78  # hp 格位置
+    _arrow(ax, (xa + 0.39, yA), (xa + 0.39, 5.45))
+    node(xa - 0.39, 4.9, ["1", "", "∧"], fc=C_FILL)
+    _arrow(ax, (xa + 0.39, 4.9), (xa + 0.39, 4.3))
+    node(xa - 0.39, 3.75, ["0", "a", "∧"], fc=C_FILL2)
+    ax.text(xa + 2.2, 4.55, "原子 a：外面还包一层表结点，\n所以每个原子占两层",
+            ha="left", va="center", fontsize=9.5, color=C_TXT2,
+            linespacing=1.7)
+
+    # 第二层：b 与 (c,d) 的容器
+    xb = xs[1] + 0.78
+    _arrow(ax, (xb + 0.39, yA), (xb + 0.39, 5.45))
+    node(xb - 0.39, 4.9, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (xb + 0.39, 4.9), (xb + 0.39, 4.3))
+    node(xb - 0.39, 3.75, ["1", "", "∧"], fc=C_FILL)
+    _arrow(ax, (xb + 0.39, 3.75), (xb + 0.39, 3.15))
+    node(xb - 0.39, 2.6, ["0", "b", "∧"], fc=C_FILL2)
+    # (b,(c,d)) 的 tp → (c,d) 的容器
+    _arrow(ax, (xb - 0.39 + 3 * 0.78, 4.9 + 0.26), (xb + 2.85, 4.9 + 0.26))
+    node(xb + 2.85, 4.9, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (xb + 2.85 + 0.78, 4.9), (xb + 2.85 + 0.78, 4.3))
+    node(xb + 2.85, 3.75, ["1", "", "∧"], fc=C_FILL)
+    _arrow(ax, (xb + 2.85 + 0.78, 3.75), (xb + 2.85 + 0.78, 3.15))
+    node(xb + 2.85, 2.6, ["0", "c", "∧"], fc=C_FILL2)
+    _arrow(ax, (xb + 2.85 + 3 * 0.78, 2.6 + 0.26),
+           (xb + 4.5, 2.6 + 0.26))
+    node(xb + 4.5, 2.6, ["0", "d", "∧"], fc=C_FILL2)
+
+    # 第三层 (e)
+    xe = xs[2] + 0.78
+    _arrow(ax, (xe + 0.39, yA), (xe + 0.39, 5.45))
+    node(xe - 0.39, 4.9, ["1", "", "∧"], fc=C_FILL)
+    _arrow(ax, (xe + 0.39, 4.9), (xe + 0.39, 4.3))
+    node(xe - 0.39, 3.75, ["0", "e", "∧"], fc=C_FILL2)
+
+    ax.text(0.1, 1.92, "（b）同层结点链表：有头结点，原子只占一个结点",
+            ha="left", va="center", fontsize=11, color=C_BASE)
+
+    # ---------- 下：同层结点链表 ----------
+    yB = 0.95
+    ax.text(0.14, yB + 0.26, "E", ha="left", va="center", fontsize=11,
+            color=C_TEXT)
+    node(0.85, yB, ["1", "∧"], fc=C_FILL)      # 头结点
+    _arrow(ax, (0.85 + 0.78, yB), (0.85 + 0.78, yB - 0.62))
+    # 头结点下面一层：a → (b,(c,d)) → (e)
+    x2 = 0.85
+    node(x2, yB - 1.14, ["0", "a", ""], fc=C_FILL2)
+    _arrow(ax, (x2 + 3 * 0.78, yB - 1.14 + 0.26),
+           (x2 + 2.55, yB - 1.14 + 0.26))
+    node(x2 + 2.55, yB - 1.14, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (x2 + 2.55 + 3 * 0.78, yB - 1.14 + 0.26),
+           (x2 + 5.1, yB - 1.14 + 0.26))
+    node(x2 + 5.1, yB - 1.14, ["1", "∧"], fc=C_FILL)
+    # (b,(c,d)) 的 hp → b / (c,d)
+    _arrow(ax, (x2 + 2.55 + 0.78, yB - 1.14), (x2 + 2.55 + 0.78, yB - 1.76))
+    node(x2 + 2.55, yB - 2.28, ["0", "b", ""], fc=C_FILL2)
+    _arrow(ax, (x2 + 2.55 + 3 * 0.78, yB - 2.28 + 0.26),
+           (x2 + 4.32, yB - 2.28 + 0.26))
+    node(x2 + 4.32, yB - 2.28, ["1", "∧"], fc=C_FILL)
+    _arrow(ax, (x2 + 4.32 + 0.78, yB - 2.28), (x2 + 4.32 + 0.78, yB - 2.9))
+    node(x2 + 4.32, yB - 3.42, ["0", "c", ""], fc=C_FILL2)
+    _arrow(ax, (x2 + 4.32 + 3 * 0.78, yB - 3.42 + 0.26),
+           (x2 + 6.1, yB - 3.42 + 0.26))
+    node(x2 + 6.1, yB - 3.42, ["0", "d", "∧"], fc=C_FILL2)
+    # (e)
+    _arrow(ax, (x2 + 5.1 + 0.78, yB - 1.14), (x2 + 5.1 + 0.78, yB - 1.76))
+    node(x2 + 5.1, yB - 2.28, ["0", "e", "∧"], fc=C_FILL2)
+
+    ax.text(9.85, 2.5,
+            "共同点：tp 链接同层结点，hp 链接内层结点\n\n"
+            "区别：\n"
+            "① 同层结点链表多了头结点\n"
+            "② 原子结点的值填到中间域，\n   所以每个原子只占一个结点",
+            ha="left", va="center", fontsize=10, color=C_TXT2,
+            linespacing=1.9)
+
+    fig.savefig(os.path.join(OUT, "ch5-5-广义表两种存储结构.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_seq_stack()
     fig_stack_states()
@@ -519,4 +699,6 @@ if __name__ == "__main__":
     fig_string_storage()
     fig_kmp_shift()
     fig_next_meaning()
+    fig_fast_transpose()
+    fig_glist_two_storage()
     print("figures written to", OUT)
