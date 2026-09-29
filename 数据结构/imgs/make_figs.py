@@ -579,111 +579,125 @@ def fig_fast_transpose():
 
 # --------------------------------------------- 图 10 广义表两种存储结构对照
 def fig_glist_two_storage():
-    fig, ax = plt.subplots(figsize=(9.6, 5.6), dpi=150)
-    ax.set_xlim(0, 14.4)
-    ax.set_ylim(0, 8.4)
+    """广义表 E = (a, (b, (c, d)), (e)) 的两种存储结构对照。
+
+    上排：头尾链表（每个原子占两层结点）
+    下排：同层结点链表（有头结点，原子占一个结点）
+    两排各自用独立的格点坐标，避免连线交叉。
+    """
+    fig, ax = plt.subplots(figsize=(11.0, 7.6), dpi=150)
+    ax.set_xlim(0, 22.0)
+    ax.set_ylim(-9.6, 4.6)
     ax.axis("off")
 
-    ax.text(0.1, 8.05, 'E = (a, (b, (c, d)), (e))  ——  两种存储结构对照',
-            ha="left", va="center", fontsize=12.5, color=C_TEXT)
+    W, H = 1.12, 0.62      # 单个格子的宽高
 
-    def node(x, y, cells, fc=C_EMP, w=0.78, h=0.52, fs=10):
-        for k, val in enumerate(cells):
-            _slot(ax, x + k * w, y, w, h, val, fc=fc, fs=fs)
-        return x + len(cells) * w
+    def cells(x, y, vals, fc=C_EMP, fs=10.5, hi=None):
+        """在 (x, y) 起画一排格子；hi 为需要高亮的列号集合。"""
+        for k, v in enumerate(vals):
+            f = C_FILL2 if (hi and k in hi) else fc
+            _slot(ax, x + k * W, y, W, H, v, fc=f, fs=fs)
+        return x + len(vals) * W
 
-    # ---------- 上：头尾链表 ----------
-    ax.text(0.1, 7.15, "（a）头尾链表：每个原子对应两层结点", ha="left",
-            va="center", fontsize=11, color=C_BASE)
-    # tag / hp / tp 三个格子
-    yA = 6.25
-    ax.text(0.14, yA + 0.26, "E", ha="left", va="center", fontsize=11,
+    def top(x, y, n):
+        return (x + n * W, y + H)
+
+    # =============================================== 上：头尾链表
+    ax.text(0.2, 4.1, "（a）头尾链表：每个原子对应两层结点（外层还包一层表结点）",
+            ha="left", va="center", fontsize=12, color=C_BASE)
+
+    # 顶层 E 的 tp 链：三个表结点 (hp 指向元素)
+    yA = 2.95
+    xa = cells(1.5, yA, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (xa, yA + H / 2), (xa + 0.25, yA + H / 2))
+    xb = cells(xa + 0.25, yA, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (xb, yA + H / 2), (xb + 0.25, yA + H / 2))
+    xc = cells(xb + 0.25, yA, ["1", "∧"], fc=C_FILL)
+    ax.text(0.9, yA + H / 2, "E", ha="left", va="center", fontsize=11,
             color=C_TEXT)
-    # 顶层三个表结点
-    xs = [0.85, 2.75, 4.65]
-    for k, x in enumerate(xs):
-        node(x, yA, ["1", "", ""], fc=C_FILL)
-        if k < 2:
-            _arrow(ax, (x + 3 * 0.78, yA + 0.26), (xs[k + 1], yA + 0.26))
-    ax.text(xs[2] + 3 * 0.78 + 0.08, yA + 0.26, "∧", ha="left",
-            va="center", fontsize=11, color=C_TOP)
 
-    # 第一层的原子 a：hp 下面是一个「表结点 + 原子结点」
-    xa = xs[0] + 0.78  # hp 格位置
-    _arrow(ax, (xa + 0.39, yA), (xa + 0.39, 5.45))
-    node(xa - 0.39, 4.9, ["1", "", "∧"], fc=C_FILL)
-    _arrow(ax, (xa + 0.39, 4.9), (xa + 0.39, 4.3))
-    node(xa - 0.39, 3.75, ["0", "a", "∧"], fc=C_FILL2)
-    ax.text(xa + 2.2, 4.55, "原子 a：外面还包一层表结点，\n所以每个原子占两层",
-            ha="left", va="center", fontsize=9.5, color=C_TXT2,
-            linespacing=1.7)
+    # 元素 a：hp 表结点 → 原子结点
+    y1 = 1.55
+    a1 = cells(1.5, y1, ["1", "", "∧"], fc=C_FILL)
+    y2 = 0.35
+    a2 = cells(1.5, y2, ["0", "a", "∧"], fc=C_FILL2)
+    _arrow(ax, (1.5 + W / 2, yA), (1.5 + W / 2, y1 + H))
+    _arrow(ax, (1.5 + W / 2, y1), (1.5 + W / 2, y2 + H))
 
-    # 第二层：b 与 (c,d) 的容器
-    xb = xs[1] + 0.78
-    _arrow(ax, (xb + 0.39, yA), (xb + 0.39, 5.45))
-    node(xb - 0.39, 4.9, ["1", "", ""], fc=C_FILL)
-    _arrow(ax, (xb + 0.39, 4.9), (xb + 0.39, 4.3))
-    node(xb - 0.39, 3.75, ["1", "", "∧"], fc=C_FILL)
-    _arrow(ax, (xb + 0.39, 3.75), (xb + 0.39, 3.15))
-    node(xb - 0.39, 2.6, ["0", "b", "∧"], fc=C_FILL2)
-    # (b,(c,d)) 的 tp → (c,d) 的容器
-    _arrow(ax, (xb - 0.39 + 3 * 0.78, 4.9 + 0.26), (xb + 2.85, 4.9 + 0.26))
-    node(xb + 2.85, 4.9, ["1", "", ""], fc=C_FILL)
-    _arrow(ax, (xb + 2.85 + 0.78, 4.9), (xb + 2.85 + 0.78, 4.3))
-    node(xb + 2.85, 3.75, ["1", "", "∧"], fc=C_FILL)
-    _arrow(ax, (xb + 2.85 + 0.78, 3.75), (xb + 2.85 + 0.78, 3.15))
-    node(xb + 2.85, 2.6, ["0", "c", "∧"], fc=C_FILL2)
-    _arrow(ax, (xb + 2.85 + 3 * 0.78, 2.6 + 0.26),
-           (xb + 4.5, 2.6 + 0.26))
-    node(xb + 4.5, 2.6, ["0", "d", "∧"], fc=C_FILL2)
+    # 元素 (b, (c, d))：hp 表结点 → [b / (c,d)]
+    x2 = xa + W     # 第二个顶层表结点的 hp 格
+    b1 = cells(x2, y1, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (x2 + W / 2, yA), (x2 + W / 2, y1 + H))
+    # 这一层里 b 与 (c,d) 并排
+    y3 = 0.35
+    b2 = cells(x2, y3, ["0", "b", "∧"], fc=C_FILL2)
+    _arrow(ax, (x2 + W / 2, y1), (x2 + W / 2, y3 + H))
+    x3 = b2 + 0.35
+    c1 = cells(x3, y3, ["1", "", ""], fc=C_FILL)
+    _arrow(ax, (b2 + W / 2, y1), (b2 + W / 2, y3 + H)) if False else None
+    _arrow(ax, (x3 + W / 2, y1), (x3 + W / 2, y3 + H))
+    y4 = -0.85
+    c2 = cells(x3, y4, ["0", "c", "∧"], fc=C_FILL2)
+    _arrow(ax, (x3 + W / 2, y3), (x3 + W / 2, y4 + H))
+    x4 = c2 + 0.35
+    d1 = cells(x4, y4, ["0", "d", "∧"], fc=C_FILL2)
+    _arrow(ax, (c2, y4 + H / 2), (x4, y4 + H / 2))
 
-    # 第三层 (e)
-    xe = xs[2] + 0.78
-    _arrow(ax, (xe + 0.39, yA), (xe + 0.39, 5.45))
-    node(xe - 0.39, 4.9, ["1", "", "∧"], fc=C_FILL)
-    _arrow(ax, (xe + 0.39, 4.9), (xe + 0.39, 4.3))
-    node(xe - 0.39, 3.75, ["0", "e", "∧"], fc=C_FILL2)
+    # 元素 (e)：hp 表结点 → 原子结点
+    y5 = 1.55
+    e1 = cells(xb + W, y5, ["1", "∧"], fc=C_FILL)
+    _arrow(ax, (xb + W + W / 2, yA), (xb + W + W / 2, y5 + H))
+    y6 = 0.35
+    e2 = cells(xb + W, y6, ["0", "e", "∧"], fc=C_FILL2)
+    _arrow(ax, (xb + W + W / 2, y5), (xb + W + W / 2, y6 + H))
 
-    ax.text(0.1, 1.92, "（b）同层结点链表：有头结点，原子只占一个结点",
-            ha="left", va="center", fontsize=11, color=C_BASE)
-
-    # ---------- 下：同层结点链表 ----------
-    yB = 0.95
-    ax.text(0.14, yB + 0.26, "E", ha="left", va="center", fontsize=11,
-            color=C_TEXT)
-    node(0.85, yB, ["1", "∧"], fc=C_FILL)      # 头结点
-    _arrow(ax, (0.85 + 0.78, yB), (0.85 + 0.78, yB - 0.62))
-    # 头结点下面一层：a → (b,(c,d)) → (e)
-    x2 = 0.85
-    node(x2, yB - 1.14, ["0", "a", ""], fc=C_FILL2)
-    _arrow(ax, (x2 + 3 * 0.78, yB - 1.14 + 0.26),
-           (x2 + 2.55, yB - 1.14 + 0.26))
-    node(x2 + 2.55, yB - 1.14, ["1", "", ""], fc=C_FILL)
-    _arrow(ax, (x2 + 2.55 + 3 * 0.78, yB - 1.14 + 0.26),
-           (x2 + 5.1, yB - 1.14 + 0.26))
-    node(x2 + 5.1, yB - 1.14, ["1", "∧"], fc=C_FILL)
-    # (b,(c,d)) 的 hp → b / (c,d)
-    _arrow(ax, (x2 + 2.55 + 0.78, yB - 1.14), (x2 + 2.55 + 0.78, yB - 1.76))
-    node(x2 + 2.55, yB - 2.28, ["0", "b", ""], fc=C_FILL2)
-    _arrow(ax, (x2 + 2.55 + 3 * 0.78, yB - 2.28 + 0.26),
-           (x2 + 4.32, yB - 2.28 + 0.26))
-    node(x2 + 4.32, yB - 2.28, ["1", "∧"], fc=C_FILL)
-    _arrow(ax, (x2 + 4.32 + 0.78, yB - 2.28), (x2 + 4.32 + 0.78, yB - 2.9))
-    node(x2 + 4.32, yB - 3.42, ["0", "c", ""], fc=C_FILL2)
-    _arrow(ax, (x2 + 4.32 + 3 * 0.78, yB - 3.42 + 0.26),
-           (x2 + 6.1, yB - 3.42 + 0.26))
-    node(x2 + 6.1, yB - 3.42, ["0", "d", "∧"], fc=C_FILL2)
-    # (e)
-    _arrow(ax, (x2 + 5.1 + 0.78, yB - 1.14), (x2 + 5.1 + 0.78, yB - 1.76))
-    node(x2 + 5.1, yB - 2.28, ["0", "e", "∧"], fc=C_FILL2)
-
-    ax.text(9.85, 2.5,
-            "共同点：tp 链接同层结点，hp 链接内层结点\n\n"
-            "区别：\n"
-            "① 同层结点链表多了头结点\n"
-            "② 原子结点的值填到中间域，\n   所以每个原子只占一个结点",
+    ax.text(0.2, -1.75,
+            "关键：原子 a 下面挂的是「表结点 → 原子结点」两级；\n"
+            "空格是没用到/指向别处的域，∧ 表示空指针。",
             ha="left", va="center", fontsize=10, color=C_TXT2,
-            linespacing=1.9)
+            linespacing=1.8)
+
+    # =============================================== 下：同层结点链表
+    ax.text(0.2, -2.85,
+            "（b）同层结点链表：有头结点，原子结点的值填到中间域，每个原子只占一个结点",
+            ha="left", va="center", fontsize=12, color=C_BASE)
+
+    # 用固定列坐标排布：第 n 列的 x
+    COL = {1: 1.5, 2: 4.2, 3: 6.9, 4: 9.6, 5: 12.3, 6: 15.0, 7: 17.7}
+
+    yB = -4.0
+    cells(COL[1], yB, ["1", "∧"], fc=C_FILL)                    # 头结点
+    ax.text(0.9, yB + H / 2, "E", ha="left", va="center", fontsize=11,
+            color=C_TEXT)
+
+    y7 = -5.2
+    e1 = cells(COL[1], y7, ["0", "a", ""], fc=C_FILL2)          # 原子 a
+    _arrow(ax, (COL[1] + W / 2, yB), (COL[1] + W / 2, y7 + H))
+    _arrow(ax, (e1, y7 + H / 2), (COL[2], y7 + H / 2))
+    e2 = cells(COL[2], y7, ["1", "", ""], fc=C_FILL)            # (b,(c,d)) 容器
+    _arrow(ax, (e2, y7 + H / 2), (e2 + 0.55, y7 + H / 2))
+    _arrow(ax, (e2 + 0.55, y7 + H / 2), (COL[5], y7 + H / 2))
+    e3 = cells(COL[5], y7, ["1", "∧"], fc=C_FILL)               # (e) 容器
+
+    y8 = -6.4
+    f1 = cells(COL[2], y8, ["0", "b", ""], fc=C_FILL2)          # 原子 b
+    _arrow(ax, (COL[2] + W / 2, y7), (COL[2] + W / 2, y8 + H))
+    _arrow(ax, (f1, y8 + H / 2), (COL[3], y8 + H / 2))
+    f2 = cells(COL[3], y8, ["1", "∧"], fc=C_FILL)               # (c,d) 容器
+    g3 = cells(COL[5], y8, ["0", "e", "∧"], fc=C_FILL2)         # 原子 e
+    _arrow(ax, (COL[5] + W / 2, y7), (COL[5] + W / 2, y8 + H))
+
+    y9 = -7.6
+    h1 = cells(COL[4], y9, ["0", "c", ""], fc=C_FILL2)          # 原子 c
+    _arrow(ax, (COL[3] + W / 2, y8), (COL[4] + W / 2, y9 + H))
+    _arrow(ax, (h1, y9 + H / 2), (COL[5], y9 + H / 2))
+    h2 = cells(COL[5], y9, ["0", "d", "∧"], fc=C_FILL2)         # 原子 d
+
+    ax.text(0.2, -8.8,
+            "对照：同一层里 (b,(c,d)) 与 (e) 是兄弟，所以它们的原子结点也都排在下一层；\n"
+            "实际使用中每一层都会有头结点（此处只画了 E 指向的那个）。",
+            ha="left", va="center", fontsize=10, color=C_TXT2,
+            linespacing=1.8)
 
     fig.savefig(os.path.join(OUT, "ch5-5-广义表两种存储结构.png"),
                 bbox_inches="tight", facecolor="white")

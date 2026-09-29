@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "信号与系统/信号与系统.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "离散数学"
+              "title": "信号与系统"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "信号与系统/信号与系统.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,28 +235,29 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "大学物理（下）/大学物理（下）.md",
+    "大学物理（下）/imgs/ch7-7.5-螺线环.png",
+    "大学物理（下）/imgs/ch7-7.2-通电螺线管的磁感应线.png",
+    "大学物理（下）/imgs/ch7-7.2-直线电流的磁感应线.png",
+    "大学物理（下）/imgs/ch7-7.3-电流元产生的磁感应强度.png",
+    "大学物理（下）/imgs/ch7-7.3-长直载流导线的磁场.png",
+    "数字图像处理/数字图像处理.md",
     "人工智能引论/人工智能引论.md",
+    "大学物理（下）/imgs/ch7-7.5-长直螺线管内的磁感应强度.png",
+    "大学物理（下）/imgs/ch7-7.3-密绕直螺线管.png",
+    "大学物理（下）/imgs/ch7-7.5-无限长载流圆柱导体的磁场.png",
+    "大学物理（下）/imgs/ch7-7.5-电流在环路之外.png",
+    "大学物理（下）/imgs/ch7-7.5-电流穿过环路.png",
+    "大学物理（下）/imgs/ch7-7.5-安培环路定理的电流正负规定.png",
+    "离散数学/离散数学.md",
+    "大学物理（下）/大学物理（下）.md",
     "电力电子技术/电力电子技术.md",
     "概率统计/大数定律及中心极限定理.md",
     "计算机科学与技术导论/计算机科学与技术导论.md",
-    "离散数学/离散数学.md",
     "面向对象程序设计/面向对象程序设计.md",
-    "数字图像处理/数字图像处理.md",
     "AI编程与智能体开发/AI编程与智能体开发.md",
-    "面向对象程序设计/imgs/Pasted image 20260516161909.png",
     "信号与系统/信号与系统.md",
     "数据结构/数据结构实验题.md",
     "数据结构/数据结构.md",
-    "信号与系统/imgs/ch2-2.8-矩形卷积结果.png",
-    "信号与系统/imgs/ch2-2.7-卷积图解.png",
-    "大学物理（下）/imgs/ch6-3.4-例3场强叠加.png",
-    "大学物理（下）/imgs/ch6-3.4-例3平行板电容器.png",
-    "大学物理（下）/imgs/ch6-3.3-电容器的并联.png",
-    "大学物理（下）/imgs/ch6-3.3-电容器的串联.png",
-    "大学物理（下）/imgs/ch6-3.2-圆柱形电容器.png",
-    "大学物理（下）/imgs/ch6-3.2-球形电容器.png",
-    "大学物理（下）/imgs/ch6-3.2-平板电容器.png",
     "数据结构/imgs/make_figs.py",
     "数据结构/imgs",
     "未命名.base",
@@ -280,7 +281,6 @@
     "c-c-steady-wave.md",
     "数据结构与算法/未命名.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P2-2 - Huffman coding.md",
-    "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P7-5 - Image formation - Sampling & Qua.md",
     "未命名.canvas"
   ]
 }
