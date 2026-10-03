@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "人工智能引论/人工智能引论.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "人工智能引论"
+              "title": "大学物理（下）"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "人工智能引论/人工智能引论.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,6 +235,7 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
+    "人工智能引论/人工智能引论.md",
     "电力电子技术/电力电子技术.md",
     "大学物理（下）/大学物理（下）.md",
     "信号与系统/信号与系统.md",
@@ -244,7 +245,6 @@
     "大学物理（下）/imgs/ch7-7.3-电流元产生的磁感应强度.png",
     "大学物理（下）/imgs/ch7-7.3-长直载流导线的磁场.png",
     "数字图像处理/数字图像处理.md",
-    "人工智能引论/人工智能引论.md",
     "大学物理（下）/imgs/ch7-7.5-长直螺线管内的磁感应强度.png",
     "大学物理（下）/imgs/ch7-7.3-密绕直螺线管.png",
     "大学物理（下）/imgs/ch7-7.5-无限长载流圆柱导体的磁场.png",
