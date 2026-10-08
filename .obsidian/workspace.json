@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "离散数学"
+              "title": "大学物理（下）"
             }
           }
         ]
@@ -96,8 +96,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "离散数学/离散数学.md",
-                "collapseAll": true,
+                "file": "大学物理（下）/大学物理（下）.md",
+                "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": true,
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "离散数学/离散数学.md",
+                "file": "大学物理（下）/大学物理（下）.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -209,7 +209,8 @@
               "title": "Claudian"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -232,8 +233,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "fff26457a023daa0",
+  "active": "5d95e84e2df77862",
   "lastOpenFiles": [
+    "离散数学/离散数学.md",
     "大学物理（下）/大学物理（下）.md",
     "人工智能引论/人工智能引论.md",
     "电力电子技术/电力电子技术.md",
@@ -249,7 +251,6 @@
     "大学物理（下）/imgs/ch7-7.5-无限长载流圆柱导体的磁场.png",
     "大学物理（下）/imgs/ch7-7.5-电流在环路之外.png",
     "大学物理（下）/imgs/ch7-7.5-电流穿过环路.png",
-    "离散数学/离散数学.md",
     "概率统计/大数定律及中心极限定理.md",
     "计算机科学与技术导论/计算机科学与技术导论.md",
     "面向对象程序设计/面向对象程序设计.md",
