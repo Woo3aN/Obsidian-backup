@@ -96,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "概率统计/大数定律及中心极限定理.md",
+                "file": "离散数学/离散数学.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +106,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "大数定律及中心极限定理 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -209,8 +209,7 @@
               "title": "Claudian"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -233,7 +232,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e1d1df1a55660aff",
+  "active": "fff26457a023daa0",
   "lastOpenFiles": [
     "大学物理（下）/大学物理（下）.md",
     "人工智能引论/人工智能引论.md",
