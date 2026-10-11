@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大学物理（下）/大学物理（下）.md",
+                "file": "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "大学物理（下）"
+              "title": "OpenVLA - An Open-Source Vision-Language-Action Model"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "大学物理（下）/大学物理（下）.md",
+                "file": "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,11 +235,15 @@
   },
   "active": "038c0296299b0cb0",
   "lastOpenFiles": [
+    "具身智能/未命名/000_坚果云闪电下载介绍.html.nssyncsc",
+    "具身智能/未命名",
+    "具身智能/imgs",
+    "大学物理（下）/大学物理（下）.md",
+    "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
     "具身智能/Zotero Notes",
     "具身智能",
     "信号与系统/信号与系统.md",
     "信号与系统/imgs/ch1-1.2-抽样信号Sa.png",
-    "大学物理（下）/大学物理（下）.md",
     "离散数学/离散数学.md",
     "人工智能引论/人工智能引论.md",
     "电力电子技术/电力电子技术.md",
@@ -265,10 +269,7 @@
     "电力电子技术/imgs",
     "电力电子技术",
     "AI编程与智能体开发/imgs",
-    "AI编程与智能体开发",
-    "大学物理（下）/imgs/make_figs.py",
     "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
-    "大学物理（下）/imgs",
     "程序设计实践/contest-362-程序设计实践例题.md",
     "程序设计实践/程序设计实践例题-题解集.md",
     "数据结构与算法/数据结构与算法.md",
@@ -280,7 +281,6 @@
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P4-2 - Course logistics.md",
     "c-c-steady-wave.md",
     "数据结构与算法/未命名.md",
-    "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P2-2 - Huffman coding.md",
     "未命名.canvas"
   ]
 }
