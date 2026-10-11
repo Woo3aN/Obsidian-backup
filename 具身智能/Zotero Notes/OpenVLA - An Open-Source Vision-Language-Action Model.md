@@ -12,7 +12,7 @@ tags: [zotero, paper-note]
 
 > **一句话概述**：OpenVLA 是一个 70 亿参数、完全开源的视觉-语言-动作（VLA）模型，它把融合 DINOv2 与 SigLIP 视觉特征的 Llama 2 7B 视觉语言模型在 Open X-Embodiment 的 97 万条真实机器人演示上微调，从而成为能开箱即用控制多种机器人本体、并可借助 LoRA 等参数高效方法快速适配新任务的通用操作策略。(Kim 等, 2024)
 
-## 1 Introduction（引言）
+## 1 Introduction
 
 ### 1.1 要解决的问题：泛化不了
 
@@ -57,9 +57,40 @@ tags: [zotero, paper-note]
 - OpenVLA 基于 **Prismatic-7B** 这个 VLM，在它基础上做动作预测的微调；
 - 所以 VLA 的能力来源有两层：**底层是互联网预训练带来的视觉-语言先验**，**上层是机器人数据带来的动作知识**。
 
-## 3 The OpenVLA Model（模型）
+## 2 Related Work
 
-### 3.1 Preliminaries: Vision-Language Models（VLM 基础）
+论文把相关工作分成三支，每支都对应 OpenVLA 的一个设计取向：
+
+### 2.1 Visually-Conditioned Language Models
+
+视觉条件语言模型（VLM）在互联网规模数据上训练，能从输入图像 + 语言提示生成自然语言，已被用于视觉问答、物体定位等大量任务。近期 VLM 的关键进展是**用架构把预训练视觉编码器与预训练语言模型桥接起来**：
+
+- 早期工作探索过各种**交叉注意力（cross-attention）**方案；
+- 新一代开源 VLM 收敛到更简单的「**patch-as-token**」做法——把预训练视觉 Transformer 的 patch 特征**当作 token**，再投影进语言模型的输入空间。这种简洁性让大规模语言模型的训练工具可以直接复用到 VLM/VLA 训练上。
+
+OpenVLA 正是采用这类工具，并**具体选用 Karamcheti 等人的 VLM 作为预训练骨干**——因为它从多分辨率视觉特征训练，**融合了 DINOv2 的低层空间信息与 SigLIP 的高层语义**，有助于视觉泛化。
+
+### 2.2 Generalist Robot Policies
+
+机器人领域近期趋势是在大规模多样化机器人数据集上训练多任务「**通用策略（generalist policy）**」，覆盖多种机器人本体。最接近的是 **Octo**——同样能开箱控制多种机器人、支持灵活微调。
+
+**与 OpenVLA 的关键差别在模型架构**：Octo 这类先前工作通常把预训练组件（语言嵌入、视觉编码器）与**从零初始化**的额外组件拼起来，在策略训练中「缝合」它们；OpenVLA 则**更端到端**——直接微调 VLM，把机器人动作当作语言模型词表里的 token 来生成。实验证明这条简洁且可扩展的路线显著优于先前的通用策略。
+
+### 2.3 Vision-Language-Action Models
+
+已有不少工作把 VLM 用在机器人上——视觉状态表示、物体检测、高层规划、反馈信号等；也有工作把 VLM 直接集成进端到端操作策略，但往往**引入大量结构约束或要求标定相机**，限制了适用性。
+
+近期一批工作（RT-2 等）与本文思路类似：**直接微调大型预训练 VLM 来预测机器人动作**，这类模型即 VLA。它有三大好处：
+
+1. 在互联网规模的视觉-语言数据上完成了**预训练视觉与语言组件的对齐**；
+2. 采用**通用架构**（而非为机器人控制定制的架构），能直接复用现代 VLM 训练的可扩展基础设施，**以极小的代码改动扩展到十亿参数级策略**；
+3. 为机器人**打通了受益于 VLM 快速进步的通道**。
+
+与本文最接近的是 **RT-2-X**（55B，在 OpenX 上训练）。本文与它的差别在于：① 用**更强的开源 VLM 骨干 + 更丰富的机器人数据**，以十分之一的参数量反超；② **深入研究了微调**（RT-2-X 完全不涉及微调场景）；③ 首次验证了现代**参数高效微调与量化**方法对 VLA 的有效性；④ OpenVLA 是**首个开源的通用 VLA**。
+
+## 3 The OpenVLA Model
+
+### 3.1 Preliminaries: Vision-Language Models
 
 > [!important] 三大件（对应论文 Fig. 2）
 > ```text
@@ -110,7 +141,7 @@ OpenVLA 具体基于 **Prismatic-7B**：**600M 视觉编码器 + 2 层 MLP 投�
 
 模型通常在 GPU / 服务器上跑，机器人只是执行端。论文还专门提供了**远程推理服务器**，让本地算力不足时也能实时把动作预测流式传给机器人。
 
-### 3.2 OpenVLA Training Procedure（训练流程与动作 token 化）
+### 3.2 OpenVLA Training Procedure
 
 OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入一张观测图像 + 一条自然语言任务指令，输出一串预测的机器人动作。要让语言模型能输出动作，就得把**连续动作映射成 token**。
 
@@ -172,7 +203,7 @@ OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入�
 
 **预测出动作 token 之后**，再**解码回连续动作**（Action De-Tokenizer），交给机器人控制器执行。
 
-### 3.3 Training Data（训练数据）
+### 3.3 Training Data
 
 以 **Open X-Embodiment（OpenX）** 为基座——当时含 **70+ 个机器人数据集、200 万+ 条轨迹**，由社区统一成了一套易用格式。为让训练可行，做了多步清洗：
 
@@ -182,7 +213,7 @@ OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入�
 
 最终得到约 **970k** 条机器人 episode（对比 RT-2-X 用的 350k）。
 
-### 3.4 OpenVLA Design Decisions（关键设计决策）
+### 3.4 OpenVLA Design Decisions
 
 论文在正式训练前用小规模实验（先在 BridgeData V2 上跑）探索了几个设计点：
 
@@ -197,15 +228,28 @@ OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入�
 > [!warning] 「必须微调视觉编码器」和 VLM 的结论相反
 > 直觉上冻结视觉编码器能更好保留互联网预训练学到的鲁棒特征，**VLM 领域的研究也确实发现冻结更好**。但论文发现 VLA 训练中**微调视觉编码器至关重要**——推测原因是：预训练的视觉骨干**不足以捕捉机器人精确控制所需的细粒度空间细节**。
 
-### 3.5 Infrastructure for Training and Inference（训练与推理基础设施）
+### 3.5 Infrastructure for Training and Inference
 
 - **训练**：64 张 A100 × 14 天 ≈ **21,500 A100-hours**，batch size 2048；
 - **推理**：bfloat16 精度约需 **15 GB** 显存，单张 **RTX 4090 上约 6 Hz**（未编译、未用投机采样等加速手段）；
 - **远程推理服务器**：可实时把动作预测流式传给机器人，**不需要本地有强大算力设备**也能控制机器人。
 
-## 5 Experiments（实验）
+## 4 The OpenVLA Codebase
 
-### 5.1 Direct Evaluations on Multiple Robot Platforms（多平台直接评测）
+论文随模型一起开源了 OpenVLA 代码库——一个用于训练 VLA 的**模块化 PyTorch 代码库**（https://openvla.github.io）：
+
+- **可伸缩**：从在单张 GPU 上微调 VLA，到在多节点 GPU 集群上训练十亿参数级 VLA；
+- **支持现代大模型训练技术**：自动混合精度（AMP）、FlashAttention、全分片数据并行（FSDP）；
+- **开箱即用**：完整支持在 Open X 数据集上训练，与 HuggingFace 的 `AutoModel` 类集成，并支持 **LoRA 微调**与**量化模型推理**。
+
+## 5 Experiments
+
+> [!info] 本节要回答的三个问题
+> 1. 在多机器人与多类泛化设定下，OpenVLA 相比先前的通用策略表现如何？
+> 2. OpenVLA 能否被有效微调到新的机器人设置与任务，相比数据高效的模仿学习方法如何？
+> 3. 能否用参数高效微调与量化降低训练 / 推理的算力需求，使其更易获取？性能与算力的权衡如何？
+
+### 5.1 Direct Evaluations on Multiple Robot Platforms
 
 在 **WidowX**（BridgeData V2，17 任务 ×10 试次 = **170 次推演**）和 **Google Robot**（12 任务 ×5 试次 = **60 次推演**）上做「开箱即用」评测，覆盖四类泛化轴：
 
@@ -233,7 +277,7 @@ OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入�
 >
 > 而语义泛化不如 RT-2-X，是因为 RT-2-X 用了**更大规模互联网数据**，且**机器人数据与互联网数据联合微调**以保留预训练知识；OpenVLA 为求简单**只用机器人数据微调**。
 
-### 5.2 Data-Efficient Adaptation to New Robot Setups（新机器人上的数据高效适配）
+### 5.2 Data-Efficient Adaptation to New Robot Setups
 
 在 **Franka-Tabletop**（固定桌面 Franka，5 Hz 控制）与 **Franka-DROID**（可移动桌 Franka，15 Hz 控制）上，用每任务 **10–150 条演示**做全量微调：
 
@@ -241,7 +285,7 @@ OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入�
 - **OpenVLA** 在**涉及多物体、需要语言接地的多样多指令任务**上更好——OpenX 预训练让它更能适应这类任务（「从零微调」的消融版本 OpenVLA-Scratch 表现明显更差，印证了这点）；
 - **OpenVLA 是唯一在所有测试任务上都达到 ≥50% 成功率的方案**，适合作为模仿学习任务的**默认选择**（尤其当指令多样时）。
 
-### 5.3 Parameter-Efficient Fine-Tuning（参数高效微调）
+### 5.3 Parameter-Efficient Fine-Tuning
 
 全量微调每个任务要 8 张 A100 跑 5–15 小时。论文进一步探索更省算力的方案：
 
@@ -260,7 +304,7 @@ OpenVLA 把**动作预测形式化为一个「视觉-语言」任务**：输入�
 - **LoRA 达到最佳的性能-算力权衡**：仅训练 **1.4%** 参数即匹配全量微调，单张 A100 上 10–15 小时完成，算力约为全量微调的 **1/8**；
 - **LoRA rank 影响可忽略**，推荐默认 **r = 32**。
 
-### 5.4 Memory-Efficient Inference via Quantization（量化推理）
+### 5.4 Memory-Efficient Inference via Quantization
 
 OpenVLA 作为 7B 模型，推理显存远大于 Octo 这类 <100M 的模型，因此探索量化来降低部署门槛：
 
@@ -273,48 +317,48 @@ OpenVLA 作为 7B 模型，推理显存远大于 Octo 这类 <100M 的模型，�
 > [!warning] 为什么 8-bit 量化反而最差
 > 8-bit 量化**因额外的量化算子开销拖慢了推理速度**——评测用的 A5000 上只能跑到 **1.2 Hz**，而 BridgeData V2 任务用的是 **5 Hz 非阻塞控制器**。速度大幅下降**显著改变了系统动力学**，成功率因此掉到 58.1%。
 > **4-bit 反而更快**（显存传输减少补偿了量化开销，A5000 上可达 3 Hz），性能与 bfloat16 相当，显存减半以上。
-> **附录 D.4 反证**：改用**阻塞控制（blocking control）**、把推理速度的影响剥离后，8-bit 与 bfloat16、4-bit 表现相当 → 确认掉点原因是**推理速度**而非精度本身。
+> **附录 D.4 反证**：改用**阻塞控制（blocking control）**、把推理速度的影响剥离后，8-bit 与 bfloat16、4-bit 表现相当 → 确认掉点原因是**推理速度**而非精度本身（见 D.4）。
 
-## 6 Discussion and Limitations（讨论与局限）
+## 6 Discussion and Limitations
 
 - **只支持单张图像观测**——现实机器人设置是异构的，扩展到多图像、本体感知（proprioceptive）与观测历史是重要方向；
 - **推理吞吐不足**——约 6 Hz，**无法支持 ALOHA 这类 50 Hz 高频控制**（也就不适合更灵巧的双臂操作）；需要动作分块（action chunking）或投机采样（speculative decoding）等加速手段；
 - **可靠性有限**——测试任务上通常 **< 90%** 成功率；
 - **受算力限制，许多设计问题未探索**：基座 VLM 的规模对 VLA 性能有何影响？机器人动作数据与互联网视觉语言数据共训练是否有帮助？什么样的视觉特征最适合 VLA？
 
-## Appendix（附录要点）
+## Appendix
 
-### D. Ablations（消融）
+### A Data Mixture Details
+
+完整数据混合表（见论文 Table 3）：主要沿用 Octo 的权重，并加入若干新数据集——**Fractal 12.7%、Kuka 12.7%、Bridge 13.3%、BC-Z 7.5%、FMB 7.1%、DROID 10.0%**（DROID 在最后三分之一阶段被移除、权重重新分配）等。
+
+### B Evaluation Tasks and Detailed Results
+
+WidowX / Google Robot / Franka 各任务的详细设置、初始化差异、部分得分规则与逐任务结果（论文 Table 4–8）。其中值得记的一点：评测环境的机器人、水槽、相机位置与原始 BridgeData V2 训练环境**并不完全一致**，天然存在分布偏移，这正是评测「泛化」的前提。
+
+### C RT-2-X vs. OpenVLA in BridgeData V2 Evaluations
+
+论文发现原始 BridgeData V2 里**大量存在全零（no-op）动作**——每条演示的第一个时间步都记录成全零。直接在未清洗数据上训练高表达力的 VLA，会让策略学成**频繁输出全零动作、在评测中「僵住」**。OpenVLA 的做法是**直接过滤掉每条演示的第一个 transition**；而 RT-2-X 未做此预处理，于是改用「**总是查询第二可能的动作**」来规避僵住问题。
+
+### D Additional Experiments and Ablations
 
 | 消融项 | 结果 | 结论 |
 |---|---|---|
 | **去掉 OpenX 预训练**（只训 Bridge） | 绝对成功率降约 **30%** | OpenX 预训练影响**最大** |
 | **去掉 DINOv2**（只用 SigLIP） | 降约 **5%** | 融合编码器有增益，但不如 OpenX 训练关键 |
 | **冻结视觉编码器** | **80.0% vs 46.7%** | 微调视觉编码器显著更优 |
-| **阻塞控制下量化** | 8-bit / 4-bit / bfloat16 相当 | 印证 §5.4 的推断 |
 
-### A / B / C / E（其余附录）
+**D.4 量化推理的剥离实验**：改用**阻塞控制（blocking control）**——每个动作完全执行后才预测下一个——把推理速度的影响剥离后，8-bit 与 bfloat16、4-bit 表现相当，**印证了 §5.4 的推断**：8-bit 掉点是推理速度而非精度本身。
 
-- **A**：完整数据混合表（主要沿用 Octo 权重，并加入 DROID 等）；
-- **B**：WidowX / Google Robot / Franka 各任务的设置、初始化差异、部分得分规则与逐任务结果；
-- **C**：RT-2-X 对比中对 Bridge 数据集全零动作问题的处理方式；
-- **E**：LIBERO 仿真中微调 OpenVLA 取得最高平均成功率（**76.5%**）与最佳平均排名，但相对其他方法的领先幅度小于真实世界微调（归因于纯真实数据预训练与仿真域之间的 gap）。
+### E LIBERO Simulation Experiments
 
-## 附：五组关键数字（速记）
-
-| 数字 | 含义 |
-|---|---|
-| **7B / 970k / 16.5%** | 参数量 / 训练轨迹数 / 相对 RT-2-X 的绝对成功率提升 |
-| **256 bin / 1%–99% 分位** | 动作离散化的 bin 数与分位区间（避离群值） |
-| **64×A100×14 天 ≈ 21,500 A100-hours** | 训练成本 |
-| **1.4% / r=32 / 1/8** | LoRA 可训练参数占比 / 推荐 rank / 相对全量微调的算力比 |
-| **int4 → 71.9% / 7.0 GB** | 4-bit 量化性能与显存（对比 bfloat16 的 71.3% / 16.8 GB） |
+在 **LIBERO** 仿真基准（Spatial / Object / Goal / Long 四个任务套件）上微调，OpenVLA 取得**最高平均成功率 76.5%** 与最佳平均排名，但**相对其他方法的领先幅度小于真实世界微调**——归因于 OpenVLA 只用**纯真实世界数据**预训练，与仿真域之间存在 gap。
 
 ## My Notes（我的疑问 / 待查）
 
 - [ ] 
 - [ ] 
 
-## References（参考文献）
+## References
 
 - Kim, M. J., Pertsch, K., Karamcheti, S., et al. (2024). *OpenVLA: An Open-Source Vision-Language-Action Model*. arXiv:2406.09246. https://doi.org/10.48550/arXiv.2406.09246
