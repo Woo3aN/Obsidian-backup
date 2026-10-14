@@ -193,12 +193,14 @@ def fig_sa():
     ax.text(np.pi * 3, -0.075, r"$3\pi$", ha="center", va="top", fontsize=8)
     ax.text(np.pi, -0.075, r"$\pi$", ha="center", va="top", fontsize=8)
     ax.text(-np.pi, -0.075, r"$-\pi$", ha="center", va="top", fontsize=8)
-    ax.text(0.12, 1.0, r"$\mathrm{Sa}(0)=1$", ha="left", va="center", fontsize=9)
     ax.plot([0], [1], marker="o", ms=3.4, color=BLUE)
     ax.plot([-np.pi, np.pi], [0, 0], marker="o", ms=3.4, color=BLUE)
     ax.text(11.5, 0.03, "$t$", ha="right", va="bottom", fontsize=10)
-    ax.text(0.15, 1.2, r"$\mathrm{Sa}(t)=\dfrac{\sin t}{t}$", ha="left",
-            va="top", fontsize=10.5)
+    # 两个标注必须分开。原来都落在 (0.1, 1.0) 与 (0.15, 1.2)，
+    # 渲染时叠在一起，读出来成了「Sa(t) ≡ 1·sin t/t」这种不存在的式子。
+    ax.text(-11.3, 1.05, r"$\mathrm{Sa}(t)=\dfrac{\sin t}{t}$", ha="left",
+            va="center", fontsize=10.5)
+    ax.text(2.0, 1.12, r"$\mathrm{Sa}(0)=1$", ha="left", va="center", fontsize=8.8)
     save(fig, "ch1-1.2-抽样信号Sa.png")
 
 
@@ -405,18 +407,26 @@ def fig_step_rect():
     ax = axes[1]
     axis(ax, (-1.3, 3.4), (-0.4, 1.7), xlabel="t", xat=0)
     ax.plot([-1.2, 0, 0, 2, 2, 3.2], [0, 0, 1, 1, 0, 0], color=BLUE, lw=1.7)
-    ticks(ax, xs=[2], ys=[1], xat=0)
-    ax.text(1.0, -0.33, "$T$", fontsize=8.5)
+    ticks(ax, ys=[1], xat=0)
+    # 脉冲画在 0~2，右沿就是 T。原来把数字刻度「2」打在 x=2、又把「T」写在 x=1（脉冲中点），
+    # 与 $R_T(t)=u(t)-u(t-T)$（宽度为 T）自相矛盾。
+    ax.text(2, -0.30, "$T$", fontsize=9, ha="center", va="top")
+    ax.annotate("", xy=(0, 0.42), xytext=(2, 0.42),
+                arrowprops=dict(arrowstyle="<|-|>", color=GREEN, lw=1.0, mutation_scale=9))
+    ax.text(1.0, 0.50, "宽度 $T$", fontsize=8, color=GREEN, ha="center")
     ax.set_title("矩形脉冲 $R_T(t)=u(t)-u(t-T)$", fontsize=9, pad=3)
 
     ax = axes[2]
-    axis(ax, (-1.3, 3.4), (-0.4, 1.7), xlabel="t", xat=0)
-    ax.plot([-1.2, 0.6, 0.6, 2.6, 2.6, 3.2], [0, 0, 1, 1, 0, 0], color=BLUE, lw=1.7)
+    # 对称矩形脉冲必须关于纵轴对称。原来画在 0.6~2.6，整段跑到 y 轴右边，
+    # 跟「对称」和 $G_T(t)=u(t+T/2)-u(t-T/2)$ 都对不上。
+    axis(ax, (-1.9, 3.4), (-0.4, 1.7), xlabel="t", xat=0)
+    ax.plot([-1.8, -1, -1, 1, 1, 3.2], [0, 0, 1, 1, 0, 0], color=BLUE, lw=1.7)
     ticks(ax, ys=[1], xat=0)
-    ax.text(1.6, -0.33, "$T$", fontsize=8.5, ha="center")
-    ax.annotate("", xy=(0.6, 0.45), xytext=(2.6, 0.45),
+    ax.text(-1, -0.30, "$-T/2$", fontsize=8.5, ha="center", va="top")
+    ax.text(1, -0.30, "$T/2$", fontsize=8.5, ha="center", va="top")
+    ax.annotate("", xy=(-1, 0.42), xytext=(1, 0.42),
                 arrowprops=dict(arrowstyle="<|-|>", color=GREEN, lw=1.0, mutation_scale=9))
-    ax.text(1.6, 0.52, "宽度", fontsize=8, color=GREEN, ha="center")
+    ax.text(0, 0.50, "宽度 $T$", fontsize=8, color=GREEN, ha="center")
     ax.set_title("对称矩形脉冲 $G_T(t)$", fontsize=9, pad=3)
 
     fig.tight_layout(w_pad=0.7)
@@ -581,7 +591,8 @@ def fig_even_odd():
     ax.plot([-1, 1], [1, 1], color=RED, lw=2.2)
     ticks(ax, xs=[-1, 1], ys=[1], xat=0)
     ax.text(-1.55, 2.3, "$f_e(t)=\\frac{1}{2}[f(t)+f(-t)]$", fontsize=8.5)
-    ax.text(0, -1.15, "偶分量：关于纵轴对称", fontsize=8.2, color=RED, ha="center")
+    ax.text(0, 1.85, "偶分量：关于纵轴对称", fontsize=8.2, color=RED,
+            ha="center", va="center")
     ax.set_title("$f_e(t)$", fontsize=9.5, pad=3)
 
     ax = axes[2]
@@ -589,7 +600,8 @@ def fig_even_odd():
     ax.plot(t, np.where(np.abs(t) <= 1, t, 0), color=RED, lw=2.0)
     ticks(ax, xs=[-1, 1], ys=[1, -1], xat=0)
     ax.text(-1.55, 2.3, "$f_o(t)=\\frac{1}{2}[f(t)-f(-t)]$", fontsize=8.5)
-    ax.text(0, -1.15, "奇分量：关于原点对称", fontsize=8.2, color=RED, ha="center")
+    ax.text(1.05, -1.15, "奇分量：\n关于原点对称", fontsize=8.2, color=RED,
+            ha="center", va="top")
     ax.set_title("$f_o(t)$", fontsize=9.5, pad=3)
 
     fig.tight_layout(w_pad=0.8)

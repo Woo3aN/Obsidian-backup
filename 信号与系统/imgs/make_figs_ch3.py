@@ -110,7 +110,8 @@ def fig_spectrum():
     ax.annotate(r"$c_0$", xy=(0, 1.0), xytext=(-0.42, 1.02), fontsize=8.5)
     ax.annotate(r"$c_1$", xy=(1.0, cs[0]), xytext=(0.62, cs[0] - 0.13), fontsize=8.5)
     ax.annotate(r"$c_2$", xy=(2.0, cs[1]), xytext=(2.1, cs[1] + 0.03), fontsize=8.5)
-    ax.annotate(r"$c_3$", xy=(3.0, cs[2]), xytext=(2.72, cs[2] + 0.06), fontsize=8.5)
+    ax.annotate(r"$c_3$", xy=(3.0, cs[2]), xytext=(3.22, cs[2] + 0.16), fontsize=8.5,
+                arrowprops=dict(arrowstyle="-", color="#999", lw=0.7))
     axes_arrows(ax, "", r"$c_n$", (-1.05, 7.0), (-0.08, 1.18))
     ax.set_yticks([0, 0.5, 1])
     ax.tick_params(labelsize=8)
@@ -122,8 +123,11 @@ def fig_spectrum():
     ax.plot(ws, ph, "o", color=RED, ms=3.4)
     ax.axhline(-np.pi, color="#333", lw=1.0, ls=":")
     ax.set_yticks([-np.pi, 0])
-    ax.set_yticklabels([r"$-\pi$", "0"])
+    # 横轴刻度序列里本来就有原点那个 0，纵轴再标一个会和它挤在一起 —— 纵轴只留 −π
+    ax.set_yticklabels([r"$-\pi$", ""])
     axes_arrows(ax, r"$\omega$", r"$\varphi_n$", (-1.05, 7.0), (-3.9, 1.4))
+    ax.set_xlabel(r"$\omega$", fontsize=9, loc="right")
+    ax.yaxis.set_label_coords(-0.055, 0.45)
     ax.set_xticks([0, 1, 2, 3, 4, 5, 6])
     ax.set_xticklabels(["0", r"$\omega_1$", r"$2\omega_1$", r"$3\omega_1$",
                         r"$4\omega_1$", r"$5\omega_1$", r"$6\omega_1$"])
@@ -298,15 +302,17 @@ def fig_parseval():
     fig, ax = plt.subplots(figsize=(7.4, 3.4))
     ws = np.arange(0, 7) * 1.0
     cs = np.abs(np.sinc(ws / np.pi))
-    p = np.array([cs[0] ** 2] + [0.5 * c ** 2 for c in cs[1:]])
-    ax.bar(ws + 0.42, p, width=0.34, color=BLUE, label=r"各次谐波功率 $\frac{1}{2}c_n^2$")
-    ax.bar(ws, cs ** 2, width=0.34, color=GRAY, alpha=0.75,
-           label=r"幅度平方 $c_n^2$（仅作对照）")
-    ax.bar([0], [1.0], width=0.34, color=RED, label=r"直流功率 $c_0^2$")
+    # 直流项是 c_0²、各次谐波项是 ½c_n² —— 两者公式不同，不能塞进同一根柱子。
+    # 原来还多画了一组「幅度平方 c_n²（仅作对照）」，既是干扰项（让人以为每个谐波有两个功率），
+    # 又在 ω=0 处和直流红柱完全重叠。
+    dc = float(cs[0] ** 2)
+    harm = np.array([0.5 * c ** 2 for c in cs[1:]])
+    ax.bar([0], [dc], width=0.42, color=RED, label=r"直流功率 $c_0^2$")
+    ax.bar(ws[1:], harm, width=0.42, color=BLUE, label=r"各次谐波功率 $\frac{1}{2}c_n^2$")
     ax.annotate("总平均功率 $P=\\overline{f^2(t)}$\n= 各分量功率之和",
                 xy=(3.4, 0.10), xytext=(3.3, 0.72), fontsize=8.6, color=GREEN,
                 arrowprops=dict(arrowstyle="-|>", color=GREEN, lw=1.0))
-    ax.set_xticks(ws + 0.2)
+    ax.set_xticks(ws)
     ax.set_xticklabels(["0", r"$\omega_1$", r"$2\omega_1$", r"$3\omega_1$",
                         r"$4\omega_1$", r"$5\omega_1$", r"$6\omega_1$"], fontsize=8)
     ax.set_xlabel(r"$\omega$", fontsize=9)
