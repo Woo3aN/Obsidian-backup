@@ -114,6 +114,9 @@ def fig_spectrum():
                 arrowprops=dict(arrowstyle="-", color="#999", lw=0.7))
     axes_arrows(ax, "", r"$c_n$", (-1.05, 7.0), (-0.08, 1.18))
     ax.set_yticks([0, 0.5, 1])
+    # 纵轴刻度写 "1.0" 会和 ylabel「c_n」挤在一起 —— 缩短成 "1"，并把 ylabel 挪到轴外侧
+    ax.set_yticklabels(["0", "0.5", "1"])
+    ax.yaxis.set_label_coords(-0.055, 0.62)
     ax.tick_params(labelsize=8)
     ax.set_title("单边幅度谱（各频率分量幅度 $c_n$）", fontsize=9.5, pad=6)
 
@@ -249,7 +252,10 @@ def fig_rect_pulse_spectrum():
     env = env_h * np.abs(np.sinc(w * tau1 / (2 * np.pi)))
     wn = np.arange(-13, 14) * w1
     wn = wn[np.abs(wn) <= 13.0]
-    Fn = env_h * np.sinc(wn * tau1 / (2 * np.pi))
+    # 幅度谱的谱线按定义必须非负，所以要取模、让顶点落在包络线上。
+    # 原来用的是带符号的 Sa：过了第一个过零点（2π/τ）谱线就朝下，而包络（取过绝对值）朝上，两者对不上。
+    # 负号不是丢掉 —— 它转到相位谱上去了（见笔记 §3.8 第三步）。
+    Fn = env_h * np.abs(np.sinc(wn * tau1 / (2 * np.pi)))
     ax.plot(w, env, color="#333", lw=1.0, ls=":", label="包络线")
     ax.vlines(wn, 0, Fn, color=BLUE, lw=1.5)
     ax.vlines(0, 0, env_h, color=BLUE, lw=2.2)
@@ -272,8 +278,10 @@ def fig_rect_pulse_spectrum():
     ax.set_xticklabels(["0", r"$\omega_1$", r"$-\omega_1$", r"$2\omega_1$", r"$-2\omega_1$"],
                        fontsize=8)
     ax.legend(fontsize=8, loc="upper right", frameon=False, handlelength=1.5)
-    axes_arrows(ax, r"$\omega$", r"$F_n$", (-14.2, 14.8), (-0.30, 0.95))
-    ax.set_title("(b) 它的频谱：包络线 + 等间隔谱线", fontsize=9.3)
+    axes_arrows(ax, r"$\omega$", r"$|F_n|$", (-14.2, 14.8), (-0.30, 0.95))
+    ax.set_xlabel(r"$\omega$", fontsize=9, loc="right")
+    ax.yaxis.set_label_coords(-0.055, 0.72)
+    ax.set_title("(b) 它的幅度谱：包络线 + 等间隔谱线", fontsize=9.3)
 
     # (c) 脉宽与包络宽度
     ax = fig.add_subplot(gs[0, 2])
@@ -290,6 +298,8 @@ def fig_rect_pulse_spectrum():
                     fontsize=8.5, color=c)
     ax.legend(fontsize=8, loc="upper right", frameon=False, handlelength=1.5)
     axes_arrows(ax, r"$\omega$", "归一化包络", (-14.2, 14.8), (-0.12, 1.18))
+    ax.set_xlabel(r"$\omega$", fontsize=9, loc="right")
+    ax.yaxis.set_label_coords(-0.075, 0.58)
     ax.set_yticks([0, 1])
     ax.set_title("(c) 脉宽越窄，包络越宽\n（时宽 × 带宽 ∝ 常数）", fontsize=9.3)
     ax.tick_params(labelsize=8)
