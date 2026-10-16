@@ -704,6 +704,143 @@ def fig_glist_two_storage():
     plt.close(fig)
 
 
+# ------------------------------------------- 图 11 树的基本术语（树的定义和术语）
+def fig_tree_terms():
+    fig, ax = plt.subplots(figsize=(10.6, 6.0), dpi=150)
+    ax.set_xlim(-3.0, 22.4)
+    ax.set_ylim(0.3, 6.9)
+    ax.axis("off")
+
+    R = 0.36
+
+    def nd(x, y, s, fc=C_FILL, fs=10.5):
+        ax.add_patch(Circle((x, y), R, fc=fc, ec=C_LINE, lw=1.3, zorder=3))
+        ax.text(x, y, s, ha="center", va="center", fontsize=fs,
+                color=C_TEXT, zorder=4)
+
+    def lk(a, b):
+        ax.plot([a[0], b[0]], [a[1], b[1]], color=C_LINE, lw=1.15,
+                zorder=1, solid_capstyle="round")
+
+    # 课件 P4 的树：A(B(E(K,L),F), C(G(M,N)), D(H,I,J))
+    P = {
+        "A": (8.0, 5.5),
+        "B": (4.4, 4.1), "C": (8.0, 4.1), "D": (12.4, 4.1),
+        "E": (2.9, 2.7), "F": (6.1, 2.7), "G": (8.0, 2.7),
+        "H": (11.2, 2.7), "I": (13.4, 2.7), "J": (15.6, 2.7),
+        "K": (1.9, 1.3), "L": (3.9, 1.3), "M": (7.1, 1.3), "N": (9.1, 1.3),
+    }
+    for a, b in [("A", "B"), ("A", "C"), ("A", "D"),
+                 ("B", "E"), ("B", "F"), ("C", "G"),
+                 ("D", "H"), ("D", "I"), ("D", "J"),
+                 ("E", "K"), ("E", "L"), ("G", "M"), ("G", "N")]:
+        lk(P[a], P[b])
+    for k, v in P.items():
+        nd(v[0], v[1], k)
+
+    # 左侧层次标注
+    for lvl, y in [(1, 5.5), (2, 4.1), (3, 2.7), (4, 1.3)]:
+        ax.text(-0.55, y, f"第 {lvl} 层", ha="right", va="center",
+                fontsize=10, color=C_TXT2)
+
+    ax.text(8.0, 6.45, "根（root）", ha="center", va="center",
+            fontsize=10.5, color=C_TOP)
+    ax.annotate("", xy=(8.0, 5.88), xytext=(8.0, 6.26),
+                arrowprops=dict(arrowstyle="-|>", color=C_TOP, lw=1.3))
+
+    # 右侧说明
+    ax.text(17.2, 6.35, "基本术语速查", ha="left", va="center",
+            fontsize=11.5, color=C_BASE)
+    ax.text(17.2, 3.85,
+            "· 结点的度 = 往下长出的子树棵数\n"
+            "  A 的度 = 3，B 的度 = 2\n"
+            "  树的度 = 各结点度的最大值 = 3\n\n"
+            "· 度 = 0 的结点叫叶子（终端结点）\n"
+            "  H、I、J、K、L、M、N 都是叶子\n\n"
+            "· B、C、D 是 A 的孩子，A 是它们的双亲\n"
+            "  B、C、D 互称兄弟\n\n"
+            "· 双亲同在一层的结点互称堂兄弟\n"
+            "  E、F、G、H、I、J 是堂兄弟\n\n"
+            "· 树的深度（高度）= 最大层次值 = 4",
+            ha="left", va="center", fontsize=10, color=C_TXT2,
+            linespacing=1.7)
+
+    ax.text(-3.0, 0.55,
+            "说明：结点的度只数「向下长出去几条枝」，连到双亲的那一根不算；"
+            "从根到任一结点的路径有且只有一条。",
+            ha="left", va="center", fontsize=9.8, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch6-1-树的基本术语.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+# -------------------------------- 图 12 满二叉树 / 完全二叉树 / 非完全二叉树
+def fig_full_vs_complete():
+    fig, ax = plt.subplots(figsize=(11.4, 4.9), dpi=150)
+    ax.set_xlim(0, 30.4)
+    ax.set_ylim(-1.3, 6.9)
+    ax.axis("off")
+
+    R = 0.30
+    DX, DY, Y0 = 0.72, 1.15, 0.9
+
+    def build(x0, drop4=()):
+        """返回 (结点坐标字典, 边列表, 被抹掉的底层序号)。"""
+        lv4 = [(x0 + i * DX, Y0) for i in range(8)]
+        lv3 = [((lv4[2 * i][0] + lv4[2 * i + 1][0]) / 2, Y0 + DY)
+               for i in range(4)]
+        lv2 = [((lv3[2 * i][0] + lv3[2 * i + 1][0]) / 2, Y0 + 2 * DY)
+               for i in range(2)]
+        lv1 = [((lv2[0][0] + lv2[1][0]) / 2, Y0 + 3 * DY)]
+
+        nodes, edges = {}, []
+        nodes[1] = lv1
+        nodes[2] = lv2
+        nodes[3] = lv3
+        nodes[4] = lv4
+        for i in range(2):
+            edges.append((lv1[0], lv2[i]))
+        for i in range(4):
+            edges.append((lv2[i // 2], lv3[i]))
+        for i in range(8):
+            if i in drop4:
+                continue
+            edges.append((lv3[i // 2], lv4[i]))
+        return nodes, edges, drop4
+
+    def panel(x0, title, sub, drop4=()):
+        nodes, edges, d4 = build(x0, drop4=drop4)
+        for a, b in edges:
+            ax.plot([a[0], b[0]], [a[1], b[1]], color=C_LINE, lw=1.05,
+                    zorder=1, solid_capstyle="round")
+        for lvl, pts in nodes.items():
+            for i, (x, y) in enumerate(pts):
+                if lvl == 4 and i in d4:
+                    continue
+                fc = C_FILL2 if lvl == 4 else C_FILL
+                ax.add_patch(Circle((x, y), R, fc=fc, ec=C_LINE,
+                                    lw=1.1, zorder=3))
+        cx = (nodes[4][0][0] + nodes[4][7][0]) / 2
+        ax.text(cx, 6.35, title, ha="center", va="center", fontsize=11.5,
+                color=C_BASE)
+        ax.text(cx, 5.85, sub, ha="center", va="center", fontsize=10,
+                color=C_TXT2)
+
+    panel(1.6, "满二叉树（k = 4）", "每层都挂满 → 共 15 个结点（$2^4-1$）")
+    panel(11.6, "完全二叉树", "抹掉编号 15 → 前 14 个结点一一对应", drop4=(7,))
+    panel(21.6, "非完全二叉树", "抹掉的是中间某个 → 编号不连续", drop4=(5,))
+
+    ax.text(0.1, -0.85,
+            "完全二叉树 = 在满二叉树上「从最后一个结点往前挨着抹」抹出来的任意一棵；"
+            "逆序抹、跳着抹出来的都不是。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch6-2-满二叉树与完全二叉树.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_seq_stack()
     fig_stack_states()
@@ -715,4 +852,6 @@ if __name__ == "__main__":
     fig_next_meaning()
     fig_fast_transpose()
     fig_glist_two_storage()
+    fig_tree_terms()
+    fig_full_vs_complete()
     print("figures written to", OUT)
