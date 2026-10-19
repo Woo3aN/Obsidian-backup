@@ -843,42 +843,42 @@ def fig_full_vs_complete():
 
 # ------------------------------------------- 图 13 编号（1 起）vs 下标（0 起）
 def fig_index_vs_number():
-    fig, ax = plt.subplots(figsize=(8.6, 6.0), dpi=150)
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0.5, 7.9)
+    fig, ax = plt.subplots(figsize=(12.0, 5.4), dpi=150)
+    ax.set_xlim(0, 12.0)
+    ax.set_ylim(0.2, 6.5)
     ax.axis("off")
 
-    R = 0.42
-    pts = {
-        "A": (5.0, 5.5),
-        "B": (3.6, 4.1), "C": (6.4, 4.1),
-        "D": (2.9, 2.7), "E": (4.3, 2.7), "F": (5.7, 2.7),
-    }
+    R = 0.38
+    rel = {"A": (2.5, 4.7), "B": (1.3, 3.3), "C": (3.7, 3.3),
+           "D": (0.7, 1.9), "E": (1.9, 1.9), "F": (3.1, 1.9)}
     edges = [("A", "B"), ("A", "C"), ("B", "D"), ("B", "E"), ("C", "F")]
     num = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6}
 
-    for a, b in edges:
-        ax.plot([pts[a][0], pts[b][0]], [pts[a][1], pts[b][1]],
-                color=C_LINE, lw=1.1, zorder=1, solid_capstyle="round")
+    def panel(x0, title, color, offset, above):
+        pts = {k: (v[0] + x0, v[1]) for k, v in rel.items()}
+        for a, b in edges:
+            ax.plot([pts[a][0], pts[b][0]], [pts[a][1], pts[b][1]],
+                    color=C_LINE, lw=1.05, zorder=1, solid_capstyle="round")
+        for k, (x, y) in pts.items():
+            ax.add_patch(Circle((x, y), R, fc=C_FILL, ec=C_LINE,
+                                lw=1.1, zorder=3))
+            ax.text(x, y, k, ha="center", va="center", fontsize=11,
+                    color=C_TEXT, zorder=4)
+            dy = (R + 0.32) if above else -(R + 0.32)
+            label = str(num[k] + offset) if above else "[%d]" % (num[k] + offset)
+            ax.text(x, y + dy, label, ha="center", va="center",
+                    fontsize=10.5 if above else 9.5, color=color,
+                    fontweight="bold", zorder=4)
+        ax.text(x0 + 2.2, 6.05, title, ha="center", va="center",
+                fontsize=11.5, color=C_BASE)
 
-    for k, (x, y) in pts.items():
-        ax.add_patch(Circle((x, y), R, fc=C_FILL, ec=C_LINE, lw=1.2, zorder=3))
-        ax.text(x, y, k, ha="center", va="center", fontsize=12,
-                color=C_TEXT, zorder=4)
-        ax.text(x, y + R + 0.32, str(num[k]), ha="center", va="center",
-                fontsize=11.5, color=C_TOP, fontweight="bold", zorder=4)
-        ax.text(x, y - R - 0.32, str(num[k] - 1), ha="center", va="center",
-                fontsize=11.5, color=C_BASE, fontweight="bold", zorder=4)
+    panel(0.3, "编号：从 1 起（性质 5 用这套）", C_TOP, 0, True)
+    panel(6.3, "数组下标：从 0 起（存进数组用这套）", C_BASE, -1, False)
 
-    ax.text(5.0, 7.55, "同一棵完全二叉树：两套数字，永远差 1",
-            ha="center", va="center", fontsize=12.5, color=C_TEXT)
-    ax.text(5.0, 7.02,
-            "红色 = 编号（性质 5，从 1 起）     蓝色 = 数组下标（从 0 起）",
-            ha="center", va="center", fontsize=10, color=C_TXT2)
-
-    ax.text(0.15, 1.05,
-            "编号 i 的结点存在下标 i-1 里，"
-            "所以孩子公式 2i / 2i+1 落到数组上要改成 2i+1 / 2i+2。",
+    ax.text(6.0, 6.45, "同一棵完全二叉树：两套数字，永远差 1",
+            ha="center", va="center", fontsize=13, color=C_TEXT)
+    ax.text(0.3, 0.62,
+            "编号 i 的结点 → 下标 i-1；所以孩子公式 2i / 2i+1 落到数组上要写成 2i+1 / 2i+2。",
             ha="left", va="center", fontsize=10, color=C_TXT2)
 
     fig.savefig(os.path.join(OUT, "ch6-2-3-编号与下标.png"),
@@ -917,7 +917,7 @@ def fig_thread_demo():
     p1, p2 = seg(B, A)
     ax.add_patch(FancyArrowPatch(
         p1, p2, arrowstyle="-|>", mutation_scale=12, color=C_GRN, lw=1.6,
-        linestyle=(0, (4, 3)), connectionstyle="arc3,rad=0.42",
+        linestyle=(0, (4, 3)), connectionstyle="arc3,rad=-0.55",
         shrinkA=0, shrinkB=0, zorder=2))
 
     p1, p2 = seg(C, A)
