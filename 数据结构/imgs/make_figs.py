@@ -841,6 +841,110 @@ def fig_full_vs_complete():
     plt.close(fig)
 
 
+# ------------------------------------------- 图 13 编号（1 起）vs 下标（0 起）
+def fig_index_vs_number():
+    fig, ax = plt.subplots(figsize=(8.6, 6.0), dpi=150)
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0.5, 7.9)
+    ax.axis("off")
+
+    R = 0.42
+    pts = {
+        "A": (5.0, 5.5),
+        "B": (3.6, 4.1), "C": (6.4, 4.1),
+        "D": (2.9, 2.7), "E": (4.3, 2.7), "F": (5.7, 2.7),
+    }
+    edges = [("A", "B"), ("A", "C"), ("B", "D"), ("B", "E"), ("C", "F")]
+    num = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6}
+
+    for a, b in edges:
+        ax.plot([pts[a][0], pts[b][0]], [pts[a][1], pts[b][1]],
+                color=C_LINE, lw=1.1, zorder=1, solid_capstyle="round")
+
+    for k, (x, y) in pts.items():
+        ax.add_patch(Circle((x, y), R, fc=C_FILL, ec=C_LINE, lw=1.2, zorder=3))
+        ax.text(x, y, k, ha="center", va="center", fontsize=12,
+                color=C_TEXT, zorder=4)
+        ax.text(x, y + R + 0.32, str(num[k]), ha="center", va="center",
+                fontsize=11.5, color=C_TOP, fontweight="bold", zorder=4)
+        ax.text(x, y - R - 0.32, str(num[k] - 1), ha="center", va="center",
+                fontsize=11.5, color=C_BASE, fontweight="bold", zorder=4)
+
+    ax.text(5.0, 7.55, "同一棵完全二叉树：两套数字，永远差 1",
+            ha="center", va="center", fontsize=12.5, color=C_TEXT)
+    ax.text(5.0, 7.02,
+            "红色 = 编号（性质 5，从 1 起）     蓝色 = 数组下标（从 0 起）",
+            ha="center", va="center", fontsize=10, color=C_TXT2)
+
+    ax.text(0.15, 1.05,
+            "编号 i 的结点存在下标 i-1 里，"
+            "所以孩子公式 2i / 2i+1 落到数组上要改成 2i+1 / 2i+2。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch6-2-3-编号与下标.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图 14 中序线索化的示意
+def fig_thread_demo():
+    import math
+
+    fig, ax = plt.subplots(figsize=(8.2, 5.4), dpi=150)
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0.55, 7.25)
+    ax.axis("off")
+
+    R = 0.44
+    A, B, C = (5.0, 5.25), (3.5, 3.6), (6.5, 3.6)
+
+    for p, q in [(A, B), (A, C)]:
+        ax.plot([p[0], q[0]], [p[1], q[1]], color=C_LINE, lw=1.5,
+                zorder=1, solid_capstyle="round")
+
+    for (x, y), name in [(A, "A"), (B, "B"), (C, "C")]:
+        ax.add_patch(Circle((x, y), R, fc=C_FILL, ec=C_LINE, lw=1.2, zorder=3))
+        ax.text(x, y, name, ha="center", va="center", fontsize=12,
+                color=C_TEXT, zorder=4)
+
+    def seg(a, b, r=R + 0.05):
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        d = math.hypot(dx, dy)
+        ux, uy = dx / d, dy / d
+        return ((a[0] + ux * r, a[1] + uy * r),
+                (b[0] - ux * (r + 0.07), b[1] - uy * (r + 0.07)))
+
+    p1, p2 = seg(B, A)
+    ax.add_patch(FancyArrowPatch(
+        p1, p2, arrowstyle="-|>", mutation_scale=12, color=C_GRN, lw=1.6,
+        linestyle=(0, (4, 3)), connectionstyle="arc3,rad=0.42",
+        shrinkA=0, shrinkB=0, zorder=2))
+
+    p1, p2 = seg(C, A)
+    ax.add_patch(FancyArrowPatch(
+        p1, p2, arrowstyle="-|>", mutation_scale=12, color="#d9822b", lw=1.6,
+        linestyle=(0, (4, 3)), connectionstyle="arc3,rad=0.42",
+        shrinkA=0, shrinkB=0, zorder=2))
+
+    ax.text(2.15, 2.72, "rchild 空 → 指向后继 A", ha="left", va="center",
+            fontsize=10, color=C_GRN)
+    ax.text(7.85, 2.72, "lchild 空 → 指向前驱 A", ha="right", va="center",
+            fontsize=10, color="#d9822b")
+
+    ax.text(5.0, 6.95, "中序序列 B → A → C：只把「空着的」指针改成线索",
+            ha="center", va="center", fontsize=12.5, color=C_TEXT)
+    ax.text(0.15, 1.45,
+            "实线 = 孩子指针（Tag = 0）      橙虚线 = 前驱线索      绿虚线 = 后继线索",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+    ax.text(0.15, 0.95,
+            "A 的左右孩子都在，两根指针原样不动 —— 线索只补空指针。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch6-3-2-中序线索示意.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_seq_stack()
     fig_stack_states()
@@ -854,4 +958,6 @@ if __name__ == "__main__":
     fig_glist_two_storage()
     fig_tree_terms()
     fig_full_vs_complete()
+    fig_index_vs_number()
+    fig_thread_demo()
     print("figures written to", OUT)
