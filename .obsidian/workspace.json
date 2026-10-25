@@ -233,8 +233,16 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e1d1df1a55660aff",
+  "active": "038c0296299b0cb0",
   "lastOpenFiles": [
+    "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
+    "具身智能/Zotero Notes/imgs/aloha-fig-11.png",
+    "具身智能/Zotero Notes/imgs/aloha-fig-08.png",
+    "具身智能/Zotero Notes/imgs/aloha-fig-06.png",
+    "具身智能/Zotero Notes/imgs/aloha-fig-05.png",
+    "具身智能/Zotero Notes/imgs/aloha-fig-04.png",
+    "具身智能/Zotero Notes/imgs/aloha-fig-03.png",
+    "具身智能/Zotero Notes/imgs/aloha-fig-01-teaser.png",
     "具身智能/Zotero Notes/Fine-Tuning Vision-Language-Action Models - Optimizing Speed and Success.md",
     "离散数学/离散数学.md",
     "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
@@ -243,7 +251,6 @@
     "具身智能/Zotero Notes/imgs/fig-01.png",
     "具身智能/Zotero Notes/imgs",
     "具身智能/Zotero Notes/figures/fig-02.png",
-    "具身智能/Zotero Notes/figures/fig-01.png",
     "具身智能/Zotero Notes/figures",
     "信号与系统/信号与系统.md",
     "数据结构/数据结构.md",
@@ -255,12 +262,6 @@
     "面向对象程序设计/面向对象 易错点.md",
     "数字图像处理/数字图像处理.md",
     "电力电子技术/电力电子技术.md",
-    "数据结构/imgs/ch6-2-满二叉树与完全二叉树.png",
-    "数据结构/imgs/ch6-1-树的基本术语.png",
-    "信号与系统/imgs/ch3-3.11-周期三角波求导成冲激串.png",
-    "信号与系统/imgs/ch3-3.7-反推波形-奇偶都有.png",
-    "信号与系统/imgs/ch3-3.7-反推波形-奇谐.png",
-    "信号与系统/imgs/ch3-3.7-反推波形-偶谐.png",
     "信号与系统/imgs/make_figs_ch3b.py",
     "AI编程与智能体开发/AI编程与智能体开发.md",
     "具身智能/未命名/000_坚果云闪电下载介绍.html.nssyncsc",
@@ -280,7 +281,6 @@
     "Clippings/Bilibili/2026-08-08-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第四周-P4-4 - The Discrete Cosine Transform (D.md",
     "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
     "Clippings/Bilibili/2026-07-04-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P4-2 - Course logistics.md",
-    "c-c-steady-wave.md",
     "未命名.canvas"
   ]
 }
