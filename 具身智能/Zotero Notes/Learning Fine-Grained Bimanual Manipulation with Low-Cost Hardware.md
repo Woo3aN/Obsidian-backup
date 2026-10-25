@@ -52,6 +52,10 @@ tags: [zotero, paper-note]
 
 共同点：**不是「抓起来放下去」，是抠、撬、拨、撕**。而且物体本身难感知 —— 密封袋和胶带是透明的，调料杯盖半透明，黑色扎带贴在黑色桌面上对比度极低。论文专门用一段讲这个（L397-400）。
 
+![](imgs/aloha-fig-06.png)
+
+图 6 是 6 个任务的定义图：**每一行一个任务，左边是初始摆放的几种变体，右边是分解出的子步骤**。看的时候注意两点：① 每个任务都不是「一步」，而是 3–5 个子步骤串起来（所以表和消融里都是分阶段报成功率）；② 物体的初始位置在 15cm 白线范围内随机（真实）/ 2D 区域内均匀（仿真）—— 这是**唯一**的随机化，没有纹理、光照、背景的 domain randomization。
+
 ### 1.2 以前的路线卡在哪
 
 **路线 A：堆硬件。** 以前的精细操作都用 da Vinci 手术机器人、ABB YuMi、Franka 这类平台，配高精度编码器和手眼标定。贵、难复现，一个实验室做不起。
@@ -207,7 +211,7 @@ memory ──► transformer decoder ×7（交叉注意力，query 是 100 个�
 
 1. **Step 1: sample data** —— 从 demo 数据集里抽一条：(4×480×640×3 图, 14 维 joints, k×14 动作序列) 加 batch 维。
 2. **Step 2: infer z** —— 就是 2.2 的流程。注意图中 `Linear 4`（512→64）分出 `z_mean(32)` 和 `z_std(32)`，再 `sample with reparametrization` 得到 z。
-3. **Step 3: predict action sequence（训练）** —— 注意 ResNet 后面标的 **15×20×728 → flatten → 300×728 → Linear 5 → 300×512**。这个 728 是 ResNet18 的原始通道数（512，因为 DETR 用了 `IntermediateLayerGetter` 取 layer4 只有 512… 728 是 DETR 原版 `num_channels=2048` 时的图？），**以代码为准：代码里 `input_proj = Conv2d(backbones[0].num_channels=512, hidden_dim=512)`，直接 512→512**。图上 728 是作者画图时的笔误或另一版配置。
+3. **Step 3: predict action sequence（训练）** —— 注意 ResNet 后面标的 **15×20×728 → flatten → 300×728 → Linear 5 → 300×512**。**这个 728 和代码对不上**：代码里 ResNet18 取 `layer4` 输出 512 通道，`input_proj` 是 `Conv2d(512, 512)`，也就是 **512→512 恒等投影**（`detr_vae.py:56`）。图上写 728 大概是画图时按另一版 DETR 配置算的，**以代码为准**。
 4. **Testing（最下面一段）** —— 和图 4 最大的区别：**黄框（encoder）没了，z 的位置直接填 0**。你能清楚看到「z(512) → trainable linear 7 → 0(512)」那个箭头。
 
 > [!warning] 论文与代码不一致的两处
@@ -450,11 +454,11 @@ exp_weights = np.exp(-k * np.arange(len(actions_for_curr_step)))   # imitate_epi
 
 ### 6.2 t=0：第一次调用
 
-**手里有什么**（这一帧是从示教里取的真实结构，数值是示意的）：
+**手里有什么**（结构是代码里的真结构，数值示意）：
 
 ```
-img_left  = 4×6×3 的数组，归一化到 [0,1]
-img_right = 4×6×3
+img_left  = 64×96×3，归一化到 [0,1]
+img_right = 64×96×3
 qpos      = [-0.02, -0.95, 1.15, 0.00, -0.30, 0.02, 0.026,
               0.03, -0.91, 1.12, 0.00, -0.28, 0.01, 0.022]     ← 14 维
 ```
@@ -469,18 +473,18 @@ qpos_norm = (qpos - qpos_mean) / qpos_std
 **第 2 步：图像进 ResNet（共享权重，跑 2 遍）**
 
 ```
-(4,6,3) → ResNet18 → (2,1,3)   ← 2 通道输出，1×3 空间
-flatten → 3 个 token/相机
+(64,96,3) → ResNet18 → (512, 2, 3)     ← 2×3 的特征网格，每个位置 512 维
+flatten  → 6 个 token/相机
 ```
 
 **第 3 步：拼接 + 补两个 token**
 
 ```
-[z(2 维→512)] [joints(14→512)] [cam_left 3 个] [cam_right 3 个]
-      1            1                3                3         = 8 个 token
+[ z(2→512) ] [ joints(14→512) ] [ cam_left 6 个 ] [ cam_right 6 个 ]
+      1              1                 6                 6          = 14 个 token
 ```
 
-等等 —— 真实里是 1202 = 2（z+joints）+ 1200。玩具里同样是 2 + 12 = **14**，我刚才把单相机 token 数算成 3 了，2 个相机才是 6。修正：14 个 token。
+真实尺寸下是同一条式子：2 + 300×4 = **1202**。
 
 **第 4 步：transformer encoder ×4** → 14 个 token ×512，每个 token 都「看过」其他 13 个。
 
