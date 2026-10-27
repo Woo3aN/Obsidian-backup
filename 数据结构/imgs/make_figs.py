@@ -945,6 +945,156 @@ def fig_thread_demo():
     plt.close(fig)
 
 
+def fig_tree_to_bt():
+    """树 → 二叉树：左孩子右兄弟"""
+    fig, ax = plt.subplots(figsize=(11.2, 5.9), dpi=150)
+    ax.set_xlim(0, 22)
+    ax.set_ylim(0.2, 7.4)
+    ax.axis("off")
+
+    R = 0.38
+
+    def nd(x, y, s, fc=C_FILL):
+        ax.add_patch(Circle((x, y), R, fc=fc, ec=C_LINE, lw=1.3, zorder=3))
+        ax.text(x, y, s, ha="center", va="center", fontsize=11,
+                color=C_TEXT, zorder=4)
+
+    def lk(a, b, color=C_LINE, lw=1.4):
+        ax.plot([a[0], b[0]], [a[1], b[1]], color=color, lw=lw,
+                zorder=1, solid_capstyle="round")
+
+    # ---- 左：一般的树 ----
+    ax.text(4.0, 6.95, "一般的树", ha="center", va="center",
+            fontsize=12.5, color=C_BASE)
+    L = {"R": (4.0, 5.75), "A": (3.0, 4.6), "B": (4.0, 4.6), "C": (5.0, 4.6),
+         "D": (2.4, 3.45), "E": (3.6, 3.45)}
+    for a, b in [("R", "A"), ("R", "B"), ("R", "C"),
+                 ("A", "D"), ("A", "E")]:
+        lk(L[a], L[b])
+    for k, v in L.items():
+        nd(v[0], v[1], k)
+
+    # ---- 右：转换后的二叉树 ----
+    ax.text(15.6, 6.95, "转换后的二叉树", ha="center", va="center",
+            fontsize=12.5, color=C_BASE)
+    T = {"R": (15.6, 5.75),
+         "A": (15.6, 4.65),
+         "D": (14.3, 3.55), "B": (16.9, 3.55),
+         "E": (15.6, 2.45), "C": (18.2, 2.45)}
+    # 左孩子：蓝实线；右兄弟：橙色实线
+    lk(T["R"], T["A"], C_BASE, 1.8)
+    lk(T["A"], T["D"], C_BASE, 1.8)
+    lk(T["A"], T["B"], "#d9822b", 1.8)
+    lk(T["D"], T["E"], "#d9822b", 1.8)
+    lk(T["B"], T["C"], "#d9822b", 1.8)
+    for k, v in T.items():
+        nd(v[0], v[1], k)
+
+    # “左孩子 / 兄弟”标注
+    ax.text(15.25, 5.2, "左孩子", ha="right", va="center",
+            fontsize=9.5, color=C_BASE)
+    ax.text(16.55, 4.05, "兄弟", ha="left", va="center",
+            fontsize=9.5, color="#d9822b")
+
+    # 中间箭头
+    ax.add_patch(FancyArrowPatch((7.2, 4.6), (11.4, 4.6),
+                                 arrowstyle="-|>", mutation_scale=16,
+                                 color=C_TOP, lw=1.8, shrinkA=0, shrinkB=0))
+    ax.text(9.3, 5.05, "左孩子右兄弟", ha="center", va="center",
+            fontsize=11.5, color=C_TOP)
+
+    ax.text(0.25, 1.35,
+            "规则：每个结点只保留「第一个孩子」这条实线；其余孩子挂成"
+            "「前一个孩子的右兄弟」，沿右链一路排下去。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+    ax.text(0.25, 0.8,
+            "蓝实线 = 左孩子（原树中的第一个孩子）        橙实线 = 右兄弟（原树中的下一个兄弟）",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+    ax.text(0.25, 0.25,
+            "结果：根的右子树必为空（根没有兄弟）；任何树都能存成二叉链表。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch6-4-2-树转二叉树.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+def fig_huffman_tree():
+    """赫夫曼树：W = {3, 4, 5, 5, 6, 8} 的最终形态与合并顺序"""
+    fig, ax = plt.subplots(figsize=(11.0, 6.3), dpi=150)
+    ax.set_xlim(0, 20.5)
+    ax.set_ylim(0.2, 7.6)
+    ax.axis("off")
+
+    R = 0.40
+
+    def nd(x, y, s, leaf=False, fs=10.5):
+        fc = C_FILL2 if leaf else C_FILL
+        ax.add_patch(Circle((x, y), R, fc=fc, ec=C_LINE, lw=1.3, zorder=3))
+        ax.text(x, y, s, ha="center", va="center", fontsize=fs,
+                color=C_TEXT, zorder=4)
+
+    def lk(a, b, bit):
+        ax.plot([a[0], b[0]], [a[1], b[1]], color=C_LINE, lw=1.5,
+                zorder=1, solid_capstyle="round")
+        mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+        ax.text(mx + (0.16 if bit == "1" else -0.16), my,
+                bit, ha="center", va="center", fontsize=10,
+                color=C_TOP, zorder=5,
+                bbox=dict(fc="white", ec="none", pad=0.6))
+
+    P = {"31": (6.2, 6.7),
+         "13": (4.8, 5.5), "18": (7.6, 5.5),
+         "6": (3.9, 4.3), "7": (5.7, 4.3), "8": (6.7, 4.3), "10": (8.5, 4.3),
+         "3": (4.9, 3.1), "4": (6.5, 3.1), "5a": (7.6, 3.1), "5b": (9.4, 3.1)}
+    # (父, 子, 0/1)
+    for a, b, bit in [("31", "13", "0"), ("31", "18", "1"),
+                      ("13", "6", "0"), ("13", "7", "1"),
+                      ("7", "3", "0"), ("7", "4", "1"),
+                      ("18", "8", "0"), ("18", "10", "1"),
+                      ("10", "5a", "0"), ("10", "5b", "1")]:
+        lk(P[a], P[b], bit)
+
+    nd(*P["31"], "31")
+    for k in ["13", "18", "7", "10"]:
+        nd(*P[k], k)
+    for k in ["6", "8", "3", "4", "5a", "5b"]:
+        nd(*P[k], "5" if k.startswith("5") else k, leaf=True)
+
+    ax.text(6.2, 7.35, "赫夫曼树（W = {3, 4, 5, 5, 6, 8}）",
+            ha="center", va="center", fontsize=12.5, color=C_BASE)
+
+    # 右侧：合并过程
+    ax.text(12.4, 7.0, "构造：每次取两个最小的合并", ha="left", va="center",
+            fontsize=11.5, color=C_BASE)
+    ax.text(12.4, 6.2,
+            "①  3 + 4 = 7\n"
+            "②  5 + 5 = 10\n"
+            "③  6 + 7 = 13\n"
+            "④  8 + 10 = 18\n"
+            "⑤  13 + 18 = 31  ← 根",
+            ha="left", va="top", fontsize=10.5, color=C_TEXT, linespacing=1.9)
+
+    ax.text(12.4, 3.55,
+            "WPL = 6×2 + 3×3 + 4×3 + 8×2 + 5×3 + 5×3\n"
+            "      = 12 + 9 + 12 + 16 + 15 + 15 = 79",
+            ha="left", va="top", fontsize=10.5, color=C_TOP, linespacing=1.8)
+
+    ax.text(0.25, 1.55,
+            "权越大离根越近：8 和 6 在深度 2，3 / 4 / 5 / 5 在深度 3。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+    ax.text(0.25, 1.0,
+            "叶子（橙色）= 待编码字符；圆圈里的数 = 权值；边上 0 / 1 就是编码的一位。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+    ax.text(0.25, 0.45,
+            "每次合并都产生一个二度结点，所以 n 个叶子的赫夫曼树没有一度结点，共 2n − 1 个结点。",
+            ha="left", va="center", fontsize=10, color=C_TXT2)
+
+    fig.savefig(os.path.join(OUT, "ch6-6-1-赫夫曼树.png"),
+                bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_seq_stack()
     fig_stack_states()
@@ -960,4 +1110,6 @@ if __name__ == "__main__":
     fig_full_vs_complete()
     fig_index_vs_number()
     fig_thread_demo()
+    fig_tree_to_bt()
+    fig_huffman_tree()
     print("figures written to", OUT)
