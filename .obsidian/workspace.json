@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "具身智能/具身智能.md",
+                "file": "人工智能引论/人工智能引论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "具身智能"
+              "title": "人工智能引论"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "具身智能/具身智能.md",
+                "file": "人工智能引论/人工智能引论.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,8 +235,8 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
     "具身智能/具身智能.md",
+    "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
     "具身智能/具身智能.bak-20261027.md",
     "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
     "具身智能/Zotero Notes/Fine-Tuning Vision-Language-Action Models - Optimizing Speed and Success.md",
