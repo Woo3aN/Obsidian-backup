@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "具身智能/Zotero Notes/ALOHA-ACT 组会汇报提纲.md",
+                "file": "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ALOHA-ACT 组会汇报提纲"
+              "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "具身智能/Zotero Notes/ALOHA-ACT 组会汇报提纲.md",
+                "file": "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,8 +235,12 @@
   },
   "active": "e1d1df1a55660aff",
   "lastOpenFiles": [
-    "具身智能/Zotero Notes/Fine-Tuning Vision-Language-Action Models - Optimizing Speed and Success.md",
+    "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（精简版）.md",
+    "具身智能/Zotero Notes/RT-2 组会汇报提纲.md",
+    "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（本科版）.md",
+    "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（五部分框架）.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报提纲.md",
+    "具身智能/Zotero Notes/Fine-Tuning Vision-Language-Action Models - Optimizing Speed and Success.md",
     "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
     "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
     "具身智能/Zotero Notes/RT-2 - Vision-Language-Action Models Transfer Web Knowledge to Robotic Control.md",
@@ -277,10 +281,6 @@
     "概率统计/大数定律及中心极限定理.md",
     "数据结构/imgs/make_figs.py",
     "数据结构/imgs",
-    "程序设计实践/contest-362-程序设计实践例题-题解集-backup.md",
-    "程序设计实践/contest-362-程序设计实践例题.md",
-    "程序设计实践/程序设计实践例题-题解集.md",
-    "链表相关.md",
     "未命名.canvas"
   ]
 }
