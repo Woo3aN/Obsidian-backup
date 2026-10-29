@@ -4,24 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "2d5c50424ba44936",
+        "id": "55308ab073314a12",
         "type": "tabs",
         "children": [
           {
-            "id": "e1d1df1a55660aff",
+            "id": "2b0b97c2222ed7ba",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
+                "file": "未命名.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware"
+              "title": "未命名"
+            }
+          },
+          {
+            "id": "8b4377d3a618dc95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "file:C:/Users/24431/WorkBuddy/2026-10-25-23-01-21/ALOHA-ACT 组会汇报提纲.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ALOHA-ACT 组会汇报提纲"
             }
           }
-        ]
+        ],
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -158,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
+                "file": "未命名.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -214,7 +229,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.5
+    "width": 298.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -233,15 +249,17 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e1d1df1a55660aff",
+  "active": "2b0b97c2222ed7ba",
   "lastOpenFiles": [
+    "file:C:/Users/24431/WorkBuddy/2026-10-25-23-01-21/ALOHA-ACT 组会汇报提纲.md",
+    "未命名.md",
+    "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（精简版）.md",
     "具身智能/Zotero Notes/RT-2 组会汇报提纲.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（本科版）.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（五部分框架）.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报提纲.md",
     "具身智能/Zotero Notes/Fine-Tuning Vision-Language-Action Models - Optimizing Speed and Success.md",
-    "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
     "具身智能/Zotero Notes/OpenVLA - An Open-Source Vision-Language-Action Model.md",
     "具身智能/Zotero Notes/RT-2 - Vision-Language-Action Models Transfer Web Knowledge to Robotic Control.md",
     "具身智能/具身智能.md",
@@ -275,10 +293,8 @@
     "具身智能/未命名/000_坚果云闪电下载介绍.html.nssyncsc",
     "具身智能/未命名",
     "具身智能/imgs",
-    "大学物理（下）/大学物理（下）.md",
     "具身智能/Zotero Notes",
     "具身智能",
-    "概率统计/大数定律及中心极限定理.md",
     "数据结构/imgs/make_figs.py",
     "数据结构/imgs",
     "未命名.canvas"
