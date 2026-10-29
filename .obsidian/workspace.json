@@ -36,6 +36,7 @@
             }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -174,7 +175,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "file:C:/Users/24431/WorkBuddy/2026-10-25-23-01-21/ALOHA-ACT 组会汇报提纲.md",
+                "file": "未命名.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -250,10 +251,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2b0b97c2222ed7ba",
+  "active": "80c25ef3f39d06f1",
   "lastOpenFiles": [
-    "未命名.md",
     "file:C:/Users/24431/WorkBuddy/2026-10-25-23-01-21/ALOHA-ACT 组会汇报提纲.md",
+    "未命名.md",
     "未命名.base",
     "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（精简版）.md",
