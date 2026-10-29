@@ -13,20 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "未命名.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "未命名"
-            }
-          },
-          {
-            "id": "8b4377d3a618dc95",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "file:C:/Users/24431/WorkBuddy/2026-10-25-23-01-21/ALOHA-ACT 组会汇报提纲.md",
                 "mode": "source",
                 "source": false
@@ -34,8 +20,23 @@
               "icon": "lucide-file",
               "title": "ALOHA-ACT 组会汇报提纲"
             }
+          },
+          {
+            "id": "80c25ef3f39d06f1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -95,7 +96,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "38e0ffb70d6716d5",
@@ -249,10 +251,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2b0b97c2222ed7ba",
+  "active": "80c25ef3f39d06f1",
   "lastOpenFiles": [
     "file:C:/Users/24431/WorkBuddy/2026-10-25-23-01-21/ALOHA-ACT 组会汇报提纲.md",
     "未命名.md",
+    "未命名.base",
     "具身智能/Zotero Notes/Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（精简版）.md",
     "具身智能/Zotero Notes/RT-2 组会汇报提纲.md",
@@ -289,14 +292,12 @@
     "数字图像处理/数字图像处理.md",
     "电力电子技术/电力电子技术.md",
     "信号与系统/imgs/make_figs_ch3b.py",
-    "AI编程与智能体开发/AI编程与智能体开发.md",
     "具身智能/未命名/000_坚果云闪电下载介绍.html.nssyncsc",
     "具身智能/未命名",
     "具身智能/imgs",
     "具身智能/Zotero Notes",
     "具身智能",
     "数据结构/imgs/make_figs.py",
-    "数据结构/imgs",
     "未命名.canvas"
   ]
 }
