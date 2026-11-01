@@ -1,11 +1,11 @@
 {
   "id": "conv-1783095056603-sfmwc9p6w",
   "providerId": "claude",
-  "title": "Organize digital image processing notes",
-  "titleGenerationStatus": "success",
+  "title": "Status InitList_Sq(SqList &L)",
+  "titleGenerationStatus": "failed",
   "createdAt": 1783095056603,
-  "updatedAt": 1785478524519,
-  "lastResponseAt": 1785478524519,
+  "updatedAt": 1793527206053,
+  "lastResponseAt": 1793527206053,
   "sessionId": "445b394f-caa6-4025-ba69-6b44764f35f4",
   "providerState": {
     "providerSessionId": "445b394f-caa6-4025-ba69-6b44764f35f4"
