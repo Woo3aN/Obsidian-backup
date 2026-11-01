@@ -1,22 +1,23 @@
 {
   "id": "conv-1783095056603-sfmwc9p6w",
   "providerId": "claude",
-  "title": "Explain C sequential list initialization code",
+  "title": "Explain C SqList initialization function",
   "titleGenerationStatus": "success",
   "createdAt": 1783095056603,
-  "updatedAt": 1793527439671,
-  "lastResponseAt": 1793527438961,
-  "sessionId": null,
-  "providerState": {},
+  "updatedAt": 1793527559154,
+  "lastResponseAt": 1793527559154,
+  "sessionId": "fe09be01-b00c-4ee6-9734-e7eefaae4063",
+  "providerState": {
+    "providerSessionId": "fe09be01-b00c-4ee6-9734-e7eefaae4063"
+  },
   "currentNote": "数据结构/数据结构.md",
   "usage": {
     "model": "opus",
-    "inputTokens": 450,
+    "inputTokens": 20743,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 124288,
-    "contextWindow": 1000000,
-    "contextTokens": 124738,
-    "percentage": 12,
-    "contextWindowIsAuthoritative": true
+    "cacheReadInputTokens": 13824,
+    "contextWindow": 200000,
+    "contextTokens": 34567,
+    "percentage": 17
   }
 }
