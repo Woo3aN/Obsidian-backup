@@ -80,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "38e0ffb70d6716d5",
@@ -234,7 +233,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2b0b97c2222ed7ba",
+  "active": "5d95e84e2df77862",
   "lastOpenFiles": [
     "人工智能引论/人工智能引论.md",
     "具身智能/Zotero Notes/π0 - A Vision-Language-Action Flow Model for General Robot Control.md",
