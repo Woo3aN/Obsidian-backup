@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数据结构/数据结构 期中突击清单.md",
+                "file": "具身智能/具身智能.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据结构 期中突击清单"
+              "title": "具身智能"
             }
           }
         ]
@@ -158,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数据结构/数据结构 期中突击清单.md",
+                "file": "具身智能/具身智能.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -235,9 +235,9 @@
   },
   "active": "2b0b97c2222ed7ba",
   "lastOpenFiles": [
+    "数据结构/数据结构 期中突击清单.md",
     "数据结构/数据结构.md",
     "数据结构/数据结构习题集.md",
-    "数据结构/数据结构 期中突击清单.md",
     "数据结构/sed7ypn4c",
     "数据结构/sedCvJTjn",
     "数据结构/sedL1xgFu",
