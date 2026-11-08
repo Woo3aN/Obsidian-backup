@@ -25,14 +25,10 @@
             "id": "8953d69370ed93d9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file:C:/Users/24431/Desktop/three_vla_papers_comparison.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "three_vla_papers_comparison"
+              "title": "新标签页"
             }
           }
         ],
@@ -173,7 +169,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "file:C:/Users/24431/Desktop/three_vla_papers_comparison.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
