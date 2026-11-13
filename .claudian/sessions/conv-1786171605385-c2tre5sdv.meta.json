@@ -1,21 +1,23 @@
 {
   "id": "conv-1786171605385-c2tre5sdv",
   "providerId": "claude",
-  "title": "Status InitList_Sq(SqList &L)",
-  "titleGenerationStatus": "failed",
+  "title": "Explain rotating charged ring current derivation",
+  "titleGenerationStatus": "success",
   "createdAt": 1786171605385,
-  "updatedAt": 1793526744798,
-  "lastResponseAt": 1793526744798,
+  "updatedAt": 1794560154188,
+  "lastResponseAt": 1794560154188,
+  "sessionId": "89f775e6-53d1-4eee-ba52-6b32c0ce9a22",
+  "providerState": {
+    "providerSessionId": "89f775e6-53d1-4eee-ba52-6b32c0ce9a22"
+  },
   "currentNote": "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
   "usage": {
     "model": "opus",
-    "inputTokens": 93,
+    "inputTokens": 13799,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 33152,
+    "cacheReadInputTokens": 0,
     "contextWindow": 200000,
-    "contextTokens": 33245,
-    "percentage": 17
-  },
-  "sessionId": null,
-  "providerState": {}
+    "contextTokens": 13799,
+    "percentage": 7
+  }
 }
