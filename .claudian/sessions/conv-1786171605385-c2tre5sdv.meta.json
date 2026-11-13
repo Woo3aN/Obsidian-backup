@@ -4,8 +4,8 @@
   "title": "Explain rotating charged ring current derivation",
   "titleGenerationStatus": "success",
   "createdAt": 1786171605385,
-  "updatedAt": 1794575394415,
-  "lastResponseAt": 1794575394415,
+  "updatedAt": 1794576838286,
+  "lastResponseAt": 1794576838286,
   "sessionId": "89f775e6-53d1-4eee-ba52-6b32c0ce9a22",
   "providerState": {
     "providerSessionId": "89f775e6-53d1-4eee-ba52-6b32c0ce9a22"
@@ -13,11 +13,11 @@
   "currentNote": "Clippings/Bilibili/2026-07-31-【720P cc字幕】数字图像处理 Guillermo Sapiro 杜克大学Image and Video Processing 第一周-P8-6 - Simple image operations.md",
   "usage": {
     "model": "opus",
-    "inputTokens": 411,
+    "inputTokens": 70,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 24064,
+    "cacheReadInputTokens": 26240,
     "contextWindow": 200000,
-    "contextTokens": 24475,
-    "percentage": 12
+    "contextTokens": 26310,
+    "percentage": 13
   }
 }
