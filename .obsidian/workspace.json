@@ -225,7 +225,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -248,13 +248,14 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "5f56ba62a2d2fa40",
+  "active": "8953d69370ed93d9",
   "lastOpenFiles": [
+    "大学物理（下）/大学物理B（下）期中突击清单.md",
+    "大学物理（下）/大学物理（下）.md",
     "大学物理（下）/大学物理（下）.md.tmp.2776.7c5267f11f0b",
     "大学物理（下）/大学物理（下）.md.tmp.2776.e92d8fbd2a27",
     "信号与系统/信号与系统.md",
     "人工智能引论/人工智能引论.md",
-    "大学物理（下）/大学物理（下）.md",
     "大学物理（下）/imgs/ch8-8.6-电磁波.jpg",
     "大学物理（下）/imgs/ch8-8.2-感生电场.jpg",
     "大学物理（下）/imgs/ch7-7.8-磁滞回线.jpg",
@@ -295,7 +296,6 @@
     "具身智能/Zotero Notes/RT-2 组会汇报提纲.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（本科版）.md",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（五部分框架）.md",
-    "具身智能/Zotero Notes/imgs",
     "未命名.canvas"
   ]
 }
