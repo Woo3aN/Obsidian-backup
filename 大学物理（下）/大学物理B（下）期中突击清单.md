@@ -13,7 +13,9 @@ tags:
 > - **范围**：第 5～8 章（第八章是期中考前最后一章）
 > - **题型**：选择 20 分（10×2）+ 填空 20 分（10 空×2）+ 计算 60 分（5×12）
 > - **依据**：笔记全文 + **两套完整真题**（2022 年 A 卷、2024 年 A 卷，各含答案）+ 老师课上划的重点
-> - **分级**：🔴 必考｜🟡 常考｜⚪ 了解　　**例题已按考点频次插在对应知识点后面**
+> - **分级**：🔴 必考｜🟡 常考｜⚪ 了解
+> - **结构**：开头是考点权重表 → 正文四章（**每个知识点后面紧跟对应例题，36 道**）→ 附录 A 公式总表 → 附录 B 真题逐题对照 → 附录 C 易错点
+> - **怎么用**：正文按顺序读，**例题别只看，遮住"解"自己做一遍**；时间不够就只看开头那张权重表和附录 B
 
 > [!important] 🔴 老师明确划的复习重点（原话）
 > 1. **第五章的电场 / 电势计算**：叠加原理、高斯定理、电势叠加
@@ -115,6 +117,7 @@ tags:
 >
 > **答**　在 $q_2$ 外侧、距 $q_2$ 为 $l$ 处（即距 $q_1$ 为 $2l$）。
 >
+
 > [!warning] 两条结论要一起记
 > 1. **平衡位置与 $q_3$ 的大小、正负都无关**——因为方程两边都有 $q_3$，约掉了。所以填"与电荷量无关"是对的。
 > 2. **同号**电荷的平衡点在两者**之间**、靠近**电量小**的那个；**异号**电荷的平衡点在**外侧**、也靠近电量小的那个。
@@ -166,6 +169,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　$E=\dfrac{qx}{4\pi\varepsilon_0(R^2+x^2)^{3/2}}$，方向沿轴线背离（或指向）环心，看 $q$ 的正负。
 >
+
 > [!important] 三个必须会自查的极限
 > | 极限 | 结果 | 含义 |
 > |---|---|---|
@@ -208,6 +212,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　$\dfrac{q}{6\varepsilon_0}$（选 D）。
 >
+
 > [!warning] 换成"顶点"就变成 $\dfrac{q}{24\varepsilon_0}$
 > 若 $q$ 在立方体的**一个顶点**上，要把周围 8 个立方体拼起来才把 $q$ 围在中心。
 > 每个立方体分 $\dfrac{1}{8}$，而顶点处有 **3 个面**挨着 $q$（另外 3 个面不挨），
@@ -261,6 +266,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　大小 $E=\dfrac{\lambda}{2\pi\varepsilon_0r}$，负号表示**方向沿径向向内**（指向轴线）。
 >
+
 > [!important] 这题藏了三个后续考点
 > 1. **外柱面的电荷对这段区间没有贡献**——高斯面没套住它。但它对 $r>R_2$ 的场有贡献，别搞混"通量只数面内"。
 > 2. 后面第 (2)(3) 问是"带电粒子做圆周运动"：电场力当向心力，
@@ -288,7 +294,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 > | **叠加原理** | $V=\sum V_i$ 或 $V=\displaystyle\int\frac{\mathrm dq}{4\pi\varepsilon_0 r}$ | 电荷分布规则时 |
 >
 
-> [!example] 例 5-6　不均匀带电细棒在原点产生的电势（真题 · 填空第 14 题）
+> [!example] 例 5-5　不均匀带电细棒在原点产生的电势（真题 · 填空第 14 题）
 > **题**　长 $l$ 的细棒沿 $x$ 轴放置，从 $x=a$ 到 $x=a+l$，线密度 $\lambda=\lambda_0(x-a)$。
 > 取无穷远为零点，求原点 $O$ 的电势。
 >
@@ -301,6 +307,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　$V=\dfrac{\lambda_0}{4\pi\varepsilon_0}\left[l-a\ln\dfrac{a+l}{a}\right]$。
 >
+
 > [!important] 这题为什么比求场强容易
 > 若改成"求 $O$ 点场强"，就得**分解矢量**：棒的每一小段在 $O$ 点产生的 $\mathrm d\vec E$ 都沿 $-x$ 方向（因为棒在正半轴，$O$ 在原点，场指向 $-x$），
 > 这次恰好不用分解，但如果棒有厚度或有 $y$ 分量，就要拆。
@@ -315,7 +322,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 > 积分里只有 $\mathrm dq$ 到**场点的距离** $r$，没有方向。这是电势比场强好算的地方——场强要拆分量、判断抵消，电势直接加。
 
 
-> [!example] 例 5-5　沿半圆弧移动电荷的做功（真题 · 填空第 12 题）
+> [!example] 例 5-6　沿半圆弧移动电荷的做功（真题 · 填空第 12 题）
 > **题**　$BCD$ 是以 $O$ 为圆心、$R$ 为半径的半圆弧。$A$ 点有 $+q$，$O$ 点有 $-q$，且 $BA=R$。
 > 把单位正电荷从 $B$ 沿半圆弧移到 $D$，求电场力做的功。
 >
@@ -335,6 +342,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　$W=\dfrac{q}{6\pi\varepsilon_0R}$（正值，电场力做正功）。
 >
+
 > [!warning] 两个坑
 > - **不要真去沿半圆弧积分**。$\vec E$ 在这段弧上方向、大小一直在变，积分极其麻烦，而出题人恰恰是要你发现"根本不用积"。
 > - **$+q$ 和 $-q$ 的距离别搞错**：$A$ 到 $B$ 是 $R$、$B$ 到 $O$ 是 $R$，所以 $A$ 到 $O$ 是 $2R$、$A$ 到 $D$ 是 $3R$。距离算错，整题作废。
@@ -358,6 +366,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　$\vec E=-6\vec i-2\vec j\ \mathrm{V/m}$，大小 $\sqrt{36+4}=2\sqrt{10}\approx6.3\ \mathrm{V/m}$。
 >
+
 > [!warning] 负号不能丢
 > $V=3x^2$ 在 $x>0$ 时随 $x$ **增大**，而场强指向电势**降低**的方向，所以 $E_x$ 必须是负的。
 > 丢掉负号 = 方向反了，这一分必失。
@@ -422,6 +431,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　选 (D)。
 >
+
 > [!important] 这题的两个"顿悟点"
 > 1. **"分布不均匀"不等于"算不出电势"**。电势是标量，只要所有电荷元到**场点**的距离都一样，就能提到积分号外面：
 > $$V=\int\frac{\mathrm dq}{4\pi\varepsilon_0r}=\frac{1}{4\pi\varepsilon_0r}\int\mathrm dq=\frac{q_{\text{总}}}{4\pi\varepsilon_0r}$$
@@ -438,6 +448,7 @@ $$\vec E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\vec e_r$$
 >
 > **答**　$V=-\left(\dfrac{Q}{4\pi\varepsilon_0R}+\dfrac{q}{12\pi\varepsilon_0R}\right)$。
 >
+
 > [!tip] 为什么"算球心"合法
 > 你算的是球心处的电势，但球心**在导体内**，导体内处处等势，所以球心电势 = 球面电势 = 整个球的电势。
 >
@@ -486,6 +497,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$\sigma=\varepsilon_0\varepsilon_rE$（选 B）。
 >
+
 > [!warning] 三个容易选错的干扰项
 > | 错误答案 | 错在哪 |
 > |---|---|
@@ -505,6 +517,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$P=np$，方向与每个分子的 $\vec p$ **同向**（无极性分子被拉长，正电中心沿场方向偏移）。
 >
+
 > [!tip] 顺带记住两个换算
 > - 极化电荷面密度 $\sigma'=P_n$（$P_n$ 是 $\vec P$ 沿外法线的分量）
 > - 极化强度与场强的关系 $\vec P=\varepsilon_0\chi_e\vec E=\varepsilon_0(\varepsilon_r-1)\vec E$
@@ -540,6 +553,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$C=\dfrac{2\pi\varepsilon_0\varepsilon_rl}{\ln(R_B/R_A)}$。
 >
+
 > [!warning] 两个细节决定对错
 > - **电势差是"内减外"还是"外减内"**？$C=q/\Delta V$ 里 $\Delta V$ 取**绝对值**（电容是正的）。积分方向写反只影响符号，不影响大小，但中间量要标清。
 > - **$\ln(R_B/R_A)$ 分子分母不能颠倒**。$R_B>R_A$ 时它为正；写成 $\ln(R_A/R_B)$ 会得到负电容——用它自查。
@@ -582,6 +596,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$W_2:W_1=\dfrac{1}{\varepsilon_r}$（选 C）。
 >
+
 > [!important] 同一道题，改成"接着电源"答案就反了
 > | | 断开电源（$Q$ 不变） | 接着电源（$U$ 不变） |
 > |---|---|---|
@@ -641,6 +656,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$C_{\text{甲}}=\dfrac{2\varepsilon_1\varepsilon_2S}{d(\varepsilon_1+\varepsilon_2)}$（相当于两个 $C$ 串联）；$C_{\text{乙}}=\dfrac{S(\varepsilon_1+\varepsilon_2)}{2d}$（相当于两个 $C$ 并联）。
 >
+
 > [!warning] 这两题的"不看公式也能做"的办法
 > 甲：看成两个电容器**串联**，$C_1=\dfrac{\varepsilon_1S}{d/2}$、$C_2=\dfrac{\varepsilon_2S}{d/2}$；
 > 乙：看成两个电容器**并联**，$C_1=\dfrac{\varepsilon_1(S/2)}{d}$、$C_2=\dfrac{\varepsilon_2(S/2)}{d}$。
@@ -684,6 +700,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$W=\dfrac{Q^2d}{2\varepsilon_0S}$。
 >
+
 > [!tip] 也可以用电荷密度写，形式更直观
 > $\sigma=Q/S$，代进去：$W=\dfrac{\sigma^2}{2\varepsilon_0}\cdot Sd=\dfrac{\sigma^2}{2\varepsilon_0}V$，
 > 其中 $V=Sd$ 是极板间的**体积**。这就回到了能量密度
@@ -707,6 +724,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$W=\dfrac{3q^2}{20\pi\varepsilon_0R}$。
 >
+
 > [!warning] 三个必须注意的地方
 > 1. **球外那一段不能省，而且它是大头**（$\frac{1}{8}$ 对 $\frac{1}{40}$，是 5 倍）。
 >    只积球内会得到 $\frac{q^2}{40\pi\varepsilon_0R}$，比正确答案小 6 倍多——**这是最常见的失分**。
@@ -755,6 +773,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　(B)。
 >
+
 > [!tip] 这题的物理图像
 > 串联时"**电流被卡住**"：单位时间通过每个截面的电荷必须一样多（否则电荷会在交界处堆积）。
 > 所以细的地方**电荷必须跑得更快**（$v_d$ 大），对应 $j$ 大、$E$ 大、电压降大。
@@ -819,6 +838,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 > $$B_2=\frac{\mu_0}{4\pi}\frac{q_2v_2\sin0°}{d^2}=0$$
 > 所以 $q_1$ **不受磁力**，只受库仑斥力 $F_1=F_e=\dfrac{q_1q_2}{4\pi\varepsilon_0d^2}$。
 >
+
 > [!important] 这题考的是"三条公式 + 一个夹角"
 > 1. 运动电荷的磁场 $B=\dfrac{\mu_0}{4\pi}\dfrac{qv\sin\alpha}{r^2}$——**$\alpha$ 是 $\vec v$ 与 $\vec r$ 的夹角**，这是解题的第一个动作。
 > 2. 洛伦兹力 $\vec F=q\vec v\times\vec B$——**只与磁场有关**，别忘了还有电场力。
@@ -853,6 +873,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$B=\dfrac{(6-\pi)\mu_0I}{24\pi R}$，方向**垂直纸面向里**。
 >
+
 > [!warning] 这题有四个"埋雷点"
 > 1. **"延长线过 O"就一定是 0**——不管导线多长、电流多大。这是最快的送分点。
 > 2. **电流要按电阻反比分配**。看到"电阻是 2 倍"就该立刻写出 $\frac I3$ 和 $\frac{2I}3$，忘了这步整题全错。
@@ -885,6 +906,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$B=\dfrac{\mu_0ih}{2\pi R}$，方向由右手螺旋定（与"缺失那条电流"的磁场反向）。
 >
+
 > [!tip] "补偿法"的通用句式
 > **缺了什么就补什么，再减回去。** 同类题：
 > - 挖了球形空腔的带电球 → 完整球 + 一个带相反电荷密度的小球
@@ -953,6 +975,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　内 $B=\dfrac{\mu_0Ir}{2\pi R^2}$（线性增长），外 $B=\dfrac{\mu_0I}{2\pi r}$（反比衰减）。
 >
+
 > [!important] 必须做的一步自查：$r=R$ 代入
 > 内式：$B=\dfrac{\mu_0IR}{2\pi R^2}=\dfrac{\mu_0I}{2\pi R}$；外式：$B=\dfrac{\mu_0I}{2\pi R}$。**两式相等，通过检验。**
 > 若对不上，一定是"套住的电流算错了"（比如内部错写成全部电流，会得到外式的形式）。
@@ -972,6 +995,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　$I_3=7\ \mathrm A$。
 >
+
 > [!warning] 这类"反求电流"题的三个动作
 > 1. **先算 $\mu_0$**：$\mu_0=4\pi\times10^{-7}\approx1.257\times10^{-6}$，把 $\oint\vec B\cdot\mathrm d\vec l$ 除以它得到"套住的代数和"。
 > 2. **确定正负**：题目给的绕行方向 + 右手螺旋定正负。同向加、反向减。
@@ -1024,21 +1048,25 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 > ---
 > **题（定性版 · 2024 选择第 7 题）**　电子垂直进入磁场，轨道所围面积的磁通量与 $B$、动能是什么关系？
 >
-> **解**　把 $v$ 用动能换掉：$E_k=\dfrac12mv^2\Longrightarrow v=\sqrt{\dfrac{2E_k}{m}}$，代入上式
-> $$\Phi=\frac{\pi mvR}{e}=\frac{\pi mR}{e}\sqrt{\frac{2E_k}{m}}=\frac{\pi R\sqrt{2mE_k}}{e}$$
-> 再用 $R=\dfrac{mv}{eB}\propto\dfrac{\sqrt{E_k}}{B}$ 代进去，或直接整理：
-> $$\Phi=\frac{2\pi mE_k}{eB}$$
+> **解**　从 $\Phi=B\pi R^2$ 出发，把 $R=\dfrac{mv}{eB}$ 代进去：
+> $$\Phi=B\pi\left(\frac{mv}{eB}\right)^2=\frac{\pi m^2v^2}{e^2B}$$
+> 再用 $E_k=\dfrac12mv^2$，即 $mv^2=2E_k$：
+> $$\Phi=\frac{2\pi mE_k}{e^2B}$$
 >
 > **答**　$\Phi\propto\dfrac{E_k}{B}$——**反比于 $B$，正比于动能**（选 B）。
 >
-> [!important] 一个式子串起四个结论
-> $$\Phi=\frac{2\pi mE_k}{eB}$$
+
+> [!important] 一个式子串起几个结论
+> $$\Phi=\frac{2\pi mE_k}{e^2B}$$
 > | 问题 | 答案 |
 > |---|---|
-> | $\Phi$ 与 $B$ | **反比**（$B$ 越强，轨道越小，面积缩得比场增强更快） |
-> | $\Phi$ 与 $E_k$ | **正比** |
-> | $\Phi$ 与 $v$ | 正比（因 $E_k\propto v^2$，而 $R\propto v$，$B\propto v$，故 $\Phi\propto v$） |
-> | $\Phi$ 与 $R$ | 正比（$\Phi=\dfrac{\pi mvR}{e}$） |
+> | $\Phi$ 与 $B$（$E_k$ 固定） | **反比**（$B$ 越强，轨道越小，面积缩得比场增强更快） |
+> | $\Phi$ 与 $E_k$（$B$ 固定） | **正比** |
+> | $\Phi$ 与 $v$（$B$ 固定） | **正比于 $v^2$**（因 $E_k\propto v^2$） |
+> | $\Phi$ 与 $R$（$B$ 固定） | **正比于 $R^2$**（因 $\Phi=B\pi R^2$） |
+>
+> 前两行是"两个变量互相制约"，后两行是"固定 $B$ 只看几何"。**别把这两种情形混在一起比**——
+> 说"$\Phi\propto R$"是错的，因为 $B$ 固定时 $\Phi=B\pi R^2$ 是**平方**关系。
 >
 > **直觉检查**：$B$ 增大时 $R$ 按 $1/B$ 缩小，面积按 $1/B^2$ 缩小，而 $B$ 只增大一次方，所以 $\Phi=B\cdot S\propto B\cdot\frac{1}{B^2}=\frac1B$。反比是这么来的。
 
@@ -1062,6 +1090,7 @@ $$\vec P=\frac{\sum\vec p_i}{\Delta V}\qquad \vec D=\varepsilon_0\vec E+\vec P=\
 >
 > **答**　向东偏约 $3\ \mathrm{mm}$。
 >
+
 > [!warning] 三个坑
 > 1. **电子带负电，方向要加负号**。直接按 $\vec v\times\vec B$ 判会得到反向的答案——这是本题最集中的失分点。
 > 2. **动能单位是 eV，要乘 $1.6\times10^{-19}$ 换成焦耳**。忘了换会算出离谱的速度。
@@ -1104,6 +1133,7 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > $$M=mB=\frac{e\omega R^2B}{2}$$
 > **答**　$M=\dfrac{e\omega R^2B}{2}$（选 B）。
 >
+
 > [!important] 力矩题的三步
 > 1. **求磁矩**：$m=NIS$；对单个带电粒子的轨道运动，$I=\dfrac{q}{T}=\dfrac{q\omega}{2\pi}$，$S=\pi R^2$，合起来 $m=\dfrac{q\omega R^2}{2}$。
 > 2. **看夹角**：$\theta$ 是**法线（即 $\vec m$）与 $\vec B$ 的夹角**，不是线圈平面与 $\vec B$ 的夹角。
@@ -1142,6 +1172,7 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 >
 > **答**　$M=\dfrac{\pi\lambda\omega BR^3}{2}$（选 A）。
 >
+
 > [!warning] 别把"绕轴转"当成"绕直径转"
 > | 转法 | $r_\perp$ | $m$ |
 > |---|---|---|
@@ -1177,6 +1208,7 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 >
 > **答**　$E=\dfrac{q}{4\pi\varepsilon_0a(a+b)}$；$B=\dfrac{\mu_0q\omega}{4\pi b}\ln\dfrac{a+b}{a}$。
 >
+
 > [!important] 这题是第 5 章和第 7 章的合体，也是本课最典型的"一大题两问"模板
 > | 问 | 用哪章 | 关键动作 |
 > |---|---|---|
@@ -1242,6 +1274,50 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > [!important] 🟡 感应电荷只与磁通量改变量有关
 > $$q=\int I\,\mathrm dt=\frac{\Delta\Phi}{R}$$
 > **与变化快慢无关**——快插慢插，只要始末磁通量相同，流过的电荷就一样。
+
+> [!example] 例 8-1　平行于直导线平移的矩形回路（真题 · 2022 填空第 17 题）
+> **题**　矩形回路与无限长直导线共面，一边与导线平行。回路以速度 $v$ **平行于直导线方向**运动。求回路中的感应电动势。
+>
+> **解**　回路的每一点到直导线的距离 $r$ **都不变**，而 $B=\dfrac{\mu_0I}{2\pi r}$ 只与 $r$ 有关，所以
+> $$\Phi=\int B\,\mathrm dS=\text{常量}\;\Longrightarrow\;\varepsilon=-\frac{\mathrm d\Phi}{\mathrm dt}=0$$
+>
+> **答**　$\varepsilon=0$。
+>
+
+> [!warning] "动就有电动势"是错的
+> 感应电动势的唯一判据是**磁通量有没有变**，跟"动没动"没有直接关系。要让 $\Phi$ 变，只有三条路：
+> | 变 $\Phi$ 的方式 | 例子 |
+> |---|---|
+> | 改变 $B$（磁场本身随时间变） | 感生电动势 |
+> | 改变回路**面积** | 导体棒滑动、线框拉大 |
+> | 改变回路**与场的相对取向** | 线框转动（发电机） |
+>
+> 本题三样都没发生（平移既不改变面积，也不改变取向，$B$ 也不变），所以 $\Phi$ 恒定。
+> **判断的第一步永远是"$\Phi$ 变不变"，不是"有没有切割磁感线"。**
+
+> [!example] 例 8-2　导轨上两根导线的相互驱动（真题 · 2022 选择第 6 题）
+> **题**　水平面内两根平行导轨 $MN$，$ab$ 与 $cd$ 可自由滑动。外磁场**垂直水平面向上**。
+> 外力使 $ab$ 向右平移，则 $cd$ 如何运动？
+>
+> **解**　两步，都用楞次定律：
+>
+> **① 定感应电流方向**：$ab$ 右移 ⟹ 回路面积增大 ⟹ 向上的磁通量**增大**。
+> 楞次：感应电流的磁场要**阻碍增大** ⟹ 感应磁场**向下** ⟹ 俯视看电流**顺时针**。
+>
+> **② 定 $cd$ 受力**：顺时针回路中，$cd$ 上的电流方向使它所受安培力指向**右**。
+> 从"阻碍"角度验一遍：$cd$ 向右移动会**缩小**回路面积、抵消磁通增大 —— 与楞次定律一致 ✓。
+>
+> **答**　$cd$ **向右移动**（选 D）。
+>
+
+> [!important] 楞次定律可以"跳过电流方向"直接用
+> 本题最快的解法：**感应现象的效果总是反抗原因**。原因是"面积变大"，所以反抗就是"面积变小"，
+> 即 $cd$ 必须朝 **$ab$ 所在的方向（向右）** 运动。
+>
+> 这就是"来拒去留、增反减同"的用法：**磁通增大 ⟹ 系统反抗增大 ⟹ 用运动/形变把面积缩回去。**
+> 考场上先想这一句，能省掉判断电流方向那一步。
+
+
 > 这就是**磁通计**的原理。
 
 ## 8-2 动生电动势与感生电动势
@@ -1261,6 +1337,29 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > [!warning] 🟡 转动的情形不能直接用 $Blv$
 > 转动的棒每点速度不同（但**角速度相同**），必须积 $\omega l\,\mathrm dl$，结果 $\varepsilon=\dfrac12B\omega l^2$。
 >
+
+> [!example] 例 8-3　绕端转动的导体棒（$\frac12B\omega l^2$ 的来历）
+> **题**　长 $l$ 的导体棒 $OA$ 绕 $O$ 端在垂直于匀强磁场 $B$ 的平面内以角速度 $\omega$ 匀速转动。求棒上的动生电动势。
+>
+> **解**　棒上各点速度**不同**（$v=\omega r$），不能用 $Blv$，必须积分：
+> 在距 $O$ 为 $r$ 处取元 $\mathrm dr$，其速度 $v=\omega r$、方向垂直于棒，所以 $\vec v\perp\vec B$、$\vec v\perp\mathrm d\vec l$：
+> $$\mathrm d\varepsilon=Bv\,\mathrm dr=B\omega r\,\mathrm dr$$
+> $$\varepsilon=\int_0^lB\omega r\,\mathrm dr=\frac12B\omega l^2$$
+>
+> **答**　$\varepsilon=\dfrac12B\omega l^2$。
+>
+> **方向判断**：由 $\vec v\times\vec B$ 定正电荷受力方向。若正电荷被推向 $A$ 端，则 **$A$ 端电势高**（相当于电源正极）。
+>
+
+> [!important] 为什么是 $\frac12$ —— 两个理解方式
+> **方式一（平均值）**：棒上速度从 $0$ 线性增到 $\omega l$，平均速度 $\bar v=\dfrac{\omega l}{2}$，
+> 所以等效于"整根棒以 $\bar v$ 平动"：$\varepsilon=B\bar vl=\dfrac12B\omega l^2$。
+> **方式二（扇形面积）**：$\varepsilon=\dfrac{\mathrm d\Phi}{\mathrm dt}=B\dfrac{\mathrm dS}{\mathrm dt}=B\cdot\dfrac12l^2\omega$，
+> 因为棒在 $\mathrm dt$ 内扫过的扇形面积 $\mathrm dS=\frac12l^2\mathrm d\theta=\frac12l^2\omega\,\mathrm dt$。
+>
+> **方式二更好用**——遇到不规则形状（扇形、弓形）时，直接算"扫过的面积变化率"就行，不用积分。
+
+
 > 把棒扩成整个线框在磁场中转动，就是**所有发电机的原理**——输出的交流电天然带 $\sin\omega t$。
 
 > [!important] 🔴 感生电动势（导体不动、磁场变）
@@ -1276,6 +1375,52 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > [!warning] 🟡 棒上的电动势 ≠ 沿棒"走一圈"的环流
 > 感生电场是涡旋场，$\int_A^B\vec E_k\cdot\mathrm d\vec l$ **与路径有关**。求棒上的电动势必须**沿棒本身**积分（$\cos\theta$ 逐点变），不能套 $E_k\cdot L$。
 >
+
+> [!example] 例 8-4　螺线管内的感生电场与导线段的电动势（真题 · 2024 计算第 3 题）
+> **题**　无限长直螺线管，截面半径 $R$，内部磁场沿轴、变化率 $\dfrac{\mathrm dB}{\mathrm dt}=k$（$k>0$，常量）。
+> 管内放一段直角导线 $abc$，$ab=bc=l$，直角在 $b$。
+> 求：(1) 螺线管内的感生电场；(2) $ab$、$bc$ 两段的感生电动势。
+>
+> ---
+> **解（1）感生电场**
+>
+> 由对称性，感生电场线是**同心圆**。取半径 $r$ 的圆形回路（$r<R$）：
+> $$\oint_L\vec E_k\cdot\mathrm d\vec l=E_k\cdot2\pi r=\left|\frac{\mathrm d\Phi}{\mathrm dt}\right|=\pi r^2k$$
+> $$E_k=\frac{kr}{2}$$
+> 方向：由楞次定律，感生电场绕行方向产生的磁场要**反抗原磁场的增大**，所以与 $\dfrac{\mathrm dB}{\mathrm dt}$ 成**左手**关系（和右手螺旋相反）。
+>
+> **管内**：$E_k=\dfrac{kr}{2}$（**正比于 $r$**）
+> **管外**（$r>R$，顺带记住）：$E_k\cdot2\pi r=\pi R^2k\;\Longrightarrow\;E_k=\dfrac{kR^2}{2r}$（反比于 $r$）
+> 两式在 $r=R$ 处都给出 $\dfrac{kR}{2}$，**连续** ✓
+>
+> ---
+> **解（2）导线段上的电动势：用"补三角形"绕过路径积分**
+>
+> 直接沿导线积 $\int\vec E_k\cdot\mathrm d\vec l$ 很麻烦——$E_k$ 沿圆周切向，与导线的夹角逐点变化。
+> **省事办法**：把 $a$、$b$ 分别与圆心 $O$ 连起来，补成三角形 $Oab$。
+>
+> - 沿 $Oa$、$Ob$ 两条**半径**：$\vec E_k$ 与半径**垂直**，$\vec E_k\cdot\mathrm d\vec l=0$，贡献为零。
+> - 于是沿闭合回路 $O\to a\to b\to O$：
+> $$\oint\vec E_k\cdot\mathrm d\vec l=\int_a^b\vec E_k\cdot\mathrm d\vec l=-\frac{\mathrm d\Phi_{Oab}}{\mathrm dt}=-k\,S_{Oab}$$
+>
+> 所以
+> $$\varepsilon_{ab}=k\,S_{Oab},\qquad \varepsilon_{bc}=k\,S_{Obc}$$
+> 其中 $S_{Oab}$、$S_{Obc}$ 分别是三角形 $Oab$、$Obc$ 的**面积**（用 $ab=bc=l$ 和它们相对圆心的位置算出）。
+>
+> **答**　$E_k=\dfrac{kr}{2}$（管内，方向与 $\mathrm dB/\mathrm dt$ 成左手螺旋）；
+> 各段电动势大小为 $k$ 乘对应三角形的面积，方向由楞次定律定（沿回路产生反抗磁通增大的电流）。
+>
+
+> [!important] 这个"补三角形"的技巧，是感生电场题的通用钥匙
+> **感应电动势永远等于"回路包围面积的磁通变化率"**，而半径方向 $E_k\perp\mathrm d\vec l$ 贡献为零，
+> 所以**任意一段导线**的电动势 = $k\times$（该段与圆心围成的三角形面积）。
+>
+> 三条推论：
+> 1. 若导线**沿半径**放置，则 $\varepsilon=0$（三角形面积为零）。
+> 2. 若导线**沿圆周**放置，则 $\varepsilon=k\pi r^2$（面积就是圆）。
+> 3. **不能套 $E_k\cdot L$**——因为 $\vec E_k$ 与导线不同向，这是本题最容易犯的错。
+
+
 > **更省事的办法**：把棒与圆心补成闭合三角形，用 $\varepsilon=-\mathrm d\Phi/\mathrm dt$ 算整个回路，再减去两条半径上的贡献（半径方向与 $\vec E_k$ 垂直，贡献为零）。
 
 ## 8-3 自感与互感
@@ -1285,6 +1430,39 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > 单位亨利（H）。$L$ 只由线圈的**几何形状和介质**决定。
 >
 > **负号的含义：永远阻碍电流变化**——电流增大时反向阻碍，减小时同向维持。
+
+> [!example] 例 8-5　螺绕环的自感（真题 · 2024 选择第 10 题）
+> **题**　矩形截面的密绕螺绕环，总匝数 $N$，内半径 $R_1$、外半径 $R_2$、高度 $h$。求自感 $L$。
+>
+> **解**　三步：求 $B$ → 求磁通 → 乘匝数除以电流。
+>
+> **① 环内磁场**（安培环路定理，取半径 $r$ 的圆）：
+> $$B\cdot2\pi r=\mu_0NI\;\Longrightarrow\;B=\frac{\mu_0NI}{2\pi r}$$
+>
+> **② 穿过单匝的磁通**（要沿径向积，因为 $B$ 随 $r$ 变）：
+> $$\Phi=\int_{R_1}^{R_2}B\,h\,\mathrm dr=\frac{\mu_0NIh}{2\pi}\int_{R_1}^{R_2}\frac{\mathrm dr}{r}
+> =\frac{\mu_0NIh}{2\pi}\ln\frac{R_2}{R_1}$$
+>
+> **③ 自感**（$N$ 匝的磁链 $\Psi=N\Phi$）：
+> $$L=\frac{\Psi}{I}=\frac{N\Phi}{I}=\frac{\mu_0N^2h}{2\pi}\ln\frac{R_2}{R_1}$$
+>
+> **答**　$L=\dfrac{\mu_0N^2h}{2\pi}\ln\dfrac{R_2}{R_1}$（选 B）。
+>
+
+> [!warning] 三个易错点
+> 1. **$N$ 要平方**。因为 $\Psi=N\Phi$ 里有一个 $N$，$\Phi$ 里的 $B$ 又含一个 $N$——少平方一次是常见错误。
+> 2. **必须沿 $r$ 积分**。螺绕环内 $B\propto1/r$ 不是匀强，不能直接 $B\cdot S$。写成 $\ln(R_2/R_1)$ 才对。
+> 3. **$\ln$ 的分子分母别颠倒**：$R_2>R_1$ 时结果为正。
+>
+> 对照记忆：
+> | 线圈 | 自感 |
+> |---|---|
+> | **长直螺线管** | $L=\mu_0n^2V=\mu_0n^2lS$ |
+> | **螺绕环** | $L=\dfrac{\mu_0N^2h}{2\pi}\ln\dfrac{R_2}{R_1}$ |
+>
+> ⚠️ 注意长直螺线管式用的是**单位长度匝数** $n$（小写），螺绕环式用的是**总匝数** $N$（大写）。混用就错。
+
+
 > 这解释了**断电时的火花**：$\mathrm dI/\mathrm dt$ 很大，自感电动势能击穿空气。
 
 **必背**：长直螺线管 $L=\mu n^2V=\mu n^2 lS$。
@@ -1293,6 +1471,61 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > $$\varepsilon_M=-M\frac{\mathrm dI_1}{\mathrm dt},\qquad M=\frac{\Phi_{21}}{I_1}$$
 > 单位也是 H。**$M$ 与两个线圈的形状、大小、相对位置和介质有关**，且 $M_{12}=M_{21}$。
 > 理论上 $M=k\sqrt{L_1L_2}$（$k$ 为耦合系数，$0\le k\le1$）。
+
+
+> [!example] 例 8-6　同轴大小线圈：轴线磁场、感应电动势、互感（真题 · 2022 计算第 5 题）
+> **题**　半径 $R$ 的大线圈通电流 $I$。半径 $r$（$r\ll R$）的小线圈与大线圈同轴，相距 $x$，沿轴以速率 $v$ 运动。
+> 求：(1) 大线圈在小线圈圆心处的 $B$；(2) 小线圈中的感应电动势；(3) 两线圈的互感 $M$。
+>
+> ---
+> **解（1）**　这是"圆电流轴线上"的标准结果（由毕奥-萨伐尔积分、只取轴向分量得到）：
+> $$B=\frac{\mu_0IR^2}{2(R^2+x^2)^{3/2}}$$
+>
+> **解（2）**　因 $r\ll R$，小线圈范围内的场可视为**均匀**，磁通为
+> $$\Phi=B\pi r^2=\frac{\mu_0IR^2\pi r^2}{2(R^2+x^2)^{3/2}}$$
+> 小线圈在动，$\Phi$ 通过 $x$ 随时间变。用链式法则（**这是关键一步**）：
+> $$\varepsilon=\left|\frac{\mathrm d\Phi}{\mathrm dt}\right|=\left|\frac{\mathrm d\Phi}{\mathrm dx}\right|\cdot\left|\frac{\mathrm dx}{\mathrm dt}\right|=\left|\frac{\mathrm d\Phi}{\mathrm dx}\right|v$$
+> 求导：
+> $$\frac{\mathrm d\Phi}{\mathrm dx}=\frac{\mu_0IR^2\pi r^2}{2}\cdot\left(-\frac32\right)(R^2+x^2)^{-5/2}\cdot2x
+> =-\frac{3\mu_0IR^2\pi r^2x}{2(R^2+x^2)^{5/2}}$$
+> $$\varepsilon=\frac{3\mu_0I\pi R^2r^2xv}{2(R^2+x^2)^{5/2}}$$
+>
+> **解（3）**　互感的定义 $M=\dfrac{\Phi_{21}}{I_1}$，直接除：
+> $$M=\frac{\Phi}{I}=\frac{\mu_0\pi R^2r^2}{2(R^2+x^2)^{3/2}}$$
+>
+> **答**　$B=\dfrac{\mu_0IR^2}{2(R^2+x^2)^{3/2}}$；$\varepsilon=\dfrac{3\mu_0I\pi R^2r^2xv}{2(R^2+x^2)^{5/2}}$；$M=\dfrac{\mu_0\pi R^2r^2}{2(R^2+x^2)^{3/2}}$。
+>
+
+> [!important] 这题的三小问是一条链，顺序不能变
+> $$\underbrace{B}_{\text{圆电流公式}}\;\to\;\underbrace{\Phi=B\pi r^2}_{\text{视为均匀场}}\;\to\;\underbrace{\varepsilon=-\frac{\mathrm d\Phi}{\mathrm dt}}_{\text{链式法则}}\;,\qquad \underbrace{M=\frac{\Phi}{I}}_{\text{定义}}$$
+>
+> **两个必须注意的地方**：
+> 1. **求导时别忘了中间变量**：$\Phi$ 是 $x$ 的函数，$x$ 是 $t$ 的函数，所以 $\dfrac{\mathrm d\Phi}{\mathrm dt}=\dfrac{\mathrm d\Phi}{\mathrm dx}v$。
+>    直接对 $t$ 求导会卡住，因为式子里根本没出现 $t$。
+> 2. **互感的单位可以自查**：$M$ 的单位是 $\mathrm H$。用 $M=\mu_0\pi R^2r^2/(2(R^2+x^2)^{3/2})$ 看量纲：$\mu_0$ 是 $\mathrm{H/m}$，乘 $\mathrm{m^4/m^3}=\mathrm{m}$ ⟹ $\mathrm H$ ✓
+>
+> 顺带：若 $x=0$（小线圈在大线圈中心），则 $M=\dfrac{\mu_0\pi r^2}{2R}$——这是最常见的一个特例，值得单独记住。
+
+> [!example] 例 8-7　两个线圈串联的等效自感（真题 · 两套卷都考）
+> **题**　自感 $L_1$、$L_2$ 的两个线圈串联，互感为 $M$。求顺串与反串的等效自感。
+>
+> **解**　关键看**互感磁通与自感磁通是同向还是反向**。
+>
+> **顺串**（两线圈绕向一致，磁通互相加强）：
+> $$\Psi=L_1I+L_2I+2MI\;\Longrightarrow\;L_{\text{顺}}=L_1+L_2+2M$$
+> **反串**（绕向相反，磁通互相削弱）：
+> $$L_{\text{反}}=L_1+L_2-2M$$
+>
+> **答**　顺串 $L_1+L_2+2M$；反串 $L_1+L_2-2M$。
+>
+
+> [!warning] 那个"2"从哪来
+> 互感的作用是**双向**的：线圈 1 的电流在线圈 2 里产生磁通（$MI$），线圈 2 的电流也在线圈 1 里产生磁通（$MI$）。
+> 两个方向加起来是 $2MI$，所以系数是 **2 而不是 1**。这是最容易漏的地方。
+>
+> 自查：取 $M=0$（无耦合）应退化为 $L_1+L_2$ ✓；取理想耦合 $M=\sqrt{L_1L_2}$ 且 $L_1=L_2=L$，
+> 则顺串 $L_{\text{顺}}=4L$（相当于匝数翻倍，$L\propto N^2$ ✓）。
+
 
 **两个线圈串联**：顺串 $L=L_1+L_2+2M$；反串 $L=L_1+L_2-2M$。
 
@@ -1307,6 +1540,28 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 
 > [!important] 🟡 磁能的来源是电源
 > 电场是**保守场**，本身有势能；磁场**不是保守场**，它的能量是在电流建立过程中由**电源**输进来的。
+
+> [!example] 例 8-8　自感磁能与"能量去哪了"
+> **题**　自感 $L=0.5\ \mathrm H$ 的线圈通电流 $I=2\ \mathrm A$。求 (1) 储藏的磁能；(2) 若迅速断开电路，这些能量去了哪里？
+>
+> **解（1）**
+> $$W_m=\frac12LI^2=\frac12\times0.5\times2^2=1\ \mathrm J$$
+>
+> **解（2）**　断开瞬间 $\dfrac{\mathrm dI}{\mathrm dt}$ 极大，自感电动势 $\varepsilon_L=-L\dfrac{\mathrm dI}{\mathrm dt}$ 可达上千伏，
+> 会**击穿开关处的空气**形成火花。能量转化为：火花放电的**热与光**、**电磁辐射**（以及少量导线电阻的热）。
+>
+
+> [!important] 三类"能量去哪了"的标准答案
+> | 场景 | 能量去向 |
+> |---|---|
+> | 闭合回路断电 | 全部变成**电阻的焦耳热** |
+> | **断开**回路（无通路） | **击穿空气**（火花）、电磁辐射 |
+> | 两电容并联（电荷重新分配） | 减少的那一半变成**导线电阻的热** |
+> | 断开电源后插入介质 | 减少的能量变成**介质被吸入的机械功** |
+>
+> 这类题的共同思路：**能量不会凭空消失，一定要找到它的去处。** 找不到去处，就说明你漏了一项。
+
+
 > 这也解释了断开电路时能量去了哪：回路闭合则全部变成电阻的热；**断开没有回路**，能量以击穿空气的方式释放（拔插头的火花）。
 
 ## 8-5 位移电流
@@ -1318,6 +1573,32 @@ $$\frac{F}{l}=\frac{\mu_0I_1I_2}{2\pi a}$$
 > [!warning] 🟡 位移电流"像"电流，但不是电流
 > **相同**：都能激发涡旋磁场。
 > **不同**：位移电流**不产生焦耳热**（没有电荷定向移动），也**不能用安培计测量**。
+
+> [!example] 例 8-9　平行板电容器充电时的位移电流与感生磁场
+> **题**　圆形平行板电容器，极板半径 $R$，以恒定电流 $I$ 充电。求 (1) 极板间的位移电流；(2) 极板间距轴线 $r$（$r<R$）处的磁感应强度。
+>
+> **解（1）**　由**全电流的连续性**：导线中的传导电流 $I$ 到了极板就断了，但极板间的位移电流必须"接上"，
+> 否则电流不连续：
+> $$I_d=I$$
+> （也可由定义验证：$I_d=\varepsilon_0\dfrac{\mathrm d\Phi_E}{\mathrm dt}$，而 $\Phi_E=E\pi R^2=\dfrac{\sigma}{\varepsilon_0}\pi R^2=\dfrac{q}{\varepsilon_0}$，
+> 故 $I_d=\dfrac{1}{\varepsilon_0}\dfrac{\mathrm dq}{\mathrm dt}=\dfrac{I}{\varepsilon_0}\cdot\varepsilon_0=I$ ✓）
+>
+> **解（2）**　取半径 $r$ 的圆形安培回路，套住的位移电流按**面积比例**分配：
+> $$I_{d,\text{套住}}=I\cdot\frac{\pi r^2}{\pi R^2}=I\frac{r^2}{R^2}$$
+> 由全电流定律
+> $$H\cdot2\pi r=I\frac{r^2}{R^2}\;\Longrightarrow\;H=\frac{Ir}{2\pi R^2}\;\Longrightarrow\;B=\mu_0H=\frac{\mu_0Ir}{2\pi R^2}$$
+>
+> **答**　$I_d=I$；$B=\dfrac{\mu_0Ir}{2\pi R^2}$（$r<R$），方向由右手螺旋定（与充电电流的磁场方向一致）。
+>
+
+> [!important] 这个结果和"无限长载流圆柱内部"的式子一模一样
+> $$B_{\text{圆柱内部}}=\frac{\mu_0Ir}{2\pi R^2}\qquad B_{\text{电容器内}}=\frac{\mu_0Ir}{2\pi R^2}$$
+> **不是巧合**——位移电流在"产生磁场"这件事上和传导电流完全等价，这正是麦克斯韦加这一项的理由。
+>
+> ⚠️ 但两者**只有这一点等价**：位移电流**不产生焦耳热**（没有电荷定向移动），也**不能用电流表测**。
+> 极板间 $r>R$ 处 $B=\dfrac{\mu_0I}{2\pi r}$（全部位移电流都套住了），和导线外的场衔接。
+
+
 > 两者只在"产生磁场"这一件事上等价。
 
 > [!important] 🔴 全电流安培环路定律
