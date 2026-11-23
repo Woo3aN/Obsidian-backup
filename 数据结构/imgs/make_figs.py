@@ -1095,6 +1095,337 @@ def fig_huffman_tree():
     plt.close(fig)
 
 
+# ------------------------------------------------------- 第 7/9 章通用小件
+def _gnode(ax, x, y, label, r=0.34, fc="white", ec=None, fs=11, tc=None):
+    ec = ec or C_LINE
+    tc = tc or C_TEXT
+    ax.add_patch(Circle((x, y), r, fc=fc, ec=ec, lw=1.4, zorder=3))
+    ax.text(x, y, label, ha="center", va="center", fontsize=fs,
+            color=tc, zorder=4)
+
+
+def _gedge(ax, p1, p2, color=None, lw=1.3, ls="-", z=1):
+    color = color or C_LINE
+    ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color=color, lw=lw,
+            ls=ls, zorder=z, solid_capstyle="round")
+
+
+def _gedge_dir(ax, p1, p2, color=None, lw=1.3, ms=10):
+    ax.add_patch(FancyArrowPatch(p1, p2, arrowstyle="-|>", mutation_scale=ms,
+                                 color=color or C_LINE, lw=lw,
+                                 shrinkA=9, shrinkB=9, zorder=2))
+
+
+def _wlabel(ax, x, y, s, fs=9.5, color=None):
+    ax.text(x, y, s, ha="center", va="center", fontsize=fs,
+            color=color or C_TXT2, zorder=5,
+            bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none"))
+
+
+# ------------------------------------------------ 图：DFS 访问顺序
+def fig_dfs_order():
+    pos = {"v1": (2.0, 5.4), "v2": (1.0, 4.4), "v3": (3.2, 4.4),
+           "v4": (0.4, 3.4), "v5": (1.7, 3.4), "v6": (2.8, 3.4),
+           "v7": (3.9, 3.4), "v8": (1.0, 2.4)}
+    tree = [("v1", "v2"), ("v2", "v4"), ("v4", "v8"), ("v8", "v5"),
+            ("v1", "v3"), ("v3", "v6"), ("v6", "v7")]
+    back = [("v2", "v5"), ("v3", "v7")]
+    order = ["v1", "v2", "v4", "v8", "v5", "v3", "v6", "v7"]
+
+    fig, ax = plt.subplots(figsize=(5.6, 4.9), dpi=150)
+    ax.set_aspect("equal")
+    ax.set_xlim(0, 4.6)
+    ax.set_ylim(1.72, 6.0)
+    ax.axis("off")
+    for a, b in back:
+        _gedge(ax, pos[a], pos[b], color=C_TXT2, lw=1.1, ls=(0, (4, 3)))
+    for a, b in tree:
+        _gedge(ax, pos[a], pos[b], color=C_TOP, lw=2.2)
+    for name, (x, y) in pos.items():
+        _gnode(ax, x, y, name)
+    for i, name in enumerate(order, 1):
+        x, y = pos[name]
+        ax.text(x + 0.40, y + 0.30, str(i), fontsize=9, color=C_TOP,
+                ha="center", va="center", fontweight="bold")
+    ax.text(2.3, 1.95, "DFS 序列：v1 v2 v4 v8 v5 v3 v6 v7（从 v1 出发）",
+            ha="center", va="center", fontsize=10.5, color=C_TEXT)
+    ax.text(2.3, 5.85, "红色实线 = 生成树边（走过的）    灰虚线 = 回边",
+            ha="center", va="center", fontsize=9.5, color=C_TXT2)
+    fig.savefig(os.path.join(OUT, "ch7-3-1-DFS访问顺序.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：Prim 构造过程
+def fig_prim_process():
+    fig, axs = plt.subplots(1, 2, figsize=(8.6, 4.4), dpi=150)
+    for ax in axs:
+        ax.set_aspect("equal")
+        ax.axis("off")
+
+    ax = axs[0]
+    ax.set_xlim(-0.2, 5.2)
+    ax.set_ylim(2.2, 5.9)
+    pos = {"v1": (0.5, 4.5), "v2": (2.3, 5.3), "v3": (4.3, 4.7),
+           "v4": (1.9, 3.2), "v5": (3.6, 2.9)}
+    edges = [("v1", "v2", 8), ("v2", "v3", 7), ("v1", "v4", 4),
+             ("v2", "v4", 5), ("v3", "v4", 12), ("v2", "v5", 11),
+             ("v4", "v5", 3), ("v3", "v5", 6)]
+    for a, b, w in edges:
+        _gedge(ax, pos[a], pos[b])
+        if (a, b) in (("v2", "v5"), ("v3", "v4")):
+            continue  # 这两条的权值在中点会互相叠，单独偏移标
+        mx, my = (pos[a][0] + pos[b][0]) / 2, (pos[a][1] + pos[b][1]) / 2
+        _wlabel(ax, mx, my, str(w))
+    # 11 与 12 的权值都在中部交叉，往各自端点偏移开
+    _wlabel(ax, 3.05, 3.75, "11")
+    _wlabel(ax, 3.35, 4.25, "12")
+    for n, (x, y) in pos.items():
+        _gnode(ax, x, y, n)
+    ax.set_title("(a) 原图（从 v2 出发）", fontsize=11, color=C_TEXT, y=-0.06)
+
+    ax = axs[1]
+    ax.set_xlim(-0.2, 5.2)
+    ax.set_ylim(2.2, 5.9)
+    pos2 = {"v2": (2.3, 5.0), "v1": (0.5, 4.0), "v4": (2.0, 3.0),
+            "v5": (3.8, 3.0), "v3": (4.8, 4.2)}
+    mst = [("v2", "v4", 5), ("v1", "v4", 4), ("v4", "v5", 3), ("v5", "v3", 6)]
+    for a, b, w in mst:
+        _gedge(ax, pos2[a], pos2[b], color=C_TOP, lw=2.2)
+        mx, my = (pos2[a][0] + pos2[b][0]) / 2, (pos2[a][1] + pos2[b][1]) / 2
+        _wlabel(ax, mx, my, str(w))
+    for n, (x, y) in pos2.items():
+        _gnode(ax, x, y, n)
+    ax.set_title("(b) 最小生成树：5 + 3 + 4 + 6 = 18", fontsize=11,
+                 color=C_TEXT, y=-0.06)
+    fig.savefig(os.path.join(OUT, "ch7-4-3-Prim构造过程.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：拓扑排序过程
+def fig_topsort_process():
+    base = {"v1": (0.8, 4.4), "v2": (2.8, 4.4), "v4": (0.8, 3.1),
+            "v3": (2.8, 3.1), "v6": (0.8, 1.8), "v5": (2.8, 1.8)}
+    arcs = [("v1", "v2"), ("v1", "v4"), ("v1", "v3"), ("v4", "v3"),
+            ("v4", "v5"), ("v6", "v4"), ("v6", "v5"), ("v3", "v2"),
+            ("v3", "v5")]
+    panels = [
+        ("(a) 有向图", list(arcs), [], None),
+        ("(b) 输出 v1 后", [a for a in arcs if a[0] != "v1"], ["v1"], 1),
+        ("(c) 输出 v6 后", [a for a in arcs if a[0] not in ("v1", "v6")],
+         ["v1", "v6"], 2),
+        ("(d) 输出 v4 后",
+         [a for a in arcs if a[0] not in ("v1", "v6", "v4")],
+         ["v1", "v6", "v4"], 3),
+    ]
+    fig, axs = plt.subplots(1, 4, figsize=(12.4, 3.6), dpi=150)
+    for ax in axs:
+        ax.set_aspect("equal")
+    for ax, (title, keep, gone, step) in zip(axs, panels):
+        ax.axis("off")
+        ax.set_xlim(0.1, 3.6)
+        ax.set_ylim(1.4, 5.0)
+        for a, b in keep:
+            _gedge_dir(ax, base[a], base[b])
+        for n, (x, y) in base.items():
+            if n in gone:
+                _gnode(ax, x, y, n, fc="#eeeeee", ec=C_TXT2, tc=C_TXT2)
+                ax.text(x - 0.34, y + 0.38, str(step and gone.index(n) + 1),
+                        fontsize=9, color=C_TOP, ha="center", va="center",
+                        fontweight="bold")
+            else:
+                _gnode(ax, x, y, n)
+        ax.set_title(title, fontsize=11, color=C_TEXT, y=-0.09)
+    fig.text(0.5, 0.015, "输出 v1 → v6 → v4 → v3 后，剩下的 v2、v5 都是零入度，2 5 或 5 2 都行",
+             ha="center", fontsize=10.5, color=C_TEXT)
+    fig.savefig(os.path.join(OUT, "ch7-5-1-拓扑排序过程.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：AOE 网与关键路径
+def fig_aoe_critical():
+    pos = {"v0": (0.4, 3.0), "v1": (2.2, 4.4), "v2": (2.2, 2.6),
+           "v3": (2.2, 1.0), "v4": (4.2, 3.6), "v5": (4.2, 2.2),
+           "v6": (4.2, 0.8), "v7": (5.9, 3.0), "v8": (7.3, 3.0)}
+    acts = [("v0", "v1", "a1=3"), ("v0", "v2", "a2=10"), ("v1", "v3", "a3=9"),
+            ("v1", "v4", "a4=13"), ("v2", "v4", "a5=12"), ("v2", "v5", "a6=7"),
+            ("v3", "v6", "a7=8"), ("v3", "v7", "a8=4"), ("v4", "v7", "a9=6"),
+            ("v5", "v7", "a10=11"), ("v6", "v8", "a11=2"), ("v7", "v8", "a12=5")]
+    crit = {("v0", "v2"), ("v2", "v4"), ("v4", "v7"), ("v7", "v8"),
+            ("v2", "v5"), ("v5", "v7")}
+    fig, ax = plt.subplots(figsize=(8.0, 4.4), dpi=150)
+    ax.set_xlim(-0.1, 7.9)
+    ax.set_ylim(0.4, 5.0)
+    ax.axis("off")
+    for a, b, w in acts:
+        key = (a, b)
+        if key in crit:
+            _gedge_dir(ax, pos[a], pos[b], color=C_TOP, lw=2.4, ms=13)
+            mx, my = (pos[a][0] + pos[b][0]) / 2, (pos[a][1] + pos[b][1]) / 2
+            _wlabel(ax, mx, my, w, color=C_TOP)
+        else:
+            _gedge_dir(ax, pos[a], pos[b])
+            mx, my = (pos[a][0] + pos[b][0]) / 2, (pos[a][1] + pos[b][1]) / 2
+            _wlabel(ax, mx, my, w)
+    for n, (x, y) in pos.items():
+        _gnode(ax, x, y, n)
+    ax.text(3.9, 0.15, "关键路径两条：v0→v2→v4→v7→v8 和 v0→v2→v5→v7→v8（长 33），"
+            "关键活动 a2, a5, a6, a9, a10, a12",
+            ha="center", fontsize=10, color=C_TOP)
+    fig.savefig(os.path.join(OUT, "ch7-5-2-AOE关键路径.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：Dijkstra 来源点数组例
+def fig_dijkstra_example():
+    pos = {"1": (0.4, 3.0), "2": (1.6, 4.4), "4": (3.4, 4.4),
+           "3": (1.6, 1.8), "5": (3.2, 1.8), "6": (4.5, 3.0)}
+    edges = [("1", "2", 1), ("1", "3", 12), ("2", "3", 9), ("2", "4", 3),
+             ("3", "4", 4), ("4", "6", 14), ("4", "5", 13), ("3", "5", 5),
+             ("5", "6", 15)]
+    fig, ax = plt.subplots(figsize=(7.6, 3.9), dpi=150)
+    ax.set_xlim(-0.1, 9.3)
+    ax.set_ylim(1.2, 5.0)
+    ax.axis("off")
+    for a, b, w in edges:
+        _gedge(ax, pos[a], pos[b])
+        mx, my = (pos[a][0] + pos[b][0]) / 2, (pos[a][1] + pos[b][1]) / 2
+        _wlabel(ax, mx, my, str(w))
+    for n, (x, y) in pos.items():
+        _gnode(ax, x, y, n)
+    rows = [("顶点", 1, 2, 3, 4, 5, 6), ("距离 D", 0, 1, 8, 4, 13, 18),
+            ("来源 P", "–", 1, 4, 2, 3, 4)]
+    x0, cw, ch = 5.6, 0.62, 0.52
+    for r, row in enumerate(rows):
+        for c, val in enumerate(row):
+            fc = C_FILL if r == 0 or c == 0 else "white"
+            _slot(ax, x0 + c * cw, 4.3 - r * ch, cw, ch, text=str(val),
+                  fc=fc, fs=9.5)
+    ax.text(x0 + 3 * cw, 2.35, "最终结果（从 1 出发）", ha="center",
+            fontsize=10, color=C_TEXT)
+    ax.text(2.4, 1.35, "到 6 = 18：反向追踪 6 ← 4 ← 2 ← 1", ha="center",
+            fontsize=10, color=C_TOP)
+    fig.savefig(os.path.join(OUT, "ch7-6-1-Dijkstra来源点例.png"),
+                bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：次优查找树 5 关键字对比
+def fig_suboptimal_compare():
+    fig, axs = plt.subplots(1, 2, figsize=(8.0, 4.0), dpi=150)
+    for ax in axs:
+        ax.axis("off")
+        ax.set_xlim(0.0, 4.0)
+        ax.set_ylim(1.7, 5.2)
+
+    ax = axs[0]
+    t1 = [("C", 2.0, 4.5, "2"), ("B", 1.2, 3.4, "30"), ("D", 2.8, 3.4, "29"),
+          ("A", 0.7, 2.3, "1"), ("E", 3.3, 2.3, "3")]
+    e1 = [("C", "B"), ("C", "D"), ("B", "A"), ("D", "E")]
+    for a, b in e1:
+        _gedge(ax, (t1[[r[0] for r in t1].index(a)][1], t1[[r[0] for r in t1].index(a)][2]),
+               (t1[[r[0] for r in t1].index(b)][1], t1[[r[0] for r in t1].index(b)][2]))
+    for n, x, y, w in t1:
+        _gnode(ax, x, y, n)
+        _wlabel(ax, x + 0.42, y, "w=" + w)
+    ax.set_title("(a) 算法构造的次优树，PH = 132", fontsize=11, color=C_TEXT, y=-0.08)
+
+    ax = axs[1]
+    t2 = [("B", 2.0, 4.5, "30"), ("A", 1.2, 3.4, "1"), ("D", 2.8, 3.4, "29"),
+          ("C", 2.2, 2.3, "2"), ("E", 3.4, 2.3, "3")]
+    e2 = [("B", "A"), ("B", "D"), ("D", "C"), ("D", "E")]
+    for a, b in e2:
+        pa = (t2[[r[0] for r in t2].index(a)][1], t2[[r[0] for r in t2].index(a)][2])
+        pb = (t2[[r[0] for r in t2].index(b)][1], t2[[r[0] for r in t2].index(b)][2])
+        _gedge(ax, pa, pb)
+    for n, x, y, w in t2:
+        _gnode(ax, x, y, n)
+        _wlabel(ax, x + 0.42, y, "w=" + w)
+    ax.set_title("(b) 根调整为权值大的 B，PH = 105", fontsize=11, color=C_TEXT, y=-0.08)
+    fig.savefig(os.path.join(OUT, "ch9-1-3-次优查找树对比.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：BST 删除全过程
+def fig_bst_delete():
+    panels = [
+        ("(a) 原树（删 19）", [("12", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
+          ("6", 0.25, 2.6), ("10", 0.95, 2.6), ("13", 1.5, 2.6), ("19", 2.1, 2.6),
+          ("9", 0.75, 1.6), ("14", 1.75, 1.6)],
+         [("12", "8"), ("12", "15"), ("8", "6"), ("8", "10"), ("10", "9"),
+          ("15", "13"), ("15", "19"), ("13", "14")], ["19"]),
+        ("(b) 删 19 后（删 10）", [("12", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
+          ("6", 0.25, 2.6), ("10", 0.95, 2.6), ("13", 1.5, 2.6),
+          ("9", 0.75, 1.6), ("14", 1.75, 1.6)],
+         [("12", "8"), ("12", "15"), ("8", "6"), ("8", "10"), ("10", "9"),
+          ("15", "13"), ("13", "14")], ["10"]),
+        ("(c) 删 10 后（删 12）", [("12", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
+          ("6", 0.25, 2.6), ("9", 0.95, 2.6), ("13", 1.5, 2.6),
+          ("14", 1.75, 1.6)],
+         [("12", "8"), ("12", "15"), ("8", "6"), ("8", "9"), ("15", "13"),
+          ("13", "14")], ["12"]),
+        ("(d) 删 12 后（删 13）", [("13", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
+          ("6", 0.25, 2.6), ("9", 0.95, 2.6), ("14", 1.8, 2.6)],
+         [("13", "8"), ("13", "15"), ("8", "6"), ("8", "9"), ("15", "14")],
+         ["13"]),
+        ("(e) 删 13 后", [("9", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
+          ("6", 0.25, 2.6), ("14", 1.8, 2.6)],
+         [("9", "8"), ("9", "15"), ("8", "6"), ("15", "14")], []),
+    ]
+    fig, axs = plt.subplots(1, 5, figsize=(13.6, 3.0), dpi=150)
+    pmap = {name: (x, y) for _, nodes, _, _, in [] for name, x, y in []}
+    for ax, (title, nodes, edges, hot) in zip(axs, panels):
+        ax.axis("off")
+        ax.set_xlim(0.0, 2.45)
+        ax.set_ylim(1.3, 5.1)
+        pos = {n: (x, y) for n, x, y in nodes}
+        for a, b in edges:
+            _gedge(ax, pos[a], pos[b])
+        for n, x, y in nodes:
+            if n in hot:
+                _gnode(ax, x, y, n, fc="#fdecea", ec=C_TOP, tc=C_TOP)
+            else:
+                _gnode(ax, x, y, n)
+        ax.set_title(title, fontsize=10, color=C_TEXT, y=-0.10)
+    fig.savefig(os.path.join(OUT, "ch9-2-1-BST删除过程.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
+# ------------------------------------------------ 图：AVL 构造旋转
+def fig_avl_build():
+    fig, axs = plt.subplots(1, 4, figsize=(11.8, 2.9), dpi=150)
+    panels = [
+        ("(a) 插 13,24,37 右链失衡（RR）",
+         [("13", 0.6, 4.2), ("24", 1.3, 3.2), ("37", 2.0, 2.2)],
+         [("13", "24"), ("24", "37")], ["37"]),
+        ("(b) 左旋一次：24 上去、13 压下",
+         [("24", 1.3, 4.2), ("13", 0.6, 3.2), ("37", 2.0, 3.2)],
+         [("24", "13"), ("24", "37")], []),
+        ("(c) 插 90、53 失衡（RL）",
+         [("24", 0.9, 4.3), ("13", 0.3, 3.3), ("37", 1.5, 3.3),
+          ("90", 2.1, 2.3), ("53", 1.6, 2.3)],
+         [("24", "13"), ("24", "37"), ("37", "90"), ("90", "53")], ["53"]),
+        ("(d) RL 旋两次：先 37 左旋、再 24 右旋",
+         [("53", 1.4, 4.3), ("24", 0.6, 3.3), ("90", 2.2, 3.3),
+          ("13", 0.25, 2.3), ("37", 0.95, 2.3)],
+         [("53", "24"), ("53", "90"), ("24", "13"), ("24", "37")], []),
+    ]
+    for ax, (title, nodes, edges, hot) in zip(axs, panels):
+        ax.axis("off")
+        ax.set_xlim(0.0, 2.6)
+        ax.set_ylim(1.8, 5.0)
+        pos = {n: (x, y) for n, x, y in nodes}
+        for a, b in edges:
+            _gedge(ax, pos[a], pos[b])
+        for n, x, y in nodes:
+            if n in hot:
+                _gnode(ax, x, y, n, fc="#fdecea", ec=C_TOP, tc=C_TOP)
+            else:
+                _gnode(ax, x, y, n)
+        ax.set_title(title, fontsize=9.5, color=C_TEXT, y=-0.12)
+    fig.savefig(os.path.join(OUT, "ch9-2-1-AVL旋转构造.png"), bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_seq_stack()
     fig_stack_states()
