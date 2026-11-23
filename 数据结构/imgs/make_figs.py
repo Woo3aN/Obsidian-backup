@@ -1252,13 +1252,23 @@ def fig_aoe_critical():
             ("v5", "v7", "a10=11"), ("v6", "v8", "a11=2"), ("v7", "v8", "a12=5")]
     crit = {("v0", "v2"), ("v2", "v4"), ("v4", "v7"), ("v7", "v8"),
             ("v2", "v5"), ("v5", "v7")}
-    fig, ax = plt.subplots(figsize=(8.0, 4.4), dpi=150)
+    bend = {"v1v3": 0.35, "v3v7": -0.30}  # 这两条直线会穿过顶点，改弧线绕行
+    fig, ax = plt.subplots(figsize=(8.6, 4.9), dpi=150)
+    ax.set_aspect("equal")
     ax.set_xlim(-0.1, 7.9)
     ax.set_ylim(0.4, 5.0)
     ax.axis("off")
     for a, b, w in acts:
         key = (a, b)
-        if key in crit:
+        rad = bend.get(a + b)
+        if rad is not None:
+            ax.add_patch(FancyArrowPatch(
+                pos[a], pos[b], arrowstyle="-|>", mutation_scale=10,
+                color=C_LINE, lw=1.3, shrinkA=9, shrinkB=9, zorder=2,
+                connectionstyle=f"arc3,rad={rad}"))
+            mx, my = (pos[a][0] + pos[b][0]) / 2, (pos[a][1] + pos[b][1]) / 2
+            _wlabel(ax, mx + 0.45 * (1 if rad > 0 else -1), my + 0.1, w)
+        elif key in crit:
             _gedge_dir(ax, pos[a], pos[b], color=C_TOP, lw=2.4, ms=13)
             mx, my = (pos[a][0] + pos[b][0]) / 2, (pos[a][1] + pos[b][1]) / 2
             _wlabel(ax, mx, my, w, color=C_TOP)
@@ -1282,9 +1292,10 @@ def fig_dijkstra_example():
     edges = [("1", "2", 1), ("1", "3", 12), ("2", "3", 9), ("2", "4", 3),
              ("3", "4", 4), ("4", "6", 14), ("4", "5", 13), ("3", "5", 5),
              ("5", "6", 15)]
-    fig, ax = plt.subplots(figsize=(7.6, 3.9), dpi=150)
-    ax.set_xlim(-0.1, 9.3)
-    ax.set_ylim(1.2, 5.0)
+    fig, ax = plt.subplots(figsize=(8.6, 4.5), dpi=150)
+    ax.set_aspect("equal")
+    ax.set_xlim(-0.1, 9.9)
+    ax.set_ylim(1.0, 5.0)
     ax.axis("off")
     for a, b, w in edges:
         _gedge(ax, pos[a], pos[b])
@@ -1294,7 +1305,7 @@ def fig_dijkstra_example():
         _gnode(ax, x, y, n)
     rows = [("顶点", 1, 2, 3, 4, 5, 6), ("距离 D", 0, 1, 8, 4, 13, 18),
             ("来源 P", "–", 1, 4, 2, 3, 4)]
-    x0, cw, ch = 5.6, 0.62, 0.52
+    x0, cw, ch = 5.7, 0.60, 0.52
     for r, row in enumerate(rows):
         for c, val in enumerate(row):
             fc = C_FILL if r == 0 or c == 0 else "white"
@@ -1302,7 +1313,7 @@ def fig_dijkstra_example():
                   fc=fc, fs=9.5)
     ax.text(x0 + 3 * cw, 2.35, "最终结果（从 1 出发）", ha="center",
             fontsize=10, color=C_TEXT)
-    ax.text(2.4, 1.35, "到 6 = 18：反向追踪 6 ← 4 ← 2 ← 1", ha="center",
+    ax.text(2.4, 1.28, "到 6 = 18：反向追踪 6 ← 4 ← 2 ← 1", ha="center",
             fontsize=10, color=C_TOP)
     fig.savefig(os.path.join(OUT, "ch7-6-1-Dijkstra来源点例.png"),
                 bbox_inches="tight")
@@ -1311,8 +1322,9 @@ def fig_dijkstra_example():
 
 # ------------------------------------------------ 图：次优查找树 5 关键字对比
 def fig_suboptimal_compare():
-    fig, axs = plt.subplots(1, 2, figsize=(8.0, 4.0), dpi=150)
+    fig, axs = plt.subplots(1, 2, figsize=(8.4, 4.3), dpi=150)
     for ax in axs:
+        ax.set_aspect("equal")
         ax.axis("off")
         ax.set_xlim(0.0, 4.0)
         ax.set_ylim(1.7, 5.2)
@@ -1321,25 +1333,24 @@ def fig_suboptimal_compare():
     t1 = [("C", 2.0, 4.5, "2"), ("B", 1.2, 3.4, "30"), ("D", 2.8, 3.4, "29"),
           ("A", 0.7, 2.3, "1"), ("E", 3.3, 2.3, "3")]
     e1 = [("C", "B"), ("C", "D"), ("B", "A"), ("D", "E")]
+    p1 = {n: (x, y) for n, x, y, _ in t1}
     for a, b in e1:
-        _gedge(ax, (t1[[r[0] for r in t1].index(a)][1], t1[[r[0] for r in t1].index(a)][2]),
-               (t1[[r[0] for r in t1].index(b)][1], t1[[r[0] for r in t1].index(b)][2]))
+        _gedge(ax, p1[a], p1[b])
     for n, x, y, w in t1:
         _gnode(ax, x, y, n)
-        _wlabel(ax, x + 0.42, y, "w=" + w)
+        _wlabel(ax, x + 0.44, y, "w=" + w)
     ax.set_title("(a) 算法构造的次优树，PH = 132", fontsize=11, color=C_TEXT, y=-0.08)
 
     ax = axs[1]
     t2 = [("B", 2.0, 4.5, "30"), ("A", 1.2, 3.4, "1"), ("D", 2.8, 3.4, "29"),
           ("C", 2.2, 2.3, "2"), ("E", 3.4, 2.3, "3")]
     e2 = [("B", "A"), ("B", "D"), ("D", "C"), ("D", "E")]
+    p2 = {n: (x, y) for n, x, y, _ in t2}
     for a, b in e2:
-        pa = (t2[[r[0] for r in t2].index(a)][1], t2[[r[0] for r in t2].index(a)][2])
-        pb = (t2[[r[0] for r in t2].index(b)][1], t2[[r[0] for r in t2].index(b)][2])
-        _gedge(ax, pa, pb)
+        _gedge(ax, p2[a], p2[b])
     for n, x, y, w in t2:
         _gnode(ax, x, y, n)
-        _wlabel(ax, x + 0.42, y, "w=" + w)
+        _wlabel(ax, x + 0.44, y, "w=" + w)
     ax.set_title("(b) 根调整为权值大的 B，PH = 105", fontsize=11, color=C_TEXT, y=-0.08)
     fig.savefig(os.path.join(OUT, "ch9-1-3-次优查找树对比.png"), bbox_inches="tight")
     plt.close(fig)
@@ -1348,34 +1359,35 @@ def fig_suboptimal_compare():
 # ------------------------------------------------ 图：BST 删除全过程
 def fig_bst_delete():
     panels = [
-        ("(a) 原树（删 19）", [("12", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
-          ("6", 0.25, 2.6), ("10", 0.95, 2.6), ("13", 1.5, 2.6), ("19", 2.1, 2.6),
-          ("9", 0.75, 1.6), ("14", 1.75, 1.6)],
+        ("(a) 原树（删 19）", [("12", 1.6, 4.6), ("8", 0.8, 3.6), ("15", 2.4, 3.6),
+          ("6", 0.35, 2.6), ("10", 1.25, 2.6), ("13", 2.05, 2.6), ("19", 2.85, 2.6),
+          ("9", 0.8, 1.6), ("14", 2.4, 1.6)],
          [("12", "8"), ("12", "15"), ("8", "6"), ("8", "10"), ("10", "9"),
           ("15", "13"), ("15", "19"), ("13", "14")], ["19"]),
-        ("(b) 删 19 后（删 10）", [("12", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
-          ("6", 0.25, 2.6), ("10", 0.95, 2.6), ("13", 1.5, 2.6),
-          ("9", 0.75, 1.6), ("14", 1.75, 1.6)],
+        ("(b) 删 19 后（删 10）", [("12", 1.6, 4.6), ("8", 0.8, 3.6), ("15", 2.4, 3.6),
+          ("6", 0.35, 2.6), ("10", 1.25, 2.6), ("13", 2.05, 2.6),
+          ("9", 0.8, 1.6), ("14", 2.4, 1.6)],
          [("12", "8"), ("12", "15"), ("8", "6"), ("8", "10"), ("10", "9"),
           ("15", "13"), ("13", "14")], ["10"]),
-        ("(c) 删 10 后（删 12）", [("12", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
-          ("6", 0.25, 2.6), ("9", 0.95, 2.6), ("13", 1.5, 2.6),
-          ("14", 1.75, 1.6)],
+        ("(c) 删 10 后（删 12）", [("12", 1.6, 4.6), ("8", 0.8, 3.6), ("15", 2.4, 3.6),
+          ("6", 0.35, 2.6), ("9", 1.25, 2.6), ("13", 2.05, 2.6),
+          ("14", 2.4, 1.6)],
          [("12", "8"), ("12", "15"), ("8", "6"), ("8", "9"), ("15", "13"),
           ("13", "14")], ["12"]),
-        ("(d) 删 12 后（删 13）", [("13", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
-          ("6", 0.25, 2.6), ("9", 0.95, 2.6), ("14", 1.8, 2.6)],
+        ("(d) 删 12 后（删 13）", [("13", 1.6, 4.6), ("8", 0.8, 3.6), ("15", 2.4, 3.6),
+          ("6", 0.35, 2.6), ("9", 1.25, 2.6), ("14", 2.4, 2.6)],
          [("13", "8"), ("13", "15"), ("8", "6"), ("8", "9"), ("15", "14")],
          ["13"]),
-        ("(e) 删 13 后", [("9", 1.2, 4.6), ("8", 0.6, 3.6), ("15", 1.8, 3.6),
-          ("6", 0.25, 2.6), ("14", 1.8, 2.6)],
+        ("(e) 删 13 后", [("9", 1.6, 4.6), ("8", 0.8, 3.6), ("15", 2.4, 3.6),
+          ("6", 0.35, 2.6), ("14", 2.4, 2.6)],
          [("9", "8"), ("9", "15"), ("8", "6"), ("15", "14")], []),
     ]
-    fig, axs = plt.subplots(1, 5, figsize=(13.6, 3.0), dpi=150)
-    pmap = {name: (x, y) for _, nodes, _, _, in [] for name, x, y in []}
+    fig, axs = plt.subplots(1, 5, figsize=(14.6, 3.4), dpi=150)
+    for ax in axs:
+        ax.set_aspect("equal")
     for ax, (title, nodes, edges, hot) in zip(axs, panels):
         ax.axis("off")
-        ax.set_xlim(0.0, 2.45)
+        ax.set_xlim(0.0, 3.25)
         ax.set_ylim(1.3, 5.1)
         pos = {n: (x, y) for n, x, y in nodes}
         for a, b in edges:
@@ -1392,27 +1404,29 @@ def fig_bst_delete():
 
 # ------------------------------------------------ 图：AVL 构造旋转
 def fig_avl_build():
-    fig, axs = plt.subplots(1, 4, figsize=(11.8, 2.9), dpi=150)
+    fig, axs = plt.subplots(1, 4, figsize=(12.6, 3.3), dpi=150)
     panels = [
         ("(a) 插 13,24,37 右链失衡（RR）",
-         [("13", 0.6, 4.2), ("24", 1.3, 3.2), ("37", 2.0, 2.2)],
+         [("13", 0.6, 4.2), ("24", 1.4, 3.2), ("37", 2.2, 2.2)],
          [("13", "24"), ("24", "37")], ["37"]),
         ("(b) 左旋一次：24 上去、13 压下",
-         [("24", 1.3, 4.2), ("13", 0.6, 3.2), ("37", 2.0, 3.2)],
+         [("24", 1.4, 4.2), ("13", 0.5, 3.2), ("37", 2.3, 3.2)],
          [("24", "13"), ("24", "37")], []),
         ("(c) 插 90、53 失衡（RL）",
-         [("24", 0.9, 4.3), ("13", 0.3, 3.3), ("37", 1.5, 3.3),
-          ("90", 2.1, 2.3), ("53", 1.6, 2.3)],
+         [("24", 1.0, 4.4), ("13", 0.3, 3.4), ("37", 1.9, 3.4),
+          ("90", 2.5, 2.4), ("53", 1.5, 2.4)],
          [("24", "13"), ("24", "37"), ("37", "90"), ("90", "53")], ["53"]),
         ("(d) RL 旋两次：先 37 左旋、再 24 右旋",
-         [("53", 1.4, 4.3), ("24", 0.6, 3.3), ("90", 2.2, 3.3),
-          ("13", 0.25, 2.3), ("37", 0.95, 2.3)],
+         [("53", 1.4, 4.4), ("24", 0.5, 3.4), ("90", 2.5, 3.4),
+          ("13", 0.2, 2.4), ("37", 1.0, 2.4)],
          [("53", "24"), ("53", "90"), ("24", "13"), ("24", "37")], []),
     ]
+    for ax in axs:
+        ax.set_aspect("equal")
     for ax, (title, nodes, edges, hot) in zip(axs, panels):
         ax.axis("off")
-        ax.set_xlim(0.0, 2.6)
-        ax.set_ylim(1.8, 5.0)
+        ax.set_xlim(-0.35, 3.0)
+        ax.set_ylim(1.9, 5.0)
         pos = {n: (x, y) for n, x, y in nodes}
         for a, b in edges:
             _gedge(ax, pos[a], pos[b])
