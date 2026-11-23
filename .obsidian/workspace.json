@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "file:C:/Users/24431/AppData/Local/Temp/Rar$DIa4232.36550.rartemp/README.md",
+                "file": "电力电子技术/电力电子技术.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "电力电子技术"
             }
           }
         ],
@@ -187,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "file:C:/Users/24431/AppData/Local/Temp/Rar$DIa4232.36550.rartemp/README.md",
+                "file": "电力电子技术/电力电子技术.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -264,18 +264,20 @@
   },
   "active": "100956435f47d6f0",
   "lastOpenFiles": [
+    "面向对象程序设计/C++相关代码.md",
+    "人工智能引论/人工智能引论.md",
+    "离散数学/离散数学.md",
+    "file:C:/Users/24431/AppData/Local/Temp/Rar$DIa4232.36550.rartemp/README.md",
     "大学物理（下）/大学物理（下）.md",
     "大学物理（下）/大学物理B（下）期中突击清单.md",
     "大学物理（下）/大学物理（下）.md.tmp.2776.7c5267f11f0b",
     "大学物理（下）/大学物理（下）.md.tmp.2776.e92d8fbd2a27",
     "信号与系统/信号与系统.md",
-    "人工智能引论/人工智能引论.md",
     "大学物理（下）/imgs/ch8-8.6-电磁波.jpg",
     "大学物理（下）/imgs/ch8-8.2-感生电场.jpg",
     "大学物理（下）/imgs/ch7-7.8-磁滞回线.jpg",
     "大学物理（下）/imgs/ch7-7.7-磁力矩.jpg",
     "大学物理（下）/imgs/ch7-7.6-霍耳效应.jpg",
-    "离散数学/离散数学.md",
     "数字图像处理/数字图像处理.md",
     "面向对象程序设计/面向对象程序设计.md",
     "数据结构与算法/数据结构与算法.md",
@@ -308,8 +310,6 @@
     "未命名.base",
     "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（精简版）.md",
     "具身智能/Zotero Notes/RT-2 组会汇报提纲.md",
-    "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（本科版）.md",
-    "具身智能/Zotero Notes/ALOHA-ACT 组会汇报内容（五部分框架）.md",
     "未命名.canvas"
   ]
 }
